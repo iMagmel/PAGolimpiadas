@@ -1,0 +1,43 @@
+use olimpiadas;
+GO
+CREATE PROCEDURE SP_RegistroUsuario
+    @nombre NVARCHAR(50),
+    @apellido NVARCHAR(50),
+    @documento NVARCHAR(20),
+    @id_tipo_doc INT,
+    @id_localidad INT,          
+    @id_genero INT,
+    @sexo NVARCHAR(10),
+    @fecha_nacimiento DATE,
+    @telefono NVARCHAR(20),
+    @email NVARCHAR(100),
+    @usuario NVARCHAR(50),
+    @password NVARCHAR(256),
+    @id_rol INT
+AS
+BEGIN
+
+    INSERT INTO Personal (
+        Nombre, Apellido, Doc, Id_TipoDoc,
+        Id_Localidad, Id_Genero, Sexo,
+        Fecha_Nacimiento, Telefono
+    )
+    VALUES (
+        @nombre, @apellido, @documento, @id_tipo_doc,
+        @id_localidad, @id_genero, @sexo,
+        @fecha_nacimiento, @telefono
+    );
+
+    -- Trae el Id para Personal
+    DECLARE @id_personal INT = SCOPE_IDENTITY();
+
+    INSERT INTO Usuarios (
+        Email, Usuario, Password, Fecha_Alta,
+        Ultimo_Login, Email_Confirmado,
+        Id_Rol, Id_Personal
+    )
+    VALUES (
+        @email, @usuario, @password, GETDATE(),
+        GETDATE(), 0, @id_rol, @id_personal
+    );
+END
