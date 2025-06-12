@@ -4,9 +4,9 @@ session_start();
 
 if(isset($_POST["btnsubmit"])){
     
-    if($_POST["user"] == $usuario && $_POST["pass"] == $contrasena){
+    if($_POST["usuario"] == $usuario && $_POST["password"] == $contrasena){
 
-        $_SESSION["user"] = $usuario;
+        $_SESSION["usuario"] = $usuario;
         $_SESSION["email"] = $email;
         $_SESSION["isLogged"] = true;
 

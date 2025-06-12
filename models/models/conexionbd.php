@@ -1,30 +1,22 @@
 <?php
 
-class Conexion{
+STATIC class Conexion{
     
-    function ConexionBD(){
-
+    public static function ConexionBD() {
         $host = "localhost";
-        $dbname = "";
-        $username = "";
+        $dbname = "olimpiadas";
+        $username = "sa";
         $password = "";
         $puerto = 1433;
 
-        try{
-
+        try{}
             $conn = new PDO("sqlsrv:Server = $host,$puerto; Database = $dbname, $username, $password");
-            echo "Se conecto correctamente";
-        
         }catch(PDOExcept $ex){
-            
-            echo("No se logro conectar con la base de datos: $dbname, error: $ex");
-
+            die("No se logro conectar con la base de datos: $dbname, error: $ex");
         }
 
         return $conn
         
     }
-
-}
 
 ?>
