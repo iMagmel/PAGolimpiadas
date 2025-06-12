@@ -188,7 +188,10 @@ button {
     box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+.p{
+  text-decoration: none;
+  color: var(--color-secundario);
+}
 button:hover {
   background-color: var(--color-acento);
   color: var(--color-primario);

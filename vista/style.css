@@ -7,8 +7,8 @@
 
 }
 :root{
-    --color-primario: #F0E7D5;
-    --color-secundario: #212842;
+    --color-primary: #925fe2;
+    --color-secondary: #6d4ea1;
     --color-backgroung: #d9c7f2;
     --color-background-form: #ffffff;
     --color-text-primary: #000000;
@@ -34,8 +34,8 @@ body{
     display: grid;
     grid-template-columns: 4.2fr 5fr 0.8fr;
     align-items: center;
-    width: 57.25rem;
-    height: 31rem;
+    width: 60rem;
+    height: 40rem;
 }
 .forms-container{
     
@@ -64,7 +64,7 @@ form p{
 }
 form p a {
   
-    color: var(--color-primario);
+    color: var(--color-primary);
     font-weight: 700;
 }
 .input-container{
@@ -79,6 +79,7 @@ form p a {
     border: 2px solid var(--color-border);
     border-radius: 0.4rem;
     outline: none;
+    style
 }
 .input-container label,
 .input-container a{
@@ -86,7 +87,26 @@ form p a {
     font-weight: 600;
 }
 .input-container a{
-    color: var(--color-primario);
+    color: var(--color-primary);
+}   
+
+.input-container select{
+    padding: 0.7rem;
+    border: 2px solid var(--color-border);
+    border-radius: 0.4rem;
+    outline: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Quitar flechas en Firefox */
+        
+input[type=number] {
+            -moz-appearance: textfield;
 }
 .input-container .forget{
     
@@ -167,11 +187,11 @@ form p a {
 }
 .banner{
  
-    height: 115%;
+    height: 100%;
     padding: 5rem 2rem 0 2rem;
     position: relative;
     overflow: hidden;
-    background-color: var(--color-primario);
+    background-color: var(--color-primary);
 
 }
 .banner h1{
@@ -230,7 +250,7 @@ form p a {
 }
 .sidebar::after{
     content: '';
-    background-color: var(--color-primario);
+    background-color: var(--color-primary);
     height: 50%;
     width: 0.3rem;
     position: absolute;
