@@ -1,0 +1,53 @@
+Comunicacion entre capas (require_once __DIR__ . '/../models/tataat.php')
+
+VISTA (carrito.php) 
+  ↓
+CONTROLADOR (CompraController.php) 
+  ↓
+MODELO (Compra.php) 
+  ↓
+BASE DE DATOS (SQL Server)
+
+
+📁 1. Capa de vista(Frontend)
+¿Qué hace?
+
+-Muestra las interfaces al usuario (cliente o jefe de ventas).
+-Envía los datos que el usuario ingresa a los controladores.
+-Recibe y muestra los resultados de lo que devuelven los controladores.
+
+Lenguajes usados:
+HTML (estructura de la página)
+CSS (estilos visuales)
+JavaScript (interacciones en la interfaz)
+
+Formularios, botones, tablas
+
+📁 2. Capa de Logica(Controllers)
+¿Qué hace?
+
+-Conecta la vista con el modelo.
+-Recibe acciones desde la vista (por ejemplo, el formulario de login).
+-Llama a las funciones del modelo necesarias.
+-Verifica permisos, valida datos y decide qué vista mostrar.
+
+Lenguaje usado:
+PHP
+
+"¿Quién sos? ¿Qué querés hacer? ¿Tenés permiso? Llamo al modelo y después te muestro la vista."
+
+
+📁 3. Capa de Modelo (Models)
+¿Qué hace?
+
+-Se encarga exclusivamente de comunicarse con la base de datos.
+-Ejecuta consultas SQL o Stored Procedures.
+-Devuelve los datos al controlador, sin saber qué vista los va a mostrar.
+
+Lenguaje usado:
+PHP (y SQL desde PHP)
+
+"Solo me importa la base de datos. Dame parámetros y yo te devuelvo los datos."
+
+
+
