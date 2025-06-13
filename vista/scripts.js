@@ -8,6 +8,9 @@ const container =  document.getElementById('container');
 const linkSignIn =  document.getElementById('link-sing-in');
 const linkSignUp =  document.getElementById('link-sing-up');
 
+
+
+
 linkSignUp.addEventListener('click',()=>{
     changesSignIn();
 });
@@ -25,6 +28,7 @@ btnSignIn.addEventListener('click',()=>{
 btnSignUp.addEventListener('click',()=>{
     changesSignUp();
 });
+
 
 
 function changesSignIn(){

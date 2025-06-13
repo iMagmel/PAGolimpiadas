@@ -47,9 +47,10 @@
     </section>
     <section id="log" style="view-timeline-name: --section-scrollstate">
         <header>
-            <h1>Tienes una cuenta?</h1>
-            <button> Registrarse </button>
-            <button> Iniciar Sesion</button>
+            <h1>¿Tienes una cuenta o queres registrarte?</h1>
+            
+                <button><a href="loginregistro.html">Click acá </a> </button>
+            
         </header>
     </section>
 
