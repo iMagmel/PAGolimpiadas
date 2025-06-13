@@ -12,9 +12,9 @@
             <div class="forms" id="forms">
                 <form action="" id="sign-in">
                     <h2>login</h2>
-                    <p>dont have an account yes? <a href="#" id="link-sing-in">sign up</a></p>
+                    <p>¿No tenes cuenta todavia? <a href="#" id="link-sing-in">sign up</a></p>
                     <div class="input-container">
-                        <label for="email">email address</label>
+                        <label for="email">Direccion Email</label>
                         <input id="email" type="email" placeholder="you@example.com">
                     </div>
                     <div class="input-container">
@@ -23,34 +23,38 @@
                     </div>
                     <div class="input-container">
                         <div class="forget">
-                            <label for="password">password</label>
-                            <a href="#">Forget password?</a>
+                            <label for="password">Contraseña</label>
+                            <a href="#">¿Te olvidaste tu contraseña?</a>
                         </div>
                         
                         <input id="password" type="password" placeholder="enter 5 characters or more">
                     </div>
                     <div class="remember-me">
                         <input type="checkbox" id="checkbox">
-                        <label for="checkbox">Remember me</label>
+                        <label for="checkbox">Mostrar contraseña</label>
                     </div>
                     
                     <button>LOGIN</button>
 
-                    <div class="line-width-text">
-                        <span>or login with</span>
-                    </div>
-
-                    <br><br>
 
                 </form>
+
+                 <!-- SING UP -->
+                  
                 <form action="" id="sign-up">
                     <br><br>
-                    <h2>Register</h2>
-                    <p>Already registered? <a href="#" id="link-sing-up">sign up</a></p>
+                    <h2>Registrarse</h2>
+                    <p>¿No te registraste todavia?<a href="#" id="link-sing-up">sign up</a></p>
 
+                   
                     <div class="input-container">
                         <label for="nombre">Nombre</label>
                         <input id="nombre" type="text" placeholder="Ingrese tu nombre">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="usuario">usuario</label>
+                        <input id="usuario" type="usuario" placeholder="ingrese el nombre del usuario">
                     </div>
 
                     <div class="input-container">
@@ -85,31 +89,24 @@
                     </div>
 
                     <div class="input-container">
-                        <label for="nombre">Nombre</label>
-                        <input id="nombre" type="text" placeholder="Ingrese tu nombre">
-                    </div>
-                    <div class="input-container">
-                        <label for="email">email address</label>
+                        <label for="email">Direccion Email</label>
                         <input id="email" type="email" placeholder="you@example.com">
                     </div>
+
                     <div class="input-container">
-                        <label for="usuario">usuario</label>
-                        <input id="usuario" type="usuario" placeholder="ingrese el nombre del usuario">
-                    </div>
-                    <div class="input-container">
-                        <label for="password">password</label>
+                        <label for="password">Contraseña</label>
                         <input id="password" type="password" placeholder="enter 5 characters or more">
                     </div>
                     <div class="remember-me">
                         <input type="checkbox" id="checkbox">
-                        <label for="checkbox">Remember me</label>
+                        <label for="checkbox">Mostrar contraseña</label>
                     </div>
                     <div class="input-container">
                         <label for="password"> confirme su contraseña</label>
                         <input id="password" type="password" placeholder="enter 5 characters or more">
                     </div>
                     
-                    <button class="btn-register">REGISTER</button>
+                    <button class="btn-register">Registrarse</button>
 
                    
                 </form>
@@ -137,7 +134,11 @@
         </div>
     </div>
 
-
+<div >
+    <a href="index.html">
+        <button class="button-inicio"> Inicio </button>
+    </a>
+</div>
 
     <script src="scripts.js"></script>
 </body>
