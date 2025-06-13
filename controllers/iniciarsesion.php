@@ -1,42 +1,17 @@
 <?php
 
-require_once("conexionbd.php");
-Conexion::ConexionBD();
+require_once __DIR___ . "models/models/M_SPLog.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-        
-            $email = $_POST["email"] ?? '';
-            $usuario = $_POST["usuario"] ?? '';
-            $password = $_POST["password"] ?? '';
-            
-        if($email && $usuario && $password){
-              
-                $sql = "SP_Login(?, ?, ?)";
+    function VerifyLog($usuario, $password, $email) {
+        $models = new SP_Login();
+        $result = $modelo->login($usuario, $password, $email);
 
-                $declaracion = $conexion->prepare($sql);
+        if ($resullt){
+            session_start();
+            $_SESSION["Id_Usuario"] = $resullt ["Id_Usuario"];
+            $_SESSION["Id_Rol"] =  $result ["Id_Rol"]
 
-                $declaracion->bind_param("sss", $email, $usuario, $password);
-
-                if($declaracion->execute())
-                {
-                    echo "<br> Datos cargados correctamente";
-                }
-                else
-                {
-                    echo "<br> No se ejecuta la consulta correctamente";
-                }
-
-                $declaracion -> close();
-                $conexion -> close();
-            }
+            header("Location : vista/index.php")
         }
-        else
-        {
-            echo"Escriba todos los valores";
-        }
-else
-{
-    echo("Error: Acceso no permitido");
-}
-
+    }
 ?>
