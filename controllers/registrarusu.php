@@ -1,42 +1,22 @@
 <?php
 
-require_once("conexionbd.php");
-Conexion::ConexionBD();
+require_once __DIR__ . "models/models/M_SPRegistro.php";
+require_once __DIR__ . "helpers/Encriptar.php";
+class registrarusu{
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-        
-            $email = $_POST["email"] ?? '';
-            $usuario = $_POST["usuario"] ?? '';
-            $password = $_POST["password"] ?? '';
-            
-        if($email && $usuario && $password){
-              
-                $sql = "SP_RegistroUsuario(?, ?, ?)";
+    function RegistrarUsuario($nombre, $apellido , $id_tipo_doc, $documento, $id_localidad , $id_genero, $sexo, 
+    $fecha_nacimiento , $telefono, $email , $usuario , $password) {
+        $clave_ingresada = $password;
+        $clave_hash = Encriptar :: SHA256($clave_ingresada);
+        $models = new SP_Registrar();
+        $result = $modelo->Registro($nombre, $apellido , $id_tipo_doc, $documento, $id_localidad , $id_genero,
+         $sexo, $fecha_nacimiento , $telefono, $email , $usuario , $password);
 
-                $declaracion = $conexion->prepare($sql);
-
-                $declaracion->bind_param("sss", $email, $usuario, $password);
-
-                if($declaracion->execute())
-                {
-                    echo "<br> Datos cargados correctamente";
-                }
-                else
-                {
-                    echo "<br> No se ejecuta la consulta correctamente";
-                }
-
-                $declaracion -> close();
-                $conexion -> close();
-            }
+        if ($result && $result["password"] === $clave_hash){
+            header("Location : vista/login.php");
+        } else {
+            return "Usuario y contraseña incorrectos.";
         }
-        else
-        {
-            echo"Escriba todos los valores";
-        }
-else
-{
-    echo("Error: Acceso no permitido");
+    }       
 }
-
 ?>
