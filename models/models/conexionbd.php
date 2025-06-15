@@ -1,6 +1,6 @@
 <?php
 
-STATIC class Conexion{
+class Conexion{
     
     public static function ConexionBD() {
         $host = "localhost";

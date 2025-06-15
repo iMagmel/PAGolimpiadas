@@ -1,42 +1,24 @@
 <?php
 
-require_once("conexionbd.php");
-Conexion::ConexionBD();
+require_once __DIR__ . "models/models/M_SPLog.php";
+require_once __DIR__ . "helpers/Encriptar.php";
+    class iniciarsesion {
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    function VerifyLog($usuario, $password, $email) {
         
-            $email = $_POST["email"] ?? '';
-            $usuario = $_POST["usuario"] ?? '';
-            $password = $_POST["password"] ?? '';
-            
-        if($email && $usuario && $password){
-              
-                $sql = "SP_Login(?, ?, ?)";
+        $clave_ingresada = $_POST["password"];
+        $clave_hash = Encriptar :: SHA256($clave_ingresada);
+        $modelo = new SP_Login();
+        $result = $modelo->login($usuario, $password, $email);
 
-                $declaracion = $conexion->prepare($sql);
-
-                $declaracion->bind_param("sss", $email, $usuario, $password);
-
-                if($declaracion->execute())
-                {
-                    echo "<br> Datos cargados correctamente";
-                }
-                else
-                {
-                    echo "<br> No se ejecuta la consulta correctamente";
-                }
-
-                $declaracion -> close();
-                $conexion -> close();
-            }
+        if ($result && $result["password"] === $clave_hash){
+            session_start();
+            $_SESSION["Id_Usuario"] = $result ["Id_Usuario"];
+            header("Location : vista/index.php");
+        } else {
+            return "Usuario y contraseña incorrectos.";
         }
-        else
-        {
-            echo"Escriba todos los valores";
-        }
-else
-{
-    echo("Error: Acceso no permitido");
+    }
 }
-
 ?>
