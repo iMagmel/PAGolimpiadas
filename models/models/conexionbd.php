@@ -4,19 +4,19 @@ class Conexion{
     
     public static function ConexionBD() {
         $host = "localhost";
-        $dbname = "olimpiadas";
+        $dbname = "dbolimpia";
         $username = "sa";
-        $password = "";
+        $password = "Admin123";
         $puerto = 1433;
 
-        try{}
-            $conn = new PDO("sqlsrv:Server = $host,$puerto; Database = $dbname, $username, $password");
-        }catch(PDOExcept $ex){
-            die("No se logro conectar con la base de datos: $dbname, error: $ex");
+        try {
+            $conn = new PDO("sqlsrv:Server=$host,$puerto;Database=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $ex) {
+            die("No se logró conectar con la base de datos: $dbname, error: " . $ex->getMessage());
         }
 
-        return $conn
-        
+        return $conn;
     }
-
+}
 ?>

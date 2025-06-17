@@ -9,7 +9,6 @@ CREATE PROCEDURE SP_RegistroUsuario
     @id_genero INT,
     @sexo NVARCHAR(10),
     @fecha_nacimiento DATE,
-    @telefono NVARCHAR(20),
     @email NVARCHAR(100),
     @usuario NVARCHAR(50),
     @password NVARCHAR(256),
@@ -20,12 +19,12 @@ BEGIN
     INSERT INTO Personal (
         Nombre, Apellido, Doc, Id_TipoDoc,
         Id_Localidad, Id_Genero, Sexo,
-        Fecha_Nacimiento, Telefono
+        Fecha_Nacimiento
     )
     VALUES (
         @nombre, @apellido, @documento, @id_tipo_doc,
         @id_localidad, @id_genero, @sexo,
-        @fecha_nacimiento, @telefono
+        @fecha_nacimiento
     );
 
     -- Trae el Id para Personal
