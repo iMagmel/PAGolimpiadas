@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <button type="submit" class="btn-sign-un"> Confirmar registro </button>
 
             <div >
-                  <a href="index.html" class="btn-sign-un"> Volver al Inicio</a>
+                  <a href="index.php" class="btn-sign-un"> Volver al Inicio</a>
             </div>
                 <?php if ($error): ?>
                     <div class="error-message" style="color:red; margin-top:10px;">
