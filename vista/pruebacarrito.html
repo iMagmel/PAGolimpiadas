@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>prueba carrito</title>
+
+    <link rel="stylesheet" href="pruebacarrito.css">
+</head>
+<body>
+    <header>
+    <div class="header-container">
+        <h1>Excursiones Disponibles</h1>
+        <div class="user-icons">
+            <div class="cart-icon-container">
+                <i class='bx bx-cart-alt' id="icono-carrito"></i>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </div>
+        </div>
+    </div>
+</header><br><br><br><br>
+
+    
+    <h2 class="titulo-seccion">EUROPA</h2>
+    <div class="productos-container">
+      
+  <div class="producto" id="prod-1">
+    <img src="images/brasil.jfif" alt="Brasil">
+    <div class="producto-info">
+      <h3>Excursión a las cristo redentor</h3>
+      <p>Tour guiado de día completo con almuerzo incluido</p>
+      <p><strong>$150</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-1')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-2">
+    <img src="images/tokio.jfif" alt="City Tour">
+    <div class="producto-info">
+      <h3>City Tour en tokio</h3>
+      <p>Recorrido por los puntos históricos más importantes</p>
+      <p><strong>$80</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-2')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-3">
+    <img src="images/londres.jfif" alt="Tour en lugares historicos">
+    <div class="producto-info">
+      <h3>City Tour en Londres</h3>
+      <p>Recorrido por los puntos históricos más importantes</p>
+      <p><strong>$200</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-3')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-4">
+    <img src="images/roma.jfif" alt="Tour en Roma">
+    <div class="producto-info">
+      <h3>Tour en Roma clásica</h3>
+      <p>Coliseo, Foro Romano y Vaticano en un día</p>
+      <p><strong>$170</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-4')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-5">
+    <img src="images/tokio.jfif" alt="Tour en Tokio">
+    <div class="producto-info">
+      <h3>Paseo en Tokio</h3>
+      <p>descripcion</p>
+      <p><strong>$190</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-5')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-6">
+    <img src="images/turquia.jfif" alt="Tour en Turquia">
+    <div class="producto-info">
+      <h3>Recorrido por Turquia</h3>
+      <p>Ópera, playas y barrios históricos</p>
+      <p><strong>$160</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-6')">Agregar al carrito</button>
+    </div>
+  </div>
+</div><br><br>
+<br>
+<br>
+
+ <h2 class="titulo-seccion">ASIA</h2>
+   <div class="productos-container">
+   
+  <div class="producto" id="prod-1">
+    <img src="images/brasil.jfif" alt="Brasil">
+    <div class="producto-info">
+      <h3>Excursión a las cristo redentor</h3>
+      <p>Tour guiado de día completo con almuerzo incluido</p>
+      <p><strong>$150</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-1')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-2">
+    <img src="images/tokio.jfif" alt="City Tour">
+    <div class="producto-info">
+      <h3>City Tour en tokio</h3>
+      <p>Recorrido por los puntos históricos más importantes</p>
+      <p><strong>$80</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-2')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-3">
+    <img src="images/londres.jfif" alt="Tour en lugares historicos">
+    <div class="producto-info">
+      <h3>City Tour en Londres</h3>
+      <p>Recorrido por los puntos históricos más importantes</p>
+      <p><strong>$200</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-3')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-4">
+    <img src="images/roma.jfif" alt="Tour en Roma">
+    <div class="producto-info">
+      <h3>Tour en Roma clásica</h3>
+      <p>Coliseo, Foro Romano y Vaticano en un día</p>
+      <p><strong>$170</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-4')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-5">
+    <img src="images/tokio.jfif" alt="Tour en Tokio">
+    <div class="producto-info">
+      <h3>Paseo en Tokio</h3>
+      <p>descripcion</p>
+      <p><strong>$190</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-5')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-6">
+    <img src="images/turquia.jfif" alt="Tour en Turquia">
+    <div class="producto-info">
+      <h3>Recorrido por Turquia</h3>
+      <p>Ópera, playas y barrios históricos</p>
+      <p><strong>$160</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-6')">Agregar al carrito</button>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
+
+<h2 class="titulo-seccion">AMÉRICA</h2>
+    <div class="productos-container">
+      
+  <div class="producto" id="prod-1">
+    <img src="images/brasil.jfif" alt="Brasil">
+    <div class="producto-info">
+      <h3>Excursión a las cristo redentor</h3>
+      <p>Tour guiado de día completo con almuerzo incluido</p>
+      <p><strong>$150</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-1')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-2">
+    <img src="images/tokio.jfif" alt="City Tour">
+    <div class="producto-info">
+      <h3>City Tour en tokio</h3>
+      <p>Recorrido por los puntos históricos más importantes</p>
+      <p><strong>$80</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-2')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-3">
+    <img src="images/londres.jfif" alt="Tour en lugares historicos">
+    <div class="producto-info">
+      <h3>City Tour en Londres</h3>
+      <p>Recorrido por los puntos históricos más importantes</p>
+      <p><strong>$200</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-3')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-4">
+    <img src="images/roma.jfif" alt="Tour en Roma">
+    <div class="producto-info">
+      <h3>Tour en Roma clásica</h3>
+      <p>Coliseo, Foro Romano y Vaticano en un día</p>
+      <p><strong>$170</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-4')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-5">
+    <img src="images/tokio.jfif" alt="Tour en Tokio">
+    <div class="producto-info">
+      <h3>Paseo en Tokio</h3>
+      <p>descripcion</p>
+      <p><strong>$190</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-5')">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="producto" id="prod-6">
+    <img src="images/turquia.jfif" alt="Tour en Turquia">
+    <div class="producto-info">
+      <h3>Recorrido por Turquia</h3>
+      <p>Ópera, playas y barrios históricos</p>
+      <p><strong>$160</strong> por persona</p>
+      <button class="btn-agregar" onclick="agregarAlCarrito('prod-6')">Agregar al carrito</button>
+    </div>
+  </div>
+</div><br><br>
+<br>
+<br>
+
+    
+  <div class="carrito-container oculto" id="carrito">
+    <i class='bx bx-x cerrar-carrito' id="cerrar-carrito"></i>
+    <h2 class="titulo-carrito">Tu Carrito de Viaje</h2>
+    <div id="items-carrito" class="items-carrito">
+        <p style="text-align: center;">Tu carrito está vacío</p>
+
+       
+        <div class="item-carrito">
+            <p><span>Destino:</span> <label></label></p>
+            <p><span>Fecha de salida:</span> <label></label></p>
+            <p><span>Fecha de vuelta:</span> <label></label></p>
+            <p><span>Número del pasaje:</span> <label></label></p>
+            <p><span>Transporte:</span> <label></label></p>
+            <p><span>Estadía:</span> <label></label></p>
+            <button class="btn-eliminar">Eliminar</button>
+        </div>
+        
+    </div>
+</div>
+
+
+          <buttonc class="btn-inicio"> <a href="index.html" > Volver al inicio </a> </button>
+<script src="carro.js"></script>
+</body>
+</html>
