@@ -1,8 +1,9 @@
 <?php
 
-require_once __DIR__ . "models/models/M_SPRegistro.php";
-require_once __DIR__ . "helpers/Encriptar.php";
-class registrarusu{
+require_once __DIR__ . "/../models/models/M_SPRegistro.php";
+require_once __DIR__ . "/../helpers/Encriptar.php";
+
+class registrarusu {
 
     function RegistrarUsuario($nombre, $apellido , $id_tipo_doc, $documento, $id_localidad , $id_genero, $sexo, 
     $fecha_nacimiento , $telefono, $email , $usuario , $password) {
@@ -13,9 +14,7 @@ class registrarusu{
          $sexo, $fecha_nacimiento , $telefono, $email , $usuario , $password);
 
         if ($result && $result["password"] === $clave_hash){
-            header("Location : vista/login.php");
-        } else {
-            return "Usuario y contraseña incorrectos.";
+            include_once __DIR__ . "/../vista/login.php";
         }
     }       
 }

@@ -54,7 +54,7 @@
         <header>
             <h1>¿Tienes una cuenta o queres registrarte?</h1>
             
-                <button><a href="login.html">Click acá</a> </button>
+                <button><a href="login.php">Click acá</a> </button>
             
         </header>
     </section>

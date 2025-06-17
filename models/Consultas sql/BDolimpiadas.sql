@@ -1,3 +1,5 @@
+use dbolimpia;
+go
 CREATE TABLE Genero (
     Id_Genero INT PRIMARY KEY identity(1,1) not null,
     Genero NVARCHAR(20) not null
@@ -45,7 +47,7 @@ CREATE TABLE PersonalEmpresa (
     Apellido NVARCHAR(50) not null,
     Id_TipoDoc INT,
     Doc INT not null,
-    Id_Pais INT,
+    Id_Localidad INT,
     Id_Genero INT,
     Sexo CHAR(1) not null,
 	Fecha_Nacimiento DATE,
@@ -61,11 +63,10 @@ CREATE TABLE Personal (
     Apellido NVARCHAR(50) not null,
     Id_TipoDoc INT,
     Doc INT not null,
-    Id_Pais INT,
+    Id_Localidad INT,
     Id_Genero INT,
     Sexo CHAR(1) not null,
 	Fecha_Nacimiento DATE,
-    Telefono INT not null,
     FOREIGN KEY (Id_TipoDoc) REFERENCES Tipo_Doc(Id_TipoDoc),
     FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais),
     FOREIGN KEY (Id_Genero) REFERENCES Genero(Id_Genero)
@@ -129,13 +130,6 @@ CREATE TABLE Compras (
 	FOREIGN KEY (Id_Usuario) REFERENCES Usuarios (Id_Usuario)
 );
 
-CREATE TABLE IF NOT EXISTS Carrito_Usuario (
-	Id_Carrito INT PRIMARY KEY identity(1,1) not null,
-	Id_Usuario INT,
-	Id_Viaje INT,
-	FOREIGN KEY (Id_Usuario) REFERENCES Usuarios (Id_Usuarios),
-	FOREIGN KEY (Id_Viaje) REFERENCES Viajes (Id_Viaje)
-);
 
 CREATE TABLE Historial_Compras (
 	Id_Hcompra INT PRIMARY KEY identity(1,1) not null,
@@ -152,5 +146,17 @@ CREATE TABLE Historial_Contraseñas(
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
+IF NOT EXISTS (
+    SELECT * FROM sysobjects WHERE name = 'Carrito_Usuario' AND xtype = 'U'
+)
+BEGIN
+    CREATE TABLE Carrito_Usuario (
+        Id_Carrito INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+        Id_Usuario INT,
+        Id_Viaje INT,
+        FOREIGN KEY (Id_Usuario) REFERENCES Usuarios (Id_Usuario),
+        FOREIGN KEY (Id_Viaje) REFERENCES Viajes (Id_Viaje)
+    );
+END
 
 

@@ -1,24 +1,27 @@
 <?php
+require_once __DIR__ . '/../models/models/M_SPLog.php';
+require_once __DIR__ . '/../helpers/Encriptar.php';
+class iniciarsesion {
+ public function VerifyLog($usuario, $password, $email) {
+    $clave_hash = Encriptar::SHA256($password); 
 
-require_once __DIR__ . "models/models/M_SPLog.php";
-require_once __DIR__ . "helpers/Encriptar.php";
-    class iniciarsesion {
+    $modelo = new SP_Login();
+    $stmt = $modelo->login($usuario, $clave_hash, $email);
 
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    function VerifyLog($usuario, $password, $email) {
-        
-        $clave_ingresada = $_POST["password"];
-        $clave_hash = Encriptar :: SHA256($clave_ingresada);
-        $modelo = new SP_Login();
-        $result = $modelo->login($usuario, $password, $email);
-
-        if ($result && $result["password"] === $clave_hash){
-            session_start();
-            $_SESSION["Id_Usuario"] = $result ["Id_Usuario"];
-            header("Location : vista/index.php");
-        } else {
-            return "Usuario y contraseña incorrectos.";
-        }
+    if ($result) {
+        session_start();
+        $_SESSION["Id_Usuario"] = $result["Id_Usuario"];
+        $_SESSION["Id_Rol"] = $result["Id_Rol"];
+        include __DIR__ . '/../vista/index.php';
+        exit();
+    } else {
+        return "Usuario y contraseña incorrectos o email no confirmado.";
     }
+}
+
+
+
 }
 ?>
