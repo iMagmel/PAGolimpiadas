@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="" id="sign-up" class="form-register" method = "POST">
 
           <h2>Registrarse</h2>
-          <p>¿Ya tenes cuenta?<a href="login.html" id="link-sing-up">Inicia sesión</a></p>
+          <p>¿Ya tenes cuenta?<a href="login.php" id="link-sing-up">Inicia sesión</a></p>
 
           <div class="input-container">
             <label for="nombre">Nombre</label>
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <button type="submit" class="btn-sign-un"> Confirmar registro </button>
 
             <div >
-                  <a href="index.php" class="btn-sign-un"> Volver al Inicio</a>
+                  <a href="index.html" class="btn-sign-un"> Volver al Inicio</a>
             </div>
                 <?php if ($error): ?>
                     <div class="error-message" style="color:red; margin-top:10px;">

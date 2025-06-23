@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit" class="button"> Entrar </button>
 
                 <div>
-                    <a href="index.php" class="button">Inicio</a>
+                    <a href="index.html" class="button">Inicio</a>
                 </div>
 
                 <?php if ($error): ?>

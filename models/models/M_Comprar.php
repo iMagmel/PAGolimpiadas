@@ -12,9 +12,9 @@ class SP_ComprarPro{
     public function comprar($usuario, $fechasalida, $fechavuelta, $cantidad, $transporte, $estadia){
 
         $sqle -> query("SELECT Id_Viaje FROM Viajes WHERE Fecha_Salida = $fechasalida AND Fecha_Vuelta = $fechavuelta")
-        $id_viaje = $sqle -> execute()
+        $id_viaje = $sqle -> execute();
         $sql = "EXEC SP_GuardarCompra ?, ?, ?, ?, ?";
-        $stmt = $this -> conn -> prepare($sql)
+        $stmt = $this -> conn -> prepare($sql);
         $stmt = execute([$usuario, $id_viaje, $cantidad, $transporte, $estadia]);
         return $stmt;
     }
