@@ -1,5 +1,6 @@
 @import "https://unpkg.com/open-props" layer(design.system);
 
+
 @layer demo {
   .stuck-top {
     container-type: scroll-state;
@@ -69,6 +70,14 @@
   }
 }
 
+.world-icon {
+    font-size: 100%;/* Tamaño grande */
+    color: var(--gray-3); /* Verde, ajusta al color de tu marca */
+    display: block;
+    margin: 16px auto;  /*  Espaciado y centrado */
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
 @layer demo.support {
   :root {
     /* Paleta personalizada */
@@ -128,7 +137,7 @@
     block-size: 95svh;
 
     >p {
-      color: var(--gray-8);
+      color: var(--gray-3);   
       letter-spacing: var(--font-letterspacing-3);
     }
   }
@@ -140,7 +149,37 @@
     text-wrap: balance;
     color: var(--color-secundario);
   }
+  h2{
+    font-size: var(--font-size-5);
+    letter-spacing: var(--font-letterspacing-5);
+    text-wrap: balance;
+    color: var(--color-secundario);
+  }
+ /* Estilos para el div-padre (flexbox) */
+.div-padre {
+    display: flex;          /* Activa Flexbox */
+    gap: 2rem;             /* Espacio entre columnas */
+    padding: 1.5rem;       /* Espaciado interno opcional */
+    max-width: 1200px;     /* Ancho máximo para contener el contenido */
+    margin: 0 auto;        /* Centrar horizontalmente */
+}
 
+/* Columnas hijas */
+.div-padre > .columna {
+   color: var(--gray-3);
+    flex: 1;               /* Cada columna ocupa igual espacio */
+    background: rgba(0, 0, 0, 0.1); /*   Fondo opcional para destacar */
+    padding: 1rem;         
+    border-radius: 8px;    
+    backdrop-filter: blur(2px); /* transparencia */
+}
+
+/* Responsive: Apilar en móviles */
+@media (max-width: 768px) {
+    .div-padre {
+        flex-direction: column;
+    }
+}
   .stuck-top {
     z-index: 1;
   }
@@ -169,6 +208,7 @@
     }
   }
 }
+
 
 button {
   padding: 0.4em 0.8em;
