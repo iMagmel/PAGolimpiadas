@@ -18,6 +18,7 @@ class RecuperarContrasena {
         include("./mensajemail.php");
 
         if($enviado) {
+         
             $sql = "INSERT INTO Contraseñas (email, token, codigo) VALUES (?, ?, ?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([$email, $token, $codigo]);
