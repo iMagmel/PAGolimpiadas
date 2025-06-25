@@ -58,9 +58,6 @@ body {
   position: relative;
 }
 
-
-
-
 .forms {
   display: flex;
   flex-direction: column;
@@ -224,6 +221,8 @@ form .btn-register {
   overflow: hidden;
   background-color: var(--color-primario);
 }
+
+
 
 .banner h1 {
   color: var(--color-title);
