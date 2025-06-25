@@ -4,9 +4,9 @@ class Conexion{
     
     public static function ConexionBD() {
         $host = "localhost";
-        $dbname = "dbolimpia";
-        $username = "sa";
-        $password = "Admin123";
+        $dbname = "dbolimpiadas";
+        $username = "";
+        $password = "";
         $puerto = 1433;
 
         try {

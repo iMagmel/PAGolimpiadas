@@ -2,28 +2,22 @@
 include_once("./conexionbd.php");
 
 class Codigocontra {
-    private $email;
-    private $token;
-    private $codigo;
-    private $conn;
+    $conn;
 
     public function __construct() {
-        $this->email = $_POST["email"] ?? '';
-        $this->token = $_POST["token"] ?? '';
-        $this->codigo = $_POST["codigo"] ?? '';
         $this->conn = Conexion::ConexionBD();
     }
     
-    public function codigo() {
+    public function codigo($codigo, $email, $token) {
         try {
             $sql = "SELECT * FROM Contraseñas WHERE email = ? AND token = ? AND codigo = ?";
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([$this->email, $this->token, $this->codigo]);
+            $stmt->execute([$email, $token, $codigo]);
 
             $fila = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($fila) {
-                $fecha = $fila['fecha']; // Asumo que la columna se llama 'fecha'
+                $fecha = $fila['fecha'];
                 $fecha_actual = date("Y-m-d H:i:s");
 
                 $seconds = strtotime($fecha_actual) - strtotime($fecha);

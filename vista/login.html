@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="forms" id="forms">
             <form method="POST" action="" id="sign-in">
                 <h2>login</h2>
-                <p>¿No tenes cuenta todavia? <a href="/PAGolimpiadas/controllers/logupController.php" id="link-sing-in">Registrarte</a></p>
+                <p>¿No tenes cuenta todavia? <a href="logup.php" id="link-sing-in">Registrarte</a></p>
                 <div class="input-container">
                     <label for="email">Direccion Email</label>
                     <input id="email" name="email" type="email" placeholder="you@example.com" />
@@ -40,19 +40,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="input-container">
                     <div class="forget">
                         <label for="password">Contraseña</label>
+
                     </div>
                     <input id="password" type="password" name="password" placeholder="enter 5 characters or more" />
                 </div>
                 <div class="remember-me">
                     <input type="checkbox" id="checkbox" />
                     <label for="checkbox">Mostrar contraseña</label>
-                    
                 </div>
+
+                 <button><a href="recuperarcontraseña.php">¿Te olvidaste tu contraseña?</a></button>
                 <button type="submit" class="button"> Entrar </button>
+
                 <div>
-                <button><a href="V_Recuperacion.php">¿Te olvidaste tu contraseña?</a></button>
+                    <a href="index.html" class="button">Inicio</a>
                 </div>
-                <a href="index.php" class="button">Inicio</a>
 
                 <?php if ($error): ?>
                     <div class="error-message" style="color:red; margin-top:10px;">

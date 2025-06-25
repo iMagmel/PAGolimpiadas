@@ -1,4 +1,4 @@
-use dbolimpiadas;
+use dbolimpia;
 go
 CREATE TABLE Genero (
     Id_Genero INT PRIMARY KEY identity(1,1) not null,

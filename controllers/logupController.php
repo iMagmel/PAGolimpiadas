@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($resultado === true) {
-        header('Location: login.php');
+        include_once __DIR__ . "/../vista/login.php";
         exit();
     } else {
         $error = $resultado;
@@ -40,4 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Mostrar vista
-require_once __DIR__ . '/../vista/logup.php';
+require_once __DIR__ . '/../vista/singup.php';
+

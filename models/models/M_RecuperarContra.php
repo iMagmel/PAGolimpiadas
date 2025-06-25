@@ -1,6 +1,6 @@
 <?php
 
-include_once("./conexionbd.php");
+require_once __DIR__ . "/conexionbd.php";
 
 class RecuperarContrasena {
     private $conn;
@@ -10,26 +10,24 @@ class RecuperarContrasena {
     }
 
     public function rec($email) {
-        $email = $_POST["email"];
         $bytes = random_bytes(5);
         $token = bin2hex($bytes);
         $codigo = rand(1000, 9999);
 
-        include("./mensajemail.php");
-
+   include __DIR__ . "/../models/models/./mensajemail.php";
         if($enviado) {
          
             $sql = "INSERT INTO Contraseñas (email, token, codigo) VALUES (?, ?, ?)";
-            $stmt = $this->conn->prepare($sql);
+            $stmt = $this->$conn->prepare($sql);
             $stmt->execute([$email, $token, $codigo]);
 
             echo "<p>Verifica tu mail para restablecer tu cuenta</p>";
         }
     }
 
-    public function RecuperarContra($email, $codigo) {
+    public function RecuperarContra($email) {
         $sql = "SELECT codigo FROM Contraseñas WHERE Email = ?";
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->execute([$email]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

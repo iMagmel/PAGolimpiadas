@@ -18,13 +18,13 @@ class ReseatearContra {
                 die("Error en la preparación de la consulta: " . $this->conn);
             }
 
-            $hash = password_hash($Contraseña, PASSWORD_DEFAULT);
+            $password_hash = hash('sha256', $Contraseña);
 
-            $stmt->execute([$hash, $email]);
+            $stmt->execute([$password_hash, $email]);
 
             include("./mensajemail.php");
 
-            echo "✅ Contraseña cambiada";
+            echo "Contraseña cambiada";
             header("Location: login.php");
             exit();
         } else {
