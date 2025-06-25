@@ -71,12 +71,13 @@
 }
 
 .world-icon {
-    font-size: 100%;/* Tamaño grande */
-    color: var(--gray-3); /* Verde, ajusta al color de tu marca */
+    font-size: 200px; /* Tamaño grande */
+    color: var(--color-acento);/* Verde turquesa, cámbialo si prefieres */
     display: block;
-    margin: 16px auto;  /*  Espaciado y centrado */
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    margin: 20px auto; /* Centrado con espacio */
+    text-align: center; /* Asegura que esté centrado */
 }
+
 
 @layer demo.support {
   :root {
