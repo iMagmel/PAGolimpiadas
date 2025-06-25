@@ -146,6 +146,14 @@ CREATE TABLE Historial_Contraseñas(
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
+CREATE TABLE Contraseñas(
+    Id_Contra int PRIMARY KEY identity(1, 1) not null,
+    Email nvarchar(100) not null,
+    Token nvarchar(200) not null,
+    Codigo INT not null,
+    Fecha DATE
+)
+
 IF NOT EXISTS (
     SELECT * FROM sysobjects WHERE name = 'Carrito_Usuario' AND xtype = 'U'
 )

@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="input-container">
                     <div class="forget">
                         <label for="password">Contraseña</label>
-                        <a href="#">¿Te olvidaste tu contraseña?</a>
+                        <a href="olvidarcontra.html"><p>¿Te olvidaste tu contraseña?</p></a>
                     </div>
                     <input id="password" type="password" name="password" placeholder="enter 5 characters or more" />
                 </div>

@@ -10,7 +10,7 @@ class registrarusu {
         $clave_ingresada = $password;
         $clave_hash = Encriptar :: SHA256($clave_ingresada);
         $models = new SP_Registrar();
-        $result = $modelo->Registro($nombre, $apellido , $id_tipo_doc, $documento, $id_localidad , $id_genero,
+        $result = $models->Registro($nombre, $apellido , $id_tipo_doc, $documento, $id_localidad , $id_genero,
          $sexo, $fecha_nacimiento , $telefono, $email , $usuario , $password);
 
         if ($result && $result["password"] === $clave_hash){
