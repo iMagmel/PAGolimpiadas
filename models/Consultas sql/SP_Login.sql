@@ -1,4 +1,4 @@
-use olimpiadas;
+use dbolimpiadas;
 GO
 CREATE PROCEDURE SP_Login
 	@id_usuario INT,
@@ -10,7 +10,7 @@ BEGIN
 	SELECT Id_Usuario, Id_Rol
 	FROM Usuarios
 	WHERE Email = @email AND usuario = @usuario AND Password = @password AND Email_Confirmado = 1;
-GO
+
 	UPDATE Usuarios
 	SET Ultimo_Login = GETDATE()
 	WHERE Id_Usuario = @id_usuario;

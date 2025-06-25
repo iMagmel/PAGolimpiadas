@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="forms" id="forms">
             <form method="POST" action="" id="sign-in">
                 <h2>login</h2>
-                <p>¿No tenes cuenta todavia? <a href="logup.php" id="link-sing-in">Registrarte</a></p>
+                <p>¿No tenes cuenta todavia? <a href="/PAGolimpiadas/controllers/logupController.php" id="link-sing-in">Registrarte</a></p>
                 <div class="input-container">
                     <label for="email">Direccion Email</label>
                     <input id="email" name="email" type="email" placeholder="you@example.com" />
@@ -41,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="forget">
                         <label for="password">Contraseña</label>
                         <a href="mail.html">¿Te olvidaste tu contraseña?</a>
-
                     </div>
                     <input id="password" type="password" name="password" placeholder="enter 5 characters or more" />
                 </div>

@@ -1,7 +1,7 @@
 USE dbolimpiadas;
 GO
 
-CREATE PROCEDURE SP_RegistroUsuario
+CREATE OR ALTER PROCEDURE SP_RegistroUsuario
     @nombre NVARCHAR(50),
     @apellido NVARCHAR(50),
     @documento NVARCHAR(20),
@@ -13,7 +13,7 @@ CREATE PROCEDURE SP_RegistroUsuario
     @usuario NVARCHAR(50),
     @password NVARCHAR(256),
     @id_rol INT,
-    @id_pais INT,        
+    @id_localidad INT,
     @registrado BIT OUTPUT
 AS
 BEGIN
@@ -23,6 +23,15 @@ BEGIN
         SELECT 1 FROM Usuarios WHERE Email = @email
     )
     BEGIN
+        DECLARE @id_pais INT;
+
+        -- Obtener el Id_Pais a partir del Id_Localidad
+        SELECT @id_pais = Pr.Id_Pais
+        FROM dbo.Localidad L
+        INNER JOIN dbo.Partido Pa ON L.Id_Partido = Pa.Id_Partido
+        INNER JOIN dbo.Provincia Pr ON Pa.Id_Provincia = Pr.Id_Provincia
+        WHERE L.Id_Localidad = @id_localidad;
+
         INSERT INTO Personal (
             Nombre, Apellido, Doc, Id_TipoDoc,
             Id_Pais, Id_Genero, Sexo,
@@ -52,6 +61,4 @@ BEGIN
     BEGIN
         SET @registrado = 0; -- El correo ya existe
     END
-
-    SELECT @registrado AS registrado;
 END

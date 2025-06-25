@@ -1,4 +1,4 @@
-use dbolimpia;
+use dbolimpiadas;
 go
 CREATE TABLE Genero (
     Id_Genero INT PRIMARY KEY identity(1,1) not null,
@@ -42,16 +42,15 @@ CREATE TABLE Tipo_Doc (
 );
 
 CREATE TABLE PersonalEmpresa (
-	Id_Pempresa	INT PRIMARY KEY identity(1,1) not null
+	Id_Pempresa	INT PRIMARY KEY identity(1,1) not null,
 	Nombre NVARCHAR(50) not null,
     Apellido NVARCHAR(50) not null,
     Id_TipoDoc INT,
     Doc INT not null,
-    Id_Localidad INT,
+    Id_Pais INT,
     Id_Genero INT,
     Sexo CHAR(1) not null,
 	Fecha_Nacimiento DATE,
-    Telefono INT not null,
 	FOREIGN KEY (Id_TipoDoc) REFERENCES Tipo_Doc(Id_TipoDoc),
     FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais),
     FOREIGN KEY (Id_Genero) REFERENCES Genero(Id_Genero)
@@ -63,7 +62,7 @@ CREATE TABLE Personal (
     Apellido NVARCHAR(50) not null,
     Id_TipoDoc INT,
     Doc INT not null,
-    Id_Localidad INT,
+    Id_Pais INT,
     Id_Genero INT,
     Sexo CHAR(1) not null,
 	Fecha_Nacimiento DATE,
@@ -146,14 +145,6 @@ CREATE TABLE Historial_Contraseñas(
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
-CREATE TABLE Contraseñas(
-    Id_Contra int PRIMARY KEY identity(1, 1) not null,
-    Email nvarchar(100) not null,
-    Token nvarchar(200) not null,
-    Codigo INT not null,
-    Fecha DATE
-)
-
 IF NOT EXISTS (
     SELECT * FROM sysobjects WHERE name = 'Carrito_Usuario' AND xtype = 'U'
 )
@@ -166,5 +157,3 @@ BEGIN
         FOREIGN KEY (Id_Viaje) REFERENCES Viajes (Id_Viaje)
     );
 END
-
-

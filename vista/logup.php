@@ -1,121 +1,105 @@
 <?php
-$error = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once __DIR__ . "/../controllers/registrarusu.php"; 
-
-    $nombre = $_POST['nombre'] ?? '';
-    $apellido = $_POST['apellido'] ?? '';
-    $usuario = $_POST['usuario'] ?? ''; 
-    $sexo = $_POST['sexo'] ?? '';
-    $id_genero = $_POST['genero'] ?? '';
-    $id_localidad = $_POST['localidad'] ?? '';
-    $id_tipo_doc = $_POST['tipodoc'] ?? '';
-    $documento = $_POST['doc'] ?? '';
-    $fecha_nacimiento = $_POST['fnacimiento'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['contraseña'] ?? '';
-
-    $reg = new registrarusu();
-    $error =  $reg->RegistrarUsuario(
-        $nombre, 
-        $apellido, 
-        $usuario, 
-        $sexo, 
-        $id_genero, 
-        $id_localidad, 
-        $id_tipo_doc, 
-        $documento, 
-        $fecha_nacimiento, 
-        $email, 
-        $password
-    );
-}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="/PAGolimpiadas/vista/style.css" />
+
   <title>Registrarse | SkyWay</title>
 </head>
 <body>
   <div class="container" id="container">
     <div class="forms-container">
       <div class="forms" id="forms">
-      
         <!-- REGISTRO -->
-        <form action="" id="sign-up" class="form-register" method = "POST">
-
+        <form action="" id="sign-up" class="form-register" method="POST">
           <h2>Registrarse</h2>
-          <p>¿Ya tenes cuenta?<a href="login.php" id="link-sing-up">Inicia sesión</a></p>
+          <p>¿Ya tenés cuenta? <a href="/PAGolimpiadas/vista/login.php" id="link-sign-up">Inicia sesión</a></p>
 
           <div class="input-container">
             <label for="nombre">Nombre</label>
-            <input id="nombre" name = "nombre" type="text" placeholder="Ingrese su nombre">
+            <input id="nombre" name="nombre" type="text" placeholder="Ingrese su nombre">
           </div>
 
           <div class="input-container">
-            <label for="nombre">Apellido</label>
-            <input id="nombre" type="text" name = "apellido" placeholder="Ingrese su apellido">
+            <label for="apellido">Apellido</label>
+            <input id="apellido" type="text" name="apellido" placeholder="Ingrese su apellido">
           </div>
 
           <div class="input-container">
             <label for="usuario">Usuario</label>
-            <input id="usuario" type="text" placeholder="ingrese el nombre del usuario" name = "usuario">
+            <input id="usuario" type="text" placeholder="Ingrese nombre de usuario" name="usuario">
           </div>
 
           <div class="input-container">
-            <label for="sexo">Seleccione su sexo</label>
-            <select name = "sexo">
+            <label for="sexo">Sexo</label>
+            <select name="sexo" id="sexo">
               <option value="" disabled selected>Seleccione su sexo</option>
-              <option value="1">F</option>
-              <option value="2">M</option>
-              
-            </select>
-          </div>
-          <div class="input-container">
-            <label for="genero">Seleccione su genero</label>
-            <select name="Genero" name = "genero">
-              <option value="" disabled selected>Seleccione su genero</option>
-              <option value="1">Femenino</option>
-              <option value="2">Masculino</option>
-              <option value="3">No binario</option>
+              <option value="F">F</option>
+              <option value="M">M</option>
             </select>
           </div>
 
-
           <div class="input-container">
-            <label for="pais">Pais</label>
-            <input id="pais" type="text" placeholder="Ingrese su nacionalidad" name = "localidad">
+            <label for="genero">Género</label>
+       <select name="genero" id="genero" required>
+  <option value="" disabled selected>Seleccione su género</option>
+  <?php foreach ($generos as $gen): ?>
+    <option value="<?= htmlspecialchars($gen['Id_Genero']) ?>"
+      <?= (isset($_POST['genero']) && $_POST['genero'] == $gen['Id_Genero']) ? 'selected' : '' ?>>
+      <?= htmlspecialchars($gen['Genero']) ?>
+    </option>
+  <?php endforeach; ?>
+</select>
+
           </div>
 
           <div class="input-container">
-            <label for="documento">Tipo y número de documento</label>
-            <select name="documento_seleccionado" name = "tipodoc">
-              <option value="" disabled selected>Seleccione tipo de documento</option>
-              <option value="1">DNI</option>
-              <option value="2  ">Pasaporte</option>
-            </select>
-            <input type="number" placeholder="Ingrese el número de documento" name = "doc">
+            <label for="localidad">Localidad</label>
+        <select name="localidad" id="localidad" required>
+  <option value="" disabled selected>Seleccione su localidad</option>
+  <?php foreach ($localidades as $loc): ?>
+    <option value="<?= htmlspecialchars($loc['Id_Localidad']) ?>"
+      <?= (isset($_POST['localidad']) && $_POST['localidad'] == $loc['Id_Localidad']) ? 'selected' : '' ?>>
+      <?= htmlspecialchars($loc['NombreCompleto']) ?>
+    </option>
+  <?php endforeach; ?>
+</select>
           </div>
 
           <div class="input-container">
-            <label for="pais">Fecha de nacimiento</label>
-            <input id="pais" type="date" placeholder="Indique su nacimiento (dd/mm/aaaa)" name = "fnacimiento">
+            <label for="tipodoc">Tipo de documento</label>
+            <select name="tipodoc" id="tipodoc" required>
+      <option value="" disabled selected>Seleccione tipo de documento</option>
+      <?php foreach ($tiposDoc as $td): ?>
+        <option value="<?= htmlspecialchars($td['Id_TipoDoc']) ?>"
+          <?= (isset($_POST['tipodoc']) && $_POST['tipodoc'] == $td['Id_TipoDoc']) ? 'selected' : '' ?>>
+          <?= htmlspecialchars($td['TipoDoc']) ?>
+        </option>
+      <?php endforeach; ?>
+    </select>
           </div>
 
           <div class="input-container">
-            <label for="email">Direccion Email</label>
-            <input id="email" type="email" placeholder="you@example.com" name = "email">
+            <label for="doc">Número de documento</label>
+            <input id="doc" type="number" placeholder="Ingrese su número de documento" name="doc">
           </div>
 
-
+          <div class="input-container">
+            <label for="fnacimiento">Fecha de nacimiento</label>
+            <input id="fnacimiento" type="date" name="fnacimiento" required>
+          </div>
 
           <div class="input-container">
-            <label for="password">Contraseña</label>
-            <input id="password" type="password" placeholder="enter 5 characters or more" name = "contraseña">
+            <label for="email">Dirección Email</label>
+            <input id="email" type="email" placeholder="you@example.com" name="email">
+          </div>
+
+          <div class="input-container">
+            <label for="contraseña">Contraseña</label>
+            <input id="contraseña" type="password" placeholder="Ingrese su contraseña" name="contraseña">
           </div>
 
           <div class="remember-me">
@@ -125,14 +109,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           <button type="submit" class="btn-sign-un"> Confirmar registro </button>
 
-            <div >
-                  <a href="index.html" class="btn-sign-un"> Volver al Inicio</a>
-            </div>
-                <?php if ($error): ?>
-                    <div class="error-message" style="color:red; margin-top:10px;">
-                        <?php echo htmlspecialchars($error); ?>
-                    </div>
-                <?php endif; ?>
+          <div>
+            <a href="index.html" class="btn-sign-un">Volver al Inicio</a>
+          </div>
+
+            <?php if (!empty($error)): ?>
+    <div style="color:red;"><?= htmlspecialchars($error) ?></div>
+  <?php endif; ?>
+
         </form>
       </div>
     </div>
@@ -142,24 +126,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="shape shape2"></div>
       <div class="shape shape3"></div>
       <section>
-        <h1>bienvenido a tu <span>proxima ruta</span></h1>
-        <p>login tu acces your account</p>
+        <h1>Bienvenido a tu <span>próxima ruta</span></h1>
+        <p>Iniciá sesión para acceder a tu cuenta</p>
         <img src="/images/banner.svg" alt="">
       </section>
     </div>
-
-    <div class="sidebar" id="sidebar">
-      <!-- <div class="sign" id="btn-sign-in">
-        <img src="icons/crown.svg" alt="">
-        <span>Sign in</span>
-      </div>
-      <div class="sign" id="btn-sign-un">
-        <img src="icons/rule.svg" alt="">
-        <span>Sign up</span>
-      </div>
-    </div> -->
   </div>
 
-  <script src="scripts.js"></script>
+  <script>
+    const checkbox = document.getElementById('checkbox');
+    const passInput = document.getElementById('contraseña');
+    checkbox.addEventListener('change', () => {
+      passInput.type = checkbox.checked ? 'text' : 'password';
+    });
+  </script>
 </body>
 </html>
