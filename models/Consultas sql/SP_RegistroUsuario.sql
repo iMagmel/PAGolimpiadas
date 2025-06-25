@@ -12,10 +12,12 @@ CREATE PROCEDURE SP_RegistroUsuario
     @email NVARCHAR(100),
     @usuario NVARCHAR(50),
     @password NVARCHAR(256),
-    @id_rol INT
+    @id_rol INT,
+    @registrado BIT OUTPUT
 AS
 BEGIN
-
+    IF(NOT EXIST(SELECT * FROM Usuarios WHERE Email = @Email))
+    BEGIN
     INSERT INTO Personal (
         Nombre, Apellido, Doc, Id_TipoDoc,
         Id_Localidad, Id_Genero, Sexo,
@@ -39,4 +41,10 @@ BEGIN
         @email, @usuario, @password, GETDATE(),
         GETDATE(), 0, @id_rol, @id_personal
     );
+    SET @registrado = 1 --Registro completado
+    END 
+    ELSE
+    BEGIN
+    SET @registrado = 0 -- El correo ya se registro
+    END
 END
