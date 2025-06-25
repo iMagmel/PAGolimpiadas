@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Seleccionar Asientos</title>
+  <link rel="stylesheet" href="asientos.css">
+</head>
+<body>
+
+  <header>
+    <h1>✈️ Reservá tu asiento con comodidad</h1>
+    <p>Elegí tu clase, seleccioná tus asientos y preparate para viajar</p>
+  </header>
+
+  <main class="contenedor">
+    <div class="introduccion">
+      Bienvenido al sistema de selección de asientos. Esta herramienta te permitirá elegir la clase de vuelo deseada y luego seleccionar los asientos para tu viaje de ida y vuelta. ¡Recordá elegir con anticipación para conseguir los mejores lugares!
+    </div>
+
+    <div class="barra-pasos">
+      <div id="paso1" class="activo">1. Clase</div>
+      <div id="paso2">2. Ida</div>
+      <div id="paso3">3. Vuelta</div>
+      <div id="paso4">4. Confirmar</div>
+    </div>
+
+    <!-- Paso 1 -->
+    <div class="paso activo-seccion" id="paso-clase">
+      <div class="clases">
+        <div class="clase" onclick="seleccionarClase('Turista')">
+          Turista
+          <div class="precio">$50.000 ARS</div>
+        </div>
+        <div class="clase" onclick="seleccionarClase('Turista Premium')">
+          Turista Premium
+          <div class="precio">$80.000 ARS</div>
+        </div>
+        <div class="clase" onclick="seleccionarClase('Business')">
+          Business
+          <div class="precio">$120.000 ARS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 2 -->
+    <div class="paso" id="paso-ida">
+      <div class="titulo-seccion">Asientos de Ida</div>
+      <p class="descripcion">Elija su asiento de ida</p>
+      <div class="contenedor-asientos">
+        <div class="bloque-asientos" id="asientos-ida-a"></div>
+        <div class="bloque-asientos" id="asientos-ida-b"></div>
+      </div>
+      <button class="boton-atras" onclick="volverAPaso('clase')">← Volver a selección de clase</button>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="paso" id="paso-vuelta">
+      <div class="titulo-seccion">Asientos de Vuelta</div>
+      <p class="descripcion">Elija su asiento de vuelta</p>
+      <div class="contenedor-asientos">
+        <div class="bloque-asientos" id="asientos-vuelta-a"></div>
+        <div class="bloque-asientos" id="asientos-vuelta-b"></div>
+      </div>
+      <button class="boton-atras" onclick="volverAPaso('ida')">← Volver a asientos de ida</button>
+      <button class="boton-confirmar" onclick="mostrarResumen()">→ Confirmar reserva</button>
+    </div>
+
+    <!-- Paso 4: Confirmación -->
+    <div class="paso" id="paso-resumen">
+      <div class="titulo-seccion">Resumen de tu Reserva</div>
+      <div class="resumen" id="contenido-resumen"></div>
+      <button class="boton-confirmar" onclick="finalizarReserva()">✅ Confirmar y finalizar</button>
+    </div>
+  </main>
+
+  <footer>
+        <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
+       <a href="#contacto">Contacto</a>
+       <a href="">Politicas de cancelacion</a>
+       <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto">Deccreto N°2182</a> 
+</footer>
+
+ <script src="asientos.js"></script>
+</body>
+</html>
