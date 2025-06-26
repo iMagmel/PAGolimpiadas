@@ -13,45 +13,28 @@ CREATE PROCEDURE SP_RegistroUsuario
     @usuario NVARCHAR(50),
     @password NVARCHAR(256),
     @id_rol INT,
-    @id_pais INT,        
+    @id_pais INT,
     @registrado BIT OUTPUT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    IF NOT EXISTS (
-        SELECT 1 FROM Usuarios WHERE Email = @email
-    )
+
+    IF EXISTS (SELECT 1 FROM Usuarios WHERE Email = @email OR usuario = @usuario)
     BEGIN
-        INSERT INTO Personal (
-            Nombre, Apellido, Doc, Id_TipoDoc,
-            Id_Pais, Id_Genero, Sexo,
-            Fecha_Nacimiento
-        )
-        VALUES (
-            @nombre, @apellido, @documento, @id_tipo_doc,
-            @id_pais, @id_genero, @sexo,
-            @fecha_nacimiento
-        );
-
-        DECLARE @id_personal INT = SCOPE_IDENTITY();
-
-        INSERT INTO Usuarios (
-            Email, Usuario, Password, Fecha_Alta,
-            Ultimo_Login, Email_Confirmado,
-            Id_Rol, Id_Personal
-        )
-        VALUES (
-            @email, @usuario, @password, GETDATE(),
-            GETDATE(), 0, @id_rol, @id_personal
-        );
-
-        SET @registrado = 1; -- Registro exitoso
-    END 
-    ELSE
-    BEGIN
-        SET @registrado = 0; -- El correo ya existe
+        SET @registrado = 0;
+        RETURN;
     END
 
-    SELECT @registrado AS registrado;
+
+    INSERT INTO Personal (Nombre, Apellido, Id_TipoDoc, Doc, Id_Pais, Id_Genero, Sexo, Fecha_Nacimiento)
+    VALUES (@nombre, @apellido, @id_tipo_doc, @documento, @id_pais, @id_genero, @sexo, @fecha_nacimiento);
+
+    DECLARE @id_personal INT = SCOPE_IDENTITY();
+
+
+    INSERT INTO Usuarios (Id_Personal, Email, usuario, Password, Fecha_Alta, Email_Confirmado, Id_Rol)
+    VALUES (@id_personal, @email, @usuario, @password, GETDATE(), 0, @id_rol);
+
+    SET @registrado = 1;
 END

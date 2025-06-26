@@ -134,4 +134,5 @@ GO
 INSERT INTO Usuarios (Email, usuario, Password, Fecha_Alta, Ultimo_Login, Email_Confirmado, Id_Rol) VALUES
 ("juanburger@gmail.com", "juanburger", "password123", GETDATE(), GETDATE(), 1, 1),
 ("maria@gmail.com", "mariagomez", "password456", GETDATE(), GETDATE(), 1, 2),
-("carlos@gmail.com", "carloslopez", "password789", GETDATE(), GETDATE(), 1, 1),
+("carlos@gmail.com", "carloslopez", "password789", GETDATE(), GETDATE(), 1, 1);
+GO

@@ -1,6 +1,6 @@
 <?php
 require_once("../controllers/C_Recuperacion.php");
-C_Recuperacion::RecuperarContrasena($_POST['email'] ?? '');
+C_Recuperacion::RecuperarContrasena($_POST['email']);
 
 ?>
 <!DOCTYPE html>

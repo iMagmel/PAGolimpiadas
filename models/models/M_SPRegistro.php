@@ -12,25 +12,10 @@ class SP_Registrar {
                          $id_localidad, $id_genero, $sexo,
                          $fecha_recibida, $email, $usuario, $password, $id_rol) {
     try {
-//         var_dump($fecha_recibida);
+// var_dump($fecha_recibida);
 // exit;
 
-
-// bool in
-// C:\xampp\htdocs\PAGolimpiadas\models\models\M_SPRegistro.php
-// on line
-// 24
-
-
-// Warning
-// : Trying to access array offset on value of type bool in
-// C:\xampp\htdocs\PAGolimpiadas\models\models\M_SPRegistro.php
-// on line
-// 24
-
-
-
-       $fecha_recibida = trim($fecha_recibida);
+$fecha_recibida = trim($fecha_recibida);
 
 $date = DateTime::createFromFormat('Y-m-d', $fecha_recibida);
 $errors = DateTime::getLastErrors();
@@ -40,8 +25,6 @@ if ($date && $errors['warning_count'] == 0 && $errors['error_count'] == 0) {
 } else {
     return "Error: Fecha de nacimiento inválida. Formato esperado: yyyy-mm-dd";
 }
-
-
 
         if ($id_tipo_doc == 0 || $id_localidad == 0 || $id_genero == 0) {
             return "Error: Faltan campos obligatorios.";
@@ -56,6 +39,9 @@ if ($date && $errors['warning_count'] == 0 && $errors['error_count'] == 0) {
             JOIN Pais p ON pr.Id_Pais = p.Id_Pais
             WHERE l.Id_Localidad = ?
         ";
+
+
+
         $stmtPais = $this->conn->prepare($sqlPais);
         $stmtPais->execute([$id_localidad]);
         $rowPais = $stmtPais->fetch(PDO::FETCH_ASSOC);
@@ -88,11 +74,11 @@ if ($date && $errors['warning_count'] == 0 && $errors['error_count'] == 0) {
         ]);
 
         $stmt->nextRowset(); 
-$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($resultado === false) {
     $errorInfo = $stmt->errorInfo();
-    return "No se pudo obtener el resultado del procedimiento. Detalles: " . implode(" | ", $errorInfo);
+    return "No se pudo obtener el resultado del procedimiento.";
 }
 
 if (isset($resultado['registrado'])) {
@@ -104,8 +90,7 @@ if (isset($resultado['registrado'])) {
 
     } catch (PDOException $e) {
         return "Error al registrar usuario: " . $e->getMessage();
+        }
     }
-}
-
 }
 ?>

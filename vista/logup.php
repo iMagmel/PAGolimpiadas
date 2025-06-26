@@ -15,6 +15,9 @@
       <div class="forms" id="forms">
         <!-- REGISTRO -->
         <form action="" id="sign-up" class="form-register" method="POST">
+        <form action="" method="POST">
+        <input type="hidden" name="prueba" value="ok">
+
           <h2>Registrarse</h2>
           <p>¿Ya tenés cuenta? <a href="/PAGolimpiadas/vista/login.php" id="link-sign-up">Inicia sesión</a></p>
 
