@@ -85,8 +85,11 @@
     <div class="paso" id="paso-servicios">
       <div class="titulo-seccion">Servicios Adicionales</div>
       <p class="descripcion">Seleccioná servicios extra para tu viaje</p>
-      <label><input type="checkbox" id="servicio-auto"> Alquilar auto</label><br>
-      <label><input type="checkbox" id="servicio-excursion"> Excursiones</label><br><br>
+      <div class="check">
+           <label><input type="checkbox" class="servicio-auto" id="servicio-auto"> Alquilar auto</label><br>
+      <label><input type="checkbox" class="servicio-excursion" id="servicio-excursion"> Excursiones</label><br><br>
+      
+      </div>
       <button class="boton-atras" onclick="volverAPaso('hotel')">← Volver a selección de hotel</button>
       <button class="boton-confirmar" onclick="mostrarResumen()">→ Ver resumen final</button>
     </div>

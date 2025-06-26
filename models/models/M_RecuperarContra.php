@@ -33,7 +33,7 @@ class RecuperarContrasena {
 
         if($result && $result['codigo'] == $codigo) {
             echo "código correcto";
-            header("Location: cambiarcontra.php");
+            header("Location: ./cambiarcontra.php");
             exit();
         } else {
             echo "código incorrecto";

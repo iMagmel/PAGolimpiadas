@@ -152,28 +152,37 @@ function mostrarResumen() {
     - Excursiones: ${servicioExcursion ? "Sí" : "No"}
   `;
   document.getElementById("contenido-resumen").innerHTML = `
-    <div class="item-resumen">
-      <label>Destino:</label> <span id="resumen-destino">${destino || "No especificado"}</span>
-    </div>
-    <div class="item-resumen">
-      <label>Fecha de salida:</label> <span id="resumen-fecha-salida">${fechaSalida || "No especificado"}</span>
-    </div>
-    <div class="item-resumen">
-      <label>Fecha de vuelta:</label> <span id="resumen-fecha-vuelta">${fechaVuelta || "No especificado"}</span>
-    </div>
-    <div class="item-resumen">
-      <label>Número del pasaje:</label> <span id="resumen-num-pasaje">${numPasaje || "No especificado"}</span>
-    </div>
-    <div class="item-resumen">
-      <label>Transporte:</label> <span id="resumen-transporte">${transporte || "No especificado"}</span>
-    </div>
-    <div class="item-resumen">
-      <label>Estadía:</label> <span id="resumen-estadia">${estadia || "No especificado"}</span>
-    </div>
-    <div class="item-resumen">
-      ${resumenExtra}
-    </div>
-  `;
+  <div class="item-resumen">
+    <label>Destino:</label> <span id="resumen-destino">${destino || "No especificado"}</span>
+  </div>
+  <div class="item-resumen">
+    <label>Fecha de salida:</label> <span id="resumen-fecha-salida">${fechaSalida || "No especificado"}</span>
+  </div>
+  <div class="item-resumen">
+    <label>Fecha de vuelta:</label> <span id="resumen-fecha-vuelta">${fechaVuelta || "No especificado"}</span>
+  </div>
+  <div class="item-resumen">
+    <label>Número del pasaje:</label> <span id="resumen-num-pasaje">${numPasaje || "No especificado"}</span>
+  </div>
+  <div class="item-resumen">
+    <label>Transporte:</label> <span id="resumen-transporte">${transporte || "No especificado"}</span>
+  </div>
+  <div class="item-resumen">
+    <label>Estadía:</label> <span id="resumen-estadia">${estadia || "No especificado"}</span>
+  </div>
+  <div class="item-resumen extra-resumen">
+    <strong>Clase seleccionada:</strong> ${claseSeleccionada || "No seleccionada"}<br>
+    <strong>Asientos de ida:</strong> ${asientosIda}<br>
+    <strong>Asientos de vuelta:</strong> ${asientosVuelta}<br>
+    <strong>Total de asientos:</strong> ${asientosIda + asientosVuelta}<br>
+    <strong>Servicios adicionales:</strong><br>
+    - Alquiler de auto: ${servicioAuto ? "Sí" : "No"}<br>
+    - Excursiones: ${servicioExcursion ? "Sí" : "No"}
+  </div>
+  <div class="item-resumen">
+    <label>Eliminar:</label> <button id="btn-eliminar" onclick="eliminarReserva()">🗑️</button>
+  </div>
+`;
 
   cambiarPaso("resumen");
 }
@@ -231,5 +240,8 @@ const resumenExtra = `
     <strong>Servicios adicionales:</strong><br>
     - Alquiler de auto: ${servicioAuto ? "Sí" : "No"}<br>
     - Excursiones: ${servicioExcursion ? "Sí" : "No"}
+  </div>
+  <div class="item-resumen">
+    <label>Eliminar:</label> <button id="btn-eliminar" onclick="eliminarReserva()">🗑️</button>
   </div>
 `;

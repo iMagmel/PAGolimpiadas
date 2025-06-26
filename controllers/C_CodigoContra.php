@@ -5,6 +5,7 @@ class C_CodigoContra {
         include_once("../models/models/M_CodigoContra.php");
         $codigocontra = new Codigocontra();
         $codigocontra->codigo($codigo, $email, $token);
+        
     }
 }
 
