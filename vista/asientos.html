@@ -14,14 +14,16 @@
 
   <main class="contenedor">
     <div class="introduccion">
-      Bienvenido al sistema de selección de asientos. Esta herramienta te permitirá elegir la clase de vuelo deseada y luego seleccionar los asientos para tu viaje de ida y vuelta. ¡Recordá elegir con anticipación para conseguir los mejores lugares!
+      Bienvenido al sistema de personalización de paquete. Esta herramienta te permitirá elegir la clase de vuelo deseada y luego seleccionar los asientos para tu viaje de ida y vuelta, también elegir tu lugar de estadia y si queres incluir transporte. ¡Recordá elegir con anticipación  tus asientos del vuelo para conseguir los mejores lugares!
     </div>
 
     <div class="barra-pasos">
       <div id="paso1" class="activo">1. Clase</div>
       <div id="paso2">2. Ida</div>
       <div id="paso3">3. Vuelta</div>
-      <div id="paso4">4. Confirmar</div>
+      <div id="paso4">4. Hotel</div>
+      <div id="paso5">5. Servicios</div>
+      <div id="paso6">6. Confirmar</div>
     </div>
 
     <!-- Paso 1 -->
@@ -62,24 +64,45 @@
         <div class="bloque-asientos" id="asientos-vuelta-b"></div>
       </div>
       <button class="boton-atras" onclick="volverAPaso('ida')">← Volver a asientos de ida</button>
-      <button class="boton-confirmar" onclick="mostrarResumen()">→ Confirmar reserva</button>
     </div>
 
-    <!-- Paso 4: Confirmación -->
+    <!-- Paso 4 -->
+    <div class="paso" id="paso-hotel">
+      <div class="titulo-seccion">Seleccioná tu Hotel</div>
+      <p class="descripcion">Elegí una opción de alojamiento</p>
+      <div class="clases">
+        <div class="clase" onclick="seleccionarHotel('Económico')">Económico</div>
+        <div class="clase" onclick="seleccionarHotel('Estándar')">Estándar</div>
+        <div class="clase" onclick="seleccionarHotel('Premium')">Premium</div>
+      </div>
+      <button class="boton-atras" onclick="volverAPaso('vuelta')">← Volver a asientos de vuelta</button>
+    </div>
+
+    <!-- Paso 5 -->
+    <div class="paso" id="paso-servicios">
+      <div class="titulo-seccion">Servicios Adicionales</div>
+      <p class="descripcion">Seleccioná servicios extra para tu viaje</p>
+      <label><input type="checkbox" id="servicio-auto"> Alquilar auto</label><br>
+      <label><input type="checkbox" id="servicio-excursion"> Excursiones</label><br><br>
+      <button class="boton-atras" onclick="volverAPaso('hotel')">← Volver a selección de hotel</button>
+      <button class="boton-confirmar" onclick="mostrarResumen()">→ Ver resumen final</button>
+    </div>
+
+    <!-- Paso 6: Confirmación -->
     <div class="paso" id="paso-resumen">
-      <div class="titulo-seccion">Resumen de tu Reserva</div>
+      <div class="titulo-seccion"> 🛒Resumen de tu Reserva</div>
       <div class="resumen" id="contenido-resumen"></div>
       <button class="boton-confirmar" onclick="finalizarReserva()">✅ Confirmar y finalizar</button>
     </div>
   </main>
 
   <footer>
-        <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
-       <a href="#contacto">Contacto</a>
-       <a href="">Politicas de cancelacion</a>
-       <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto">Deccreto N°2182</a> 
-</footer>
+    <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
+    <a href="#contacto">Contacto</a>
+    <a href="">Políticas de cancelación</a>
+    <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto">Decreto N°2182</a> 
+  </footer>
 
- <script src="asientos.js"></script>
+  <script src="asientos.js"></script>
 </body>
 </html>
