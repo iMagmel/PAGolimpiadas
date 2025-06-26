@@ -76,7 +76,6 @@ INSERT INTO Tipo_Doc (TipoDoc) VALUES
 ('Pasaporte');
 GO
 
-
 INSERT INTO Estadia (Estadia, Id_Pais, Calle, Nro, Piso, Depto) VALUES
 ('Hotel Sol', 1, 'Av. Corrientes', 1234, 5, 'B'),
 ('Hostel Luna', 1, 'Calle Mitre', 567, NULL, NULL),
@@ -90,40 +89,49 @@ INSERT INTO Estadia (Estadia, Id_Pais, Calle, Nro, Piso, Depto) VALUES
 ('Hostel Estrella', 7, 'Calle 9 de Julio', 1010, 7, 'F');
 GO
 
-INSERT INTO Vuelos (N_Vuelo, Id_Clase, N_Asiento) VALUES
-(1001, 1, 10),
-(1002, 2, 20),
-(1003, 1, 15),
-(1004, 3, 5),
-(1005, 2, 25),
-(1006, 1, 30),
-(1007, 3, 35),
-(1008, 2, 40),
-(1009, 1, 45),
+INSERT INTO Clases (Clase, Precio) VALUES
+('Turista', 50.000.00),
+('Turista Premium', 80.000.00),
+('Business', 120.000.00);
+GO
+
+INSERT INTO Vuelos (N_Vuelo, Id_Clase, Capacidad) VALUES
+(1001, 1, 50),
+(1001, 1, 50),
+(1002, 2, 50),
+(1003, 1, 50),
+(1004, 3, 50),
+(1005, 2, 50),
+(1006, 1, 50),
+(1007, 3, 50),
+(1008, 2, 50),
+(1009, 1, 50),
 (1010, 3, 50);
-INSERT INTO Transporte (Transporte, Capacidad) VALUES
-('Bus', 40),
-('Micro', 50),
-('Van', 15),
-('Auto', 4),
-('Camioneta', 12),
-('Tren', 200),
-('Avion', 180),
-('Barco', 300),
-('Helicoptero', 6),
-('Bicicleta', 1);
 GO
 
-
-INSERT INTO Viajes (Id_Transporte, Id_Estadia, Destino, Descripcion, Cupos_Disponibles, Fecha_Salida, Fecha_Vuelta, Estado_Viaje, N_Pasaje) VALUES
-(1, 1, 'Mar del Plata', 'Viaje a la playa para descansar', 35, '2025-07-01', '2025-07-07', 'Disponible', 1001),
-(2, 2, 'Bariloche', 'Excursión a la montaña y nieve', 45, '2025-08-15', '2025-08-22', 'Disponible', 1002),
-(3, 3, 'Ushuaia', 'Aventura en el fin del mundo', 10, '2025-09-05', '2025-09-12', 'Disponible', 1003),
-(4, 4, 'Rio de Janeiro', 'Turismo en Brasil', 3, '2025-07-20', '2025-07-30', 'Disponible', 1004),
-(5, 5, 'Santiago de Chile', 'Visita a la capital chilena', 10, '2025-08-01', '2025-08-10', 'Disponible', 1005),
-(6, 6, 'Salta', 'Tour cultural por Salta', 35, '2025-09-10', '2025-09-15', 'Disponible', 1006),
-(7, 7, 'Misiones', 'Visita a las Cataratas del Iguazú', 25, '2025-07-05', '2025-07-12', 'Disponible', 1007),
-(8, 8, 'Asunción', 'Turismo en Paraguay', 9, '2025-10-01', '2025-10-07', 'Disponible', 1008),
-(9, 9, 'Medellín', 'Turismo en Colombia', 15, '2025-11-01', '2025-11-10', 'Disponible', 1009),
-(10, 10, 'Caracas', 'Visita cultural y turística', 50, '2025-12-01', '2025-12-07', 'Disponible', 1010);
+INSERT INTO Viajes (Destino, Descripcion, Cupos_Disponibles, Fecha_Salida, Fecha_Vuelta, Estado_Viaje) VALUES
+('Mar del Plata', 'Viaje a la playa para descansar', 50, '2025-07-01', '2025-07-07', 'Disponible'),
+('Bariloche', 'Excursión a la montaña y nieve', 50, '2025-08-15', '2025-08-22', 'Cancelado'),
+('Ushuaia', 'Aventura en el fin del mundo', 50, '2025-09-05', '2025-09-12', 'Disponible'),
+('Rio de Janeiro', 'Turismo en Brasil', 50, '2025-07-20', '2025-07-30', 'Disponible'),
+('Santiago de Chile', 'Visita a la capital chilena', 50, '2025-08-01', '2025-08-10', 'Disponible'),
+('Montevideo', 'Descanso en la capital uruguaya', 50, '2025-09-01', '2025-09-08', 'Disponible'),
+('Córdoba', 'Turismo cultural en Córdoba', 50, '2025-10-05', '2025-10-12', 'Cancelado'),
+('Tucumán', 'Visita a la provincia norteña', 50, '2025-11-15', '2025-11-22', 'Disponible'),
+('Salta', 'Tour cultural por Salta', 50, '2025-09-10', '2025-09-15', 'Cancelado'),
+('Misiones', 'Visita a las Cataratas del Iguazú', 50, '2025-07-05', '2025-07-12', 'Disponible'),
+('Asunción', 'Turismo en Paraguay', 50, '2025-10-01', '2025-10-07', 'Cancelado'),
+('Medellín', 'Turismo en Colombia', 50, '2025-11-01', '2025-11-10', 'Disponible'),
+('Caracas', 'Visita cultural y turística', 50, '2025-12-01', '2025-12-07', 'Disponible');
 GO
+
+INSERT INTO PersonalEmpresa (Nombre, Apellido, Id_TipoDoc, Doc, Id_Pais, Id_Genero, Sexo, Fecha_Nacimiento) VALUES
+("Juan", "Burger", 1, "12345678", 1, 1, "M", "1990-01-01"),
+("María", "Gómez", 1, "87654321", 2, 2, "F", "1992-02-02"),
+("Carlos", "López", 1, "11223344", 3, 1, "M", "1988-03-03");
+GO
+
+INSERT INTO Usuarios (Email, usuario, Password, Fecha_Alta, Ultimo_Login, Email_Confirmado, Id_Rol) VALUES
+("juanburger@gmail.com", "juanburger", "password123", GETDATE(), GETDATE(), 1, 1),
+("maria@gmail.com", "mariagomez", "password456", GETDATE(), GETDATE(), 1, 2),
+("carlos@gmail.com", "carloslopez", "password789", GETDATE(), GETDATE(), 1, 1),
