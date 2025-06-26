@@ -96,10 +96,38 @@ CREATE TABLE Estadia (
 	FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais)
 );
 
+CREATE TABLE Clases (
+    Id_Clase INT PRIMARY KEY identity(1,1) not null,
+    Clase NVARCHAR(30) not null,
+    Precio DECIMAL(10, 2) not null
+);
+
+
+
+CREATE TABLE Vuelos (
+    Id_Vuelo INT PRIMARY KEY identity(1,1) not null,
+    N_Vuelo INT not null,
+    Id_Clase INT,
+    Capacidad INT,
+);
+
 CREATE TABLE Transporte (
 	Id_Transporte INT PRIMARY KEY identity(1,1) not null,
 	Transporte NVARCHAR(30),
-	Capacidad INT
+    Id_Clase INT,
+    Id_Vuelo INT,
+    FOREIGN KEY (Id_Clase) REFERENCES Clases(Id_Clase),
+    FOREIGN KEY (Id_Vuelo) REFERENCES Vuelos(Id_Vuelo)
+);
+
+CREATE TABLE Asientos (
+    Id_Asiento INT PRIMARY KEY identity(1,1) not null,
+    N_AsientoIda INT not null,
+    N_AsientoVuelta INT not null,
+    Id_Clase INT,
+    Id_Transporte INT,
+    FOREIGN KEY (Id_Clase) REFERENCES Clases(Id_Clase),
+    FOREIGN KEY (Id_Transporte) REFERENCES Transporte(Id_Transporte)
 );
 
 CREATE TABLE Viajes (
@@ -112,7 +140,6 @@ CREATE TABLE Viajes (
 	Fecha_Salida DATE,
 	Fecha_Vuelta DATE,
 	Estado_Viaje NVARCHAR(20),
-	N_Pasaje INT,
 	FOREIGN KEY (Id_Estadia) REFERENCES Estadia(Id_Estadia),
 	FOREIGN KEY (Id_Transporte) REFERENCES Transporte(Id_Transporte)
 );
@@ -123,18 +150,24 @@ CREATE TABLE Compras (
 	Id_Viaje INT,
 	Id_Usuario INT,
 	Num_Compra INT,
+    N_Pasaje INT,
+    Id_Asiento INT,
+    N_Asiento INT not null,
 	Estado_Compra NVARCHAR(30),
 	Fecha_Compra DATE,
 	Cant_Compra INT not null,
-	FOREIGN KEY (Id_Usuario) REFERENCES Usuarios (Id_Usuario)
+	FOREIGN KEY (Id_Usuario) REFERENCES Usuarios (Id_Usuario),
+    FOREIGN KEY (Id_Viaje) REFERENCES Viajes(Id_Viaje)
 );
 
 
 CREATE TABLE Historial_Compras (
 	Id_Hcompra INT PRIMARY KEY identity(1,1) not null,
 	Id_Compra INT,
+    Id_Usuario INT,
 	Fecha_Compra DATE,
-	FOREIGN KEY (Id_Compra) REFERENCES Compras(Id_Compra)
+	FOREIGN KEY (Id_Compra) REFERENCES Compras(Id_Compra),
+    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
 CREATE TABLE Historial_Contraseñas(
