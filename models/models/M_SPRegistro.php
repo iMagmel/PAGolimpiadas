@@ -9,87 +9,81 @@ class SP_Registrar {
     }
 
     public function Registro($nombre, $apellido, $id_tipo_doc, $documento,
-                         $id_localidad, $id_genero, $sexo,
-                         $fecha_recibida, $email, $usuario, $password, $id_rol) {
-    try {
-// var_dump($fecha_recibida);
-// exit;
+                             $id_localidad, $id_genero, $sexo,
+                             $fecha_recibida, $email, $usuario, $password, $id_rol) {
+        try {
+            $fecha_recibida = trim($fecha_recibida);
 
-$fecha_recibida = trim($fecha_recibida);
+            if (empty($fecha_recibida)) {
+                return "Error: la fecha está vacía.";
+            }
 
-$date = DateTime::createFromFormat('Y-m-d', $fecha_recibida);
-$errors = DateTime::getLastErrors();
+            // Validación simplificada y robusta de fecha
+            $fecha_obj = DateTime::createFromFormat('Y-m-d', $fecha_recibida);
+            if (!$fecha_obj || $fecha_obj->format('Y-m-d') !== $fecha_recibida) {
+                return "Error: La fecha recibida no es válida o no está en formato YYYY-MM-DD.";
+            }
 
-if ($date && $errors['warning_count'] == 0 && $errors['error_count'] == 0) {
-    $fecha_nacimiento = $fecha_recibida;
-} else {
-    return "Error: Fecha de nacimiento inválida. Formato esperado: yyyy-mm-dd";
-}
+            // Obtener Id_Pais desde Id_Localidad
+            $sqlPais = "
+                SELECT p.Id_Pais
+                FROM Localidad l
+                JOIN Partido pa ON l.Id_Partido = pa.Id_Partido
+                JOIN Provincia pr ON pa.Id_Provincia = pr.Id_Provincia
+                JOIN Pais p ON pr.Id_Pais = p.Id_Pais
+                WHERE l.Id_Localidad = ?
+            ";
+            $stmtPais = $this->conn->prepare($sqlPais);
+            $stmtPais->execute([$id_localidad]);
+            $rowPais = $stmtPais->fetch(PDO::FETCH_ASSOC);
 
-        if ($id_tipo_doc == 0 || $id_localidad == 0 || $id_genero == 0) {
-            return "Error: Faltan campos obligatorios.";
-        }
+            if (!$rowPais || !isset($rowPais['Id_Pais'])) {
+                return "Error: No se pudo obtener el país desde la localidad.";
+            }
 
+            $id_pais = $rowPais['Id_Pais'];
 
-        $sqlPais = "
-            SELECT p.Id_Pais
-            FROM Localidad l
-            JOIN Partido pa ON l.Id_Partido = pa.Id_Partido
-            JOIN Provincia pr ON pa.Id_Provincia = pr.Id_Provincia
-            JOIN Pais p ON pr.Id_Pais = p.Id_Pais
-            WHERE l.Id_Localidad = ?
-        ";
+            // Usar hash sha256 correctamente
+            $password_hash = hash("sha256", $password);
 
+            // Llamada al procedimiento almacenado con parámetros
+            $sql = "DECLARE @registrado BIT;
+                    EXEC SP_RegistroUsuario ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @registrado OUTPUT;
+                    SELECT @registrado AS registrado;";
 
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                $nombre,
+                $apellido,
+                $documento,
+                $id_tipo_doc,
+                $id_genero,
+                $sexo,
+                $fecha_obj->format('Y-m-d'),
+                $email,
+                $usuario,
+                $password_hash,
+                $id_rol,
+                $id_pais
+            ]);
 
-        $stmtPais = $this->conn->prepare($sqlPais);
-        $stmtPais->execute([$id_localidad]);
-        $rowPais = $stmtPais->fetch(PDO::FETCH_ASSOC);
+            // Mover al siguiente result set para capturar el valor output
+            $stmt->nextRowset();
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$rowPais || !isset($rowPais['Id_Pais'])) {
-            return "Error: No se pudo obtener el país desde la localidad.";
-        }
+            if ($resultado === false) {
+                return header("Location: ../vista/login.php");
+                exit();
+            }
 
-        $id_pais = $rowPais['Id_Pais'];
-        $password_hash = hash('sha256', $password);
+            if (isset($resultado['registrado'])) {
+                return $resultado['registrado'] == 1 ? true : "El correo electrónico ya está registrado.";
+            } else {
+                return "Resultado inesperado: no se encontró el campo 'registrado'.";
+            }
 
-        $sql = "DECLARE @registrado BIT;
-                EXEC SP_RegistroUsuario ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @registrado OUTPUT;
-                SELECT @registrado AS registrado;";
-
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            $nombre,
-            $apellido,
-            $documento,
-            $id_tipo_doc,
-            $id_genero,
-            $sexo,
-            $fecha_nacimiento,
-            $email,
-            $usuario,
-            $password_hash,
-            $id_rol,
-            $id_pais
-        ]);
-
-        $stmt->nextRowset(); 
-    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if ($resultado === false) {
-    $errorInfo = $stmt->errorInfo();
-    return "No se pudo obtener el resultado del procedimiento.";
-}
-
-if (isset($resultado['registrado'])) {
-    return $resultado['registrado'] == 1 ? true : "El correo electrónico ya está registrado.";
-} else {
-    return "Resultado inesperado: no se encontró el campo 'registrado'.";
-}
-
-
-    } catch (PDOException $e) {
-        return "Error al registrar usuario: " . $e->getMessage();
+        } catch (PDOException $e) {
+            return "Error al registrar usuario: " . $e->getMessage();
         }
     }
 }

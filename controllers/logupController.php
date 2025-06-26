@@ -27,17 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($fecha_nacimiento)) {
         $error = "La fecha de nacimiento es obligatoria.";
     } else {
+        // Validación robusta de fecha sin getLastErrors
         $fecha_obj = DateTime::createFromFormat('Y-m-d', $fecha_nacimiento);
-        $errors_fecha = DateTime::getLastErrors();
-
-        if (!$fecha_obj || $errors_fecha['warning_count'] > 0 || $errors_fecha['error_count'] > 0) {
+        if (!$fecha_obj || $fecha_obj->format('Y-m-d') !== $fecha_nacimiento) {
             $error = "Formato de fecha inválido. Usá AAAA-MM-DD.";
         }
     }
 
     if (empty($error)) {
-   
-
         $registrar = new registrarusu();
         $resultado = $registrar->RegistrarUsuario(
             $nombre, $apellido, $id_tipo_doc, $documento,
