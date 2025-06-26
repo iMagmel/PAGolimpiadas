@@ -1,27 +1,3 @@
-// Base de datos de productos
-const productos = {
-    'prod-1': {
-        id: 'prod-1',
-        nombre: 'Excursión a las Cataratas',
-        descripcion: 'Tour guiado de día completo con almuerzo incluido',
-        precio: 150,
-        imagen: 'images/brasil.jfif'
-    },
-    'prod-2': {
-        id: 'prod-2',
-        nombre: 'City Tour Histórico',
-        descripcion: 'Recorrido por los puntos históricos más importantes',
-        precio: 80,
-        imagen: 'images/tokio.jfif'
-    },
-    'prod-3': {
-        id: 'prod-3',
-        nombre: 'Paquete Aventura Extrema',
-        descripcion: 'Rafting, trekking y tirolesa en un solo día',
-        precio: 200,
-        imagen: 'images/londres.jfif'
-    }
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     const iconoCarrito = document.getElementById('icono-carrito');

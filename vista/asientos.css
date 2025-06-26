@@ -17,8 +17,8 @@ html, body {
     }
 
     header {
-      background: #0077cc;
-      color: white;
+      background: #212842;
+      color: #F0E7D5;
       padding: 20px;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -44,7 +44,7 @@ html, body {
     .introduccion {
       background-color: #eaf4ff;
       padding: 15px 25px;
-      border-left: 5px solid #0077cc;
+      border-left: 5px solid #212842;
       margin: 20px 0 30px;
       border-radius: 5px;
     }
@@ -158,7 +158,7 @@ html, body {
       display: block;
       margin: 25px auto;
       padding: 10px 25px;
-      background: #0077cc;
+      background: #212842;
       color: white;
       border: none;
       border-radius: 6px;
@@ -172,21 +172,90 @@ html, body {
       background: #005999;
     }
 
-    .resumen {
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: 20px auto;
-      font-size: 16px;
-      line-height: 1.6;
-    }
+.resumen {
+  background: #ffffff;
+  max-width: 700px;
+  margin: 20px auto 40px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(33, 40, 66, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #212842;
 
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+}
+
+/* Cada fila del carrito en grid-item */
+.item-resumen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e4f3;
+  font-size: 16px;
+}
+
+.item-resumen:nth-child(odd) {
+  border-right: 1px solid #e0e4f3;
+}
+
+.item-resumen:last-child {
+  border-bottom: none;
+  border-right: none;
+}
+
+/* Etiqueta del campo */
+.item-resumen label {
+  font-weight: 700;
+  color: #005999;
+  flex: 1;
+}
+
+/* Valor del campo */
+.item-resumen span {
+  flex: 1.2;
+  text-align: right;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Botón eliminar - ocupa full ancho en una sola columna */
+#btn-eliminar {
+  background-color: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  width: 100%;
+  max-width: 120px;
+  justify-self: center;
+  grid-column: span 2;
+}
+
+#btn-eliminar:hover {
+  background-color: #d9363e;
+}
+
+/* Extra resumen estilo, ocupa dos columnas */
+.item-resumen.extra-resumen {
+  flex-direction: column;
+  padding-top: 20px;
+  font-size: 15px;
+  color: #444;
+  font-weight: 500;
+  grid-column: span 2;
+}
+
+.item-resumen.extra-resumen strong {
+  font-weight: 700;
+  color: #212842;
+  margin-bottom: 6px;
+}
+
