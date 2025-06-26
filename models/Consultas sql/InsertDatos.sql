@@ -90,7 +90,17 @@ INSERT INTO Estadia (Estadia, Id_Pais, Calle, Nro, Piso, Depto) VALUES
 ('Hostel Estrella', 7, 'Calle 9 de Julio', 1010, 7, 'F');
 GO
 
-
+INSERT INTO Vuelos (N_Vuelo, Id_Clase, N_Asiento) VALUES
+(1001, 1, 10),
+(1002, 2, 20),
+(1003, 1, 15),
+(1004, 3, 5),
+(1005, 2, 25),
+(1006, 1, 30),
+(1007, 3, 35),
+(1008, 2, 40),
+(1009, 1, 45),
+(1010, 3, 50);
 INSERT INTO Transporte (Transporte, Capacidad) VALUES
 ('Bus', 40),
 ('Micro', 50),
