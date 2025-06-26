@@ -16,7 +16,7 @@ C_CodigoContra::codigo($_POST['codigo'], $email, $token);
 <head>
   <meta charset="UTF-8">
   <title>Verificación de correo</title>
-  <link rel="stylesheet" href="mail.css">
+  <link rel="stylesheet" href="css/mail.css">
 </head>
 <body>
 

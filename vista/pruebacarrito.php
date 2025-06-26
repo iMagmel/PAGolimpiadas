@@ -6,7 +6,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Destinos</title>
 
-    <link rel="stylesheet" href="pruebacarrito.css">
+    <link rel="stylesheet" href="css/pruebacarrito.css">
 </head>
 <body>
     <header>

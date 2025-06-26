@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Recuperar contraseña</title>
-  <link rel="stylesheet" href="olvidarcontra.css">
+  <link rel="stylesheet" href="css/olvidarcontra.css">
 </head>
 <body>
     

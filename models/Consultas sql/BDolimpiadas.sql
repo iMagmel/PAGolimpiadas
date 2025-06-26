@@ -1,4 +1,4 @@
-    use dbolimpia;
+    use dbolimpiadas;
     go
     CREATE TABLE Genero (
         Id_Genero INT PRIMARY KEY identity(1,1) not null,
@@ -80,7 +80,6 @@
         Password NVARCHAR(256) not null,
         Fecha_Alta DATE,
         Ultimo_Login DATETIME,
-        Email_Confirmado BIT,
         Id_Rol INT,
         FOREIGN KEY (Id_Personal) REFERENCES Personal(Id_Personal),
         FOREIGN KEY (Id_Pempresa) REFERENCES PersonalEmpresa(Id_Pempresa),
@@ -150,6 +149,18 @@
         FOREIGN KEY (Id_Viaje) REFERENCES Viajes(Id_Viaje),
         FOREIGN KEY (Id_Asiento) REFERENCES Asientos(Id_Asiento)
     );
+
+    CREATE TABLE Notificaciones (
+    Id_Notificacion INT PRIMARY KEY IDENTITY(1,1),
+    Id_Compra INT,
+    EmailDestino NVARCHAR(100),
+    Tipo NVARCHAR(30), 
+    Asunto NVARCHAR(100),
+    Mensaje TEXT,
+    FechaEnvio DATETIME,
+    Enviado BIT DEFAULT 0,
+    FOREIGN KEY (Id_Compra) REFERENCES Compras(Id_Compra)
+);
 
 
     CREATE TABLE Historial_Compras (

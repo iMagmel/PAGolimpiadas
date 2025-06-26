@@ -11,7 +11,7 @@ BEGIN
 
     SELECT @IdUsuario = Id_Usuario
     FROM Usuarios
-    WHERE Email = @Email AND Usuario = @Usuario AND Password = @Password AND Email_Confirmado = 1;
+    WHERE Email = @Email AND Usuario = @Usuario AND Password = @Password;
 
     IF @IdUsuario IS NOT NULL
     BEGIN
