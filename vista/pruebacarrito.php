@@ -25,7 +25,7 @@
     <div class="producto-info">
       <h3>Barcelona, España.</h3>
       <p>La sagrada familia: Obra maestra de Gaudí, imperdible por su arquitectura única.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
     <div class="producto-info">
       <h3>Paris, Francia</h3>
       <p>Recorrido por los puntos históricos más importantes de Paris</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -43,7 +43,7 @@
     <div class="producto-info">
       <h3>Amsterdam</h3>
       <p>Recorrido por los puntos históricos, barco incluido.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -52,7 +52,7 @@
     <div class="producto-info">
       <h3>Alemania</h3>
       <p>Recorrido por museos, y castillos de ensueño</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
     <div class="producto-info">
       <h3>Noruega</h3>
       <p>descripcion</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -70,7 +70,7 @@
     <div class="producto-info">
       <h3>Republica Checa</h3>
       <p>Playas y barrios históricos</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Compraro</button>
     </div>
   </div>
 </div><br><br>
@@ -85,7 +85,7 @@
     <div class="producto-info">
       <h3>Kioto, Japon</h3>
       <p> Famoso templo budista cubierto de pan de oro y rodeado de hermosos jardines y estanques</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -94,7 +94,7 @@
     <div class="producto-info">
       <h3>Bangkok, Tailandia</h3>
       <p>Recorrido por el templo, y el mercado flotante Damnoen Saduak</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -103,7 +103,7 @@
     <div class="producto-info">
       <h3>Dubai, Emiratos Arabes Unidos.</h3>
       <p>Viaje con destino a las ciudades mas lujosas del mundo.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -112,7 +112,7 @@
     <div class="producto-info">
       <h3>Agra, India</h3>
       <p>El icónico mausoleo de mármol blanco, considerado una de las siete maravillas del mundo.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -121,7 +121,7 @@
     <div class="producto-info">
       <h3>Hong Kong, China</h3>
       <p>Visita al Victoria Peak, el pico más alto de Hong Kong. Recorrido en tranvia y sus maravillosas calles.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -130,7 +130,7 @@
     <div class="producto-info">
       <h3>Bali, Indonesia</h3>
       <p>Ópera, playas y barrios históricos</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 </div>
@@ -144,7 +144,7 @@
     <div class="producto-info">
       <h3>Nueva York, Estados Unidos.</h3>
       <p>Desde el Empire State, hasta la estatua de la libertad. Vistas unicas.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -153,7 +153,7 @@
     <div class="producto-info">
       <h3>Rio de Janeiro, Brasil</h3>
       <p>Una de las nuevas siete maravillas del mundo, en la cima del Corcovado. Telefericos y calidas playas</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -162,7 +162,7 @@
     <div class="producto-info">
       <h3>templo Mayor, Mexico</h3>
       <p>Ruinas mexicas en el corazón de la capital, junto a la catedral.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -171,7 +171,7 @@
     <div class="producto-info">
       <h3>Toronto, Canada</h3>
       <p>Torre icónica con mirador panorámico y suelo de vidrio.<br> Barcos, acuarios y mucho más.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -180,7 +180,7 @@
     <div class="producto-info">
       <h3>Bariloche, Argentina</h3>
       <p>Ubicada en la provincia de Río Negro, Patagonia argentina. Rodeada por lagos, montañas nevadas y bosques andinos</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 
@@ -189,7 +189,7 @@
     <div class="producto-info">
       <h3>Buenos Aires, Argentina</h3>
       <p>Una ciudad cosmopolita y vibrante, considerada una de las más culturales y artísticas de América Latina.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+      <button class="btn-agregar" onclick="redirigir()">Comprar</button>
     </div>
   </div>
 </div><br><br>
@@ -197,11 +197,11 @@
 <br>
 
 
-          <button class="btn-inicio"> <a href="index.html" > Volver al inicio </a> </button>
+<button class="btn-inicio"> <a href="index.html" > Volver al inicio </a> </button>
 <script>
 
   function redirigir() {
-  window.location.href = "asientos.html";
+  window.location.href = "asientos.php";
 }
 
 </script>

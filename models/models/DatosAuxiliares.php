@@ -41,5 +41,14 @@ public function obtenerLocalidadesJerarquia() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+
+public function usuarioExiste($usuario) {
+    $conn = Conexion::ConexionBD();
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM Usuarios WHERE Usuario = ?");
+    $stmt->execute([$usuario]);
+    return $stmt->fetchColumn() > 0;
+}
+
+
 }
 ?>

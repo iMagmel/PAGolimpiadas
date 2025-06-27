@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
         <nav>
             <a href="#servicios">Servicios</a> 
             <a href="#nosotros">Nosotros</a> 
-            <!-- <a href="Ventas.html">Administrar Viajes</a>  -->
+            <a href="Ventas.php">Administrar Viajes</a> 
             <a href="#log" class="user-icons">
                 <i class='bx bx-user-circle' id="icono-cuenta"></i>
             </a> 
@@ -31,7 +31,7 @@
     <section id="servicios" style="view-timeline-name: --section-nojs">
         <header>
             <h1>Servicios & Paquetes</h1>
-            <button> <a href="pruebacarrito.html"> Ver paquetes </a> </button>
+             <button><a href="pruebacarrito.php"> Ver paquetes</a>  </button>
         </header>
     </section>
 
@@ -63,11 +63,7 @@
         <header>
             <h1>¿Tienes una cuenta o queres registrarte?</h1>
             
-<<<<<<< HEAD:vista/index.php
                 
-=======
-                <button class="moverte"><a href="login.php">Click acá </a></button>
->>>>>>> 6194b7c (Modificacion de carrito con estructura terminada. Vista de Jefe de ventas preparada. Cambios pequeños y poco relevantes en otros archivos):vista/index.html
             
         </header>
     </section>

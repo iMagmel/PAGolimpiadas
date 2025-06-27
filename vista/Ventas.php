@@ -14,10 +14,10 @@
 
 
     <nav>
-            <a href="VistaJefeVentas.html">Servicios</a> 
-            <a href="#buscar">Nosotros</a> 
-            <a href="#agregar">Contacto</a> 
-            <a href="Ventas.html">Administrar Viajes</a> 
+            <a href="VistaJefeVentas.php">Inicio</a> 
+            <a href="#buscar">Buscar</a> 
+            <a href="#agregar">Agregar Productos</a> 
+   
             
         </nav>
     </nav>
