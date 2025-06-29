@@ -3,7 +3,7 @@
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once __DIR__ . "/../controllers/iniciarsesion.php"; 
+    require_once __DIR__ . "/../../controllers/iniciarsesion.php";
     $log = new iniciarsesion();
     $email = $_POST['email'] ?? '';
     $usuario = $_POST['usuario'] ?? '';
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/../PAGolimpiadas/vista/css/style.css" />
     <title>Iniciar sesión | SkyWay</title>
 </head>
 <body>
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <button type="submit" class="button"> Entrar </button>
                 <div>
-                <button><a href="V_Recuperacion.php">¿Te olvidaste tu contraseña?</a></button>
+                <button><a href="olvidarcontra.php">¿Te olvidaste tu contraseña?</a></button>
                 </div>
                 <a href="index.php" class="button">Inicio</a>
 

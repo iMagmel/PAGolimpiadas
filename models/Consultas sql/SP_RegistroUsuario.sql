@@ -33,8 +33,8 @@ BEGIN
     DECLARE @id_personal INT = SCOPE_IDENTITY();
 
 
-    INSERT INTO Usuarios (Id_Personal, Email, usuario, Password, Fecha_Alta, Id_Rol)
-    VALUES (@id_personal, @email, @usuario, @password, GETDATE(), @id_rol);
+    INSERT INTO Usuarios (Id_Personal, Email, usuario, Password, Fecha_Alta, Id_Rol, Email_Confirmado)
+    VALUES (@id_personal, @email, @usuario, @password, GETDATE(), @id_rol, 0);
 
     SET @registrado = 1;
 END

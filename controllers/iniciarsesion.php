@@ -18,23 +18,43 @@ public function VerifyLog($usuario, $password, $email) {
     $modelo = new SP_Login();
     $stmt = $modelo->login($usuario, $clave_hash, $email);
 
+
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($result && isset($result["Id_Usuario"])) {
-        session_start();
-        $_SESSION["Id_Usuario"] = $result["Id_Usuario"];
-        $_SESSION["Id_Rol"] = $result["Id_Rol"];
+if ($result && isset($result["Id_Usuario"])) {
 
-        if ($_SESSION["Id_Rol"] == 1) {
-            header("Location: ../vista/VistaJefeVentas.php");
-            exit();
-        } else if ($_SESSION["Id_Rol"] == 2) {
-            header("Location: ../vista/index.html");
-            exit();
-        }
-    } else {
-        return "Usuario y contraseña incorrectos o email no confirmado.";
+    if ($result["Email_Confirmado"] == 0) {
+
+         $cod = rand(1000, 9999);
+
+        $sql = 'UPDATE Usuarios SET Codigo_Confirmacion = ? WHERE Id_Usuario = ?'
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$cod, $result["Id_Usuario"]]);
+
+        require_once __DIR__ . '/../helpers/PHPmailer.php';
+        enviarCode($result["Email"], $cod);
+
+        session_start();
+        $_SESSION["usuario_verificacion"] = $result["Id_Usuario"];
+        header("Location: ../vista/verificar_codigo.php");
+        exit();
     }
+
+    session_start();
+    $_SESSION["Id_Usuario"] = $result["Id_Usuario"];
+    $_SESSION["Id_Rol"] = $result["Id_Rol"];
+
+    if ($_SESSION["Id_Rol"] == 1) {
+        header("Location: ../vista/VistaJefeVentas.php");
+        exit();
+    } else if ($_SESSION["Id_Rol"] == 2) {
+        header("Location: ../vista/index.html");
+        exit();
+    }
+} else {
+    return "Usuario y contraseña incorrectos.";
+}
+
 }
 
 }

@@ -1,16 +1,10 @@
 <?php
-
-if(isset($_GET['email']) && isset($_GET['token'])){
-  $email = $_GET['email'];
-  $token = $_GET['token'];
-}else{
-  header("Location: ../login.php");
+session_start();
+if (!isset($_SESSION['usuario_verificacion'])) {
+    header("Location: login.php");
+    exit;
 }
-
-C_CodigoContra::codigo($_POST['codigo'], $email, $token);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

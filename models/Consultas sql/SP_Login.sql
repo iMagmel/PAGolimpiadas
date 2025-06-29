@@ -1,30 +1,22 @@
 USE dbolimpiadas;
 GO
 
-CREATE PROCEDURE SP_Login
+CREATE OR ALTER PROCEDURE SP_Login
     @Email NVARCHAR(100),
     @Usuario NVARCHAR(20),
     @Password NVARCHAR(256)
 AS
 BEGIN
-    DECLARE @IdUsuario INT;
-
-    SELECT @IdUsuario = Id_Usuario
+    SELECT Id_Usuario, Id_Rol, Email_Confirmado
     FROM Usuarios
     WHERE Email = @Email AND Usuario = @Usuario AND Password = @Password;
+    
 
-    IF @IdUsuario IS NOT NULL
+    IF EXISTS (SELECT 1 FROM Usuarios 
+               WHERE Email = @Email AND Usuario = @Usuario AND Password = @Password AND Email_Confirmado = 1)
     BEGIN
-        SELECT Id_Usuario, Id_Rol
-        FROM Usuarios
-        WHERE Id_Usuario = @IdUsuario;
-
         UPDATE Usuarios
         SET Ultimo_Login = GETDATE()
-        WHERE Id_Usuario = @IdUsuario;
-    END
-    ELSE
-    BEGIN
-        SELECT NULL AS Id_Usuario, NULL AS Id_Rol;
+        WHERE Email = @Email;
     END
 END

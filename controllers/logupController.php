@@ -95,13 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if ($resultado === true) {
-            include_once __DIR__ . "/../vista/login.php";
-            exit();
+        header("Location: /PAGolimpiadas/vista/iniciosesion/login.php");
+        exit();            
         } else {
             $error = $resultado;
         }
     }
 }
 
-require_once __DIR__ . '/../vista/logup.php';
+require_once __DIR__ . '/../vista/registro/logup.php';
 ?>

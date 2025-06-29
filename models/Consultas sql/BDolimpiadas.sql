@@ -81,6 +81,7 @@
         Fecha_Alta DATE,
         Ultimo_Login DATETIME,
         Id_Rol INT,
+        Email_Confirmado BIT,
         FOREIGN KEY (Id_Personal) REFERENCES Personal(Id_Personal),
         FOREIGN KEY (Id_Pempresa) REFERENCES PersonalEmpresa(Id_Pempresa),
         FOREIGN KEY (Id_Rol) REFERENCES Roles(Id_Rol)
