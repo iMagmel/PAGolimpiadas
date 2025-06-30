@@ -14,7 +14,7 @@
       Ingresá el correo electrónico que usaste para registrarte. Te enviaremos un código de recuperación.
     </p>
 
-    <input type="email" name="email" placeholder="you@example.com" required>
+    <input class type="email" name="email" placeholder="you@example.com" required>
 
     <button type="submit">Enviar código</button>
 

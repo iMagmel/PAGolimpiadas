@@ -37,6 +37,19 @@ body {
   margin-bottom: 20px;
 }
 
+  input {
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 15px;
+  margin-left: 9px;
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.3s;
+}
+
+
 .input-codigo input {
   width: 80%;
   padding: 10px;

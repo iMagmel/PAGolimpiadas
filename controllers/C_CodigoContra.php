@@ -21,7 +21,7 @@ if ($stmt->fetch()) {
     $conn->prepare($update_sql)->execute([$id_usuario]);
 
     unset($_SESSION['usuario_verificacion']);
-    header("Location: ../vista/iniciosesion/login.php?verificado=1");
+    header("Location: ../vista/pagprincipal/index.php");
     exit();
 }else{
         echo "<p style = 'color: red;'>Codigo incorrecto. Intenta denuevo</p>";

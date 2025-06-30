@@ -53,7 +53,7 @@ if ($result["Email_Confirmado"] == 0) {
         header("Location: /PAGolimpiadas/vista/admin/administrador.html");
         exit();
     } else if ($_SESSION["Id_Rol"] == 2) {
-        header("Location: /PAGolimpiadas/vista/pagprincipal/index.html");
+        header("Location: /PAGolimpiadas/vista/pagprincipal/index.php");
         exit();
     }
 } else {
