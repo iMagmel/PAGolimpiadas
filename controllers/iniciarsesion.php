@@ -58,9 +58,7 @@ if ($result["Email_Confirmado"] == 0) {
     }
 } else {
     return "Usuario y contraseña incorrectos.";
-}
-
-}
-
+            }
+    }
 }
 ?>

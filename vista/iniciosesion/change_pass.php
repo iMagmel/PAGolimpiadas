@@ -21,8 +21,8 @@ if (!isset($_SESSION['recuperar_email'])) {
       Ingresá y confirmá tu nueva contraseña para acceder nuevamente a tu cuenta.
     </p>
 
-    <input type="password" name="nueva" placeholder="Nueva contraseña" required>
-    <input type="password" name="confirmar" placeholder="Confirmar contraseña" required>
+    <input type="password" name="nueva_contraseña" placeholder="Nueva contraseña" required>
+    <input type="password" name="confirmacion_contraseña" placeholder="Confirmar contraseña" required>
 
     <button type="submit">Cambiar contraseña</button>
 
