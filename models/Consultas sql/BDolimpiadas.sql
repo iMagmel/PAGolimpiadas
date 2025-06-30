@@ -82,6 +82,8 @@
         Ultimo_Login DATETIME,
         Id_Rol INT,
         Email_Confirmado BIT,
+        Codigo_Verificacion NVARCHAR(10),
+        codigo_recuperacion NVARCHAR(10),
         FOREIGN KEY (Id_Personal) REFERENCES Personal(Id_Personal),
         FOREIGN KEY (Id_Pempresa) REFERENCES PersonalEmpresa(Id_Pempresa),
         FOREIGN KEY (Id_Rol) REFERENCES Roles(Id_Rol)

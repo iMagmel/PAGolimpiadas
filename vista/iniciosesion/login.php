@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <button type="submit" class="button"> Entrar </button>
                 <div>
-                <button><a href="olvidarcontra.php">¿Te olvidaste tu contraseña?</a></button>
+                <button><a href="forget_pass.php">¿Te olvidaste tu contraseña?</a></button>
                 </div>
                 <a href="index.php" class="button">Inicio</a>
 

@@ -50,7 +50,7 @@ if ($result["Email_Confirmado"] == 0) {
     $_SESSION["Id_Rol"] = $result["Id_Rol"];
 
     if ($_SESSION["Id_Rol"] == 1) {
-        header("Location: ../vista/VistaJefeVentas.php");
+        header("Location: /PAGolimpiadas/vista/admin/VistaJefeVentas.php");
         exit();
     } else if ($_SESSION["Id_Rol"] == 2) {
         header("Location: /PAGolimpiadas/vista/pagprincipal/index.html");
