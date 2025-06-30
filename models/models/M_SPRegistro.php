@@ -43,10 +43,10 @@ class SP_Registrar {
 
             $id_pais = $rowPais['Id_Pais'];
 
-            // Usar hash sha256 correctamente
+
             $password_hash = hash("sha256", $password);
 
-            // Llamada al procedimiento almacenado con parámetros
+  
             $sql = "DECLARE @registrado BIT;
                     EXEC SP_RegistroUsuario ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @registrado OUTPUT;
                     SELECT @registrado AS registrado;";
@@ -72,7 +72,7 @@ class SP_Registrar {
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($resultado === false) {
-                return header("Location: ../vista/login.php");
+                return header("Location: ../vista/iniciosesion/login.php");
                 exit();
             }
 

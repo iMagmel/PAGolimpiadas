@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/models/M_SPLog.php';
 require_once __DIR__ . '/../helpers/Encriptar.php';
+require_once __DIR__ . '/../helpers/PHPmailer.php';
 
 class iniciarsesion {
 public function VerifyLog($usuario, $password, $email) {
@@ -23,22 +24,26 @@ public function VerifyLog($usuario, $password, $email) {
 
 if ($result && isset($result["Id_Usuario"])) {
 
-    if ($result["Email_Confirmado"] == 0) {
+if ($result["Email_Confirmado"] == 0) {
 
-         $cod = rand(1000, 9999);
+    $cod = rand(1000, 9999);
 
-        $sql = 'UPDATE Usuarios SET Codigo_Confirmacion = ? WHERE Id_Usuario = ?'
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$cod, $result["Id_Usuario"]]);
+    $conn = Conexion::ConexionBD();
 
-        require_once __DIR__ . '/../helpers/PHPmailer.php';
-        enviarCode($result["Email"], $cod);
+    $sql = 'UPDATE Usuarios SET Codigo_Verificacion = ? WHERE Id_Usuario = ?';
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$cod, $result["Id_Usuario"]]);
 
-        session_start();
-        $_SESSION["usuario_verificacion"] = $result["Id_Usuario"];
-        header("Location: ../vista/verificar_codigo.php");
-        exit();
-    }
+    PHPMailers::enviarCode($result["Email"], $cod);
+
+    session_start();
+    $_SESSION["usuario_verificacion"] = $result["Id_Usuario"];
+
+    header("Location: /PAGolimpiadas/vista/iniciosesion/V_CodigoContra.php");
+    exit();
+
+}
+
 
     session_start();
     $_SESSION["Id_Usuario"] = $result["Id_Usuario"];
@@ -48,7 +53,7 @@ if ($result && isset($result["Id_Usuario"])) {
         header("Location: ../vista/VistaJefeVentas.php");
         exit();
     } else if ($_SESSION["Id_Rol"] == 2) {
-        header("Location: ../vista/index.html");
+        header("Location: /PAGolimpiadas/vista/pagprincipal/index.html");
         exit();
     }
 } else {

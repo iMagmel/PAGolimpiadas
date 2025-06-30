@@ -3,10 +3,15 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class PHPmailer {
-    public static function enviarCode($email, $codigo) {
-        require '../vendor/autoload.php'; // o el autoload correcto de PHPMailer
+require_once __DIR__ . '/../PHPMailer/Exception.php';
+require_once __DIR__ . '/../PHPMailer/PHPMailer.php';
+require_once __DIR__ . '/../PHPMailer/SMTP.php';
 
+class PHPmailers {
+    public static function enviarCode($email, $codigo) {
+        
+        try {
+            
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -23,6 +28,10 @@ class PHPmailer {
         $mail->Body = "Tu código de verificación es: <b>$codigo</b>";
 
         $mail->send();
+
+        } catch (Exception $e) {
+            error_log("Error al enviar correo: " . $mail->ErrorInfo);
+        }
     }
 }
 ?>
