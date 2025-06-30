@@ -230,6 +230,16 @@ main section li {
   line-height: 1.6;
   color: white;
 }
+#log {
+  background-color: white;
+  color: black;
+  
+}
+
+#log header h1,
+#log p {
+  color: black;
+}
 
 .boton-centro {
   display: flex;
