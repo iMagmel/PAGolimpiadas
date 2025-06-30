@@ -29,29 +29,30 @@ if (session_status() == PHP_SESSION_NONE) {
 
       <nav class="nav-bar">
         <ul class="nav-links">
-          <li><a href="#">Inicio</a></li>
+          <li><a href="#inicio">Inicio</a></li>
           <li class="dropdown">
-            <a href="#">Servicios</a>
+            <a href="#servicios">Servicios</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Combos de viajes</a></li>
-              <li><a href="#">Alquiler de autos</a></li>
-              <li><a href="#">Estadías</a></li>
+              <li><a href="#servicios">Combos de viajes</a></li>
+              <li><a href="#servicios">Alquiler de autos</a></li>
+              <li><a href="#servicios">Estadías</a></li>
             </ul>
           </li>
-          <li><a href="#">Contactos</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+
         </ul>
       </nav>
 
-      <div class="icons">
+      <div id = "inicio" class="icons">
         <a href="#"><i class='bx bx-cart'></i></a>
 
-            <div class="login-dropdown">
+      <div class="login-dropdown">
       <a href="#" class="login-btn"><i class='bx bx-user-circle'></i></a>
       <div class="login-menu">
-  <?php if (!isset($_SESSION['Id_Usuario'])): ?>
+          <?php if (!isset($_SESSION['Id_Usuario'])): ?>
     <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
     <a href="/PAGolimpiadas/controllers/logupController.php">Registrarte</a>
-  <?php else: ?>
+          <?php else: ?>
     <p style="margin: 0.5em 1em; font-weight: bold;">
       Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'Usuario'); ?>
     </p>
@@ -59,15 +60,16 @@ if (session_status() == PHP_SESSION_NONE) {
   <?php endif; ?>
 </div>
       </div>
-
+    
     </div>
   </header>
   <main>
+    
     <section id="nosotros" style="view-timeline-name: --section-nojs">
       <header>
         <h1>Acerca de SkyWay Travel</h1>
-        <p>¡Descubre el mundo con SkyWay Travel!</p>
         <i class="fas fa-globe-americas world-icon"></i>
+        <p>¡Descubre el mundo con SkyWay Travel!</p>
       </header>
 
       <div class="div-padre">
@@ -79,14 +81,14 @@ if (session_status() == PHP_SESSION_NONE) {
         </div>
         <div class="columna">
           <h3>¿Por qué elegirnos?</h3>
-          <p>💡 No vendemos viajes, creamos recuerdos.</p>
+          <p>No vendemos viajes, creamos recuerdos.</p>
           <ul>
-            <li>✅ Experiencias Personalizadas: Desde viajes en familia hasta escapadas románticas o aventuras extremas,
+            <li>Experiencias Personalizadas: Desde viajes en familia hasta escapadas románticas o aventuras extremas,
               creamos paquetes a tu medida.</li>
-            <li>✅ Compromiso con la Sostenibilidad: Promovemos un turismo responsable que respeta culturas locales y
+            <li>Compromiso con la Sostenibilidad: Promovemos un turismo responsable que respeta culturas locales y
               medio ambiente.</li>
-            <li>✅ Atención 24/7: Soporte continuo antes, durante y después de tu viaje.</li>
-            <li>✅ Enviamos ofertas imperdibles a nuestros usuarios.</li>
+            <li>Atención 24/7: Soporte continuo antes, durante y después de tu viaje.</li>
+            <li>Enviamos ofertas imperdibles a nuestros usuarios.</li>
           </ul>
         </div>
       </div>
@@ -145,22 +147,23 @@ if (session_status() == PHP_SESSION_NONE) {
             Reserva estadías en hoteles confortables y acogedores para descansar tras un día lleno de aventuras. Calidad
             y comodidad en cada alojamiento seleccionado.
           </p>
-          <button class="btn-outline"><a href="../estadia/estadia.html">Ver más</a></button>
+          <button class="btn-outline"><a href="../estadia/estadia.php">Ver más</a></button>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
-    <nav class="footer-links">
-      <a href="#contacto">Contacto</a>
-      <a href="#">Políticas de cancelación</a>
-      <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto" target="_blank"
-        rel="noopener noreferrer">Decreto N°2182</a>
-    </nav>
-  </footer>
+  <footer id="contacto">
+  <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
+  <nav class="footer-links">
+    <a id = "contacto" href="https://mail.google.com/mail/?view=cm&fs=1&to=skywayturismos@gmail.com" target="_blank">
+  Deja tu mensaje! (skywayturismos@gmail.com)
+</a>
+    <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto" target="_blank" rel="noopener noreferrer">Decreto N°2182</a>
+  </nav>
+</footer>
+
 
 </body>
 
