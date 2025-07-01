@@ -101,35 +101,282 @@
         </div>
       </section>
 
-      <section id="buscar"><h1>Buscar</h1><p>[Contenido de búsqueda...]</p></section>
-      <section id="agregar"><h1>Agregar</h1><p>[Formulario de agregar...]</p></section>
-      <section id="modificar"><h1>Modificar</h1><p>[Formulario de modificar...]</p></section>
-      <section id="eliminar"><h1>Eliminar</h1><p>[Formulario de eliminar...]</p></section>
+      <section id="buscar">
+  <h1>Buscar</h1>
+  <div class="campo-busqueda">
+  <input type="text" id="inputBusqueda" placeholder="Buscar en la tabla...">
+  <button onclick="filtrarTabla()">Buscar</button>
+  </div>
+  <div class="registro-unico buscar">
+
+    <!-- Título y subtítulo -->
+    <div class="titulo-busqueda">
+      <p>Ingresá estadía, viaje o auto</p>
+    </div>
+
+    <!-- Combo Box de tipo de búsqueda -->
+    <div class="tipo-busqueda">
+      <label for="tipoBusqueda">Tipo de búsqueda:</label>
+      <select id="tipoBusqueda" onchange="cambiarFiltro(this.value)">
+        <option value="">Seleccionar</option>
+        <option value="auto">Auto</option>
+        <option value="estadia">Estadía</option>
+        <option value="viaje">Viaje</option>
+      </select>
+    </div>
+    
+        <!-- AUTO -->
+        <section id="tabla-auto" class="tabla-busqueda">
+          <h1>Auto</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Label 1</th>
+                <th>Label 2</th>
+                <th>Label 3</th>
+                <th>Label 4</th>
+                <th>Label 5</th>
+                <th>Label 6</th>
+                <th>Label 7</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Item 1</td>
+                <td>Item 2</td>
+                <td>Item 3</td>
+                <td>Item 4</td>
+                <td>Item 5</td>
+                <td>Item 6</td>
+                <td>Item 7</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ESTADÍA -->
+        <section id="tabla-estadia" class="tabla-busqueda">
+          <h1>Estadía</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Label 1</th>
+                <th>Label 2</th>
+                <th>Label 3</th>
+                <th>Label 4</th>
+                <th>Label 5</th>
+                <th>Label 6</th>
+                <th>Label 7</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Item 1</td>
+                <td>Item 2</td>
+                <td>Item 3</td>
+                <td>Item 4</td>
+                <td>Item 5</td>
+                <td>Item 6</td>
+                <td>Item 7</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- VIAJE -->
+        <section id="tabla-viaje" class="tabla-busqueda">
+          <h1>Viaje</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Label 1</th>
+                <th>Label 2</th>
+                <th>Label 3</th>
+                <th>Label 4</th>
+                <th>Label 5</th>
+                <th>Label 6</th>
+                <th>Label 7</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Item 1</td>
+                <td>Item 2</td>
+                <td>Item 3</td>
+                <td>Item 4</td>
+                <td>Item 5</td>
+                <td>Item 6</td>
+                <td>Item 7</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+
+  </div>
+</section>
+
+
+      <section id="agregar"><h1>Agregar</h1><p>
+        <!-- AGREGAR -->
+    <div class="registro-unico agregar">
+      
+      <form class="form-agregar">
+        <div class="campo">
+        <label for="comboEliminar">Seleccionar opción</label>
+        <select id="comboEliminar">
+          <option value="">Seleccionar...</option>
+          <option value="opcion1">Opción 1</option>
+          <option value="opcion2">Opción 2</option>
+          <option value="opcion3">Opción 3</option>
+        </select>
+      </div>
+        <div class="campo"><label>Label 2</label><input type="text" placeholder="Item 2"></div>
+        <div class="campo"><label>Label 3</label><input type="text" placeholder="Item 3"></div>
+        <div class="campo"><label>Label 4</label><input type="text" placeholder="Item 4"></div>
+        <div class="campo"><label>Label 5</label><input type="text" placeholder="Item 5"></div>
+        <div class="campo"><label>Label 6</label><input type="text" placeholder="Item 6"></div>
+        <div class="campo"><label>Label 7</label><input type="text" placeholder="Item 7"></div>
+        <div class="campo"><label>Label 8</label><input type="text" placeholder="Item 8"></div>
+        <div class="campo"><label>Label 9</label><input type="text" placeholder="Item 9"></div>
+        <div class="campo"><label>Label 10</label><input type="text" placeholder="Item 10"></div>
+        <div class="boton-guardar">
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+      </section>
+      <section id="modificar"><h1>Modificar</h1><div class="registro-unico agregar">
+      
+      <form class="form-agregar">
+        <div class="campo">
+        <label for="comboEliminar">Seleccionar opción</label>
+        <select id="comboEliminar">
+          <option value="">Seleccionar...</option>
+          <option value="opcion1">Opción 1</option>
+          <option value="opcion2">Opción 2</option>
+          <option value="opcion3">Opción 3</option>
+        </select>
+      </div>
+        <div class="campo"><label>Label 2</label><input type="text" placeholder="Item 2"></div>
+        <div class="campo"><label>Label 3</label><input type="text" placeholder="Item 3"></div>
+        <div class="campo"><label>Label 4</label><input type="text" placeholder="Item 4"></div>
+        <div class="campo"><label>Label 5</label><input type="text" placeholder="Item 5"></div>
+        <div class="campo"><label>Label 6</label><input type="text" placeholder="Item 6"></div>
+        <div class="campo"><label>Label 7</label><input type="text" placeholder="Item 7"></div>
+        <div class="campo"><label>Label 8</label><input type="text" placeholder="Item 8"></div>
+        <div class="campo"><label>Label 9</label><input type="text" placeholder="Item 9"></div>
+        <div class="campo"><label>Label 10</label><input type="text" placeholder="Item 10"></div>
+        <div class="boton-guardar">
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+      <section id="eliminar"><h1>Eliminar</h1>
+      <div class="registro-unico eliminar">
+
+    <!-- Formulario eliminar -->
+    <form class="form-eliminar">
+
+      <div class="campo">
+        <label for="comboEliminar">Seleccionar opción</label>
+        <select id="comboEliminar">
+          <option value="">Seleccionar...</option>
+          <option value="opcion1">Opción 1</option>
+          <option value="opcion2">Opción 2</option>
+          <option value="opcion3">Opción 3</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="datoEliminar1">Label 2</label>
+        <input type="text" id="datoEliminar1" placeholder="Item 2">
+      </div>
+
+      <div class="campo">
+        <label for="datoEliminar2">Label 3</label>
+        <input type="text" id="datoEliminar2" placeholder="Item 3">
+      </div>
+
+      <!-- Botón eliminar -->
+      <div class="boton-eliminar">
+        <button type="submit">Eliminar</button>
+      </div>
+
+    </form>
+
+  </div>
+</section>
 
     </div>
   </div>
 
 <script>
-  const links = document.querySelectorAll(".sidebar a");
-  const sections = document.querySelectorAll("section");
+  // Navegación entre secciones
+const links = document.querySelectorAll(".sidebar a");
+const sections = document.querySelectorAll("section");
 
-  links.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const id = link.getAttribute("href").substring(1);
-      links.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
-      sections.forEach(sec => sec.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-    });
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const id = link.getAttribute("href").substring(1);
+    links.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  });
+});
+
+// Menú desplegable de usuario
+const userToggle = document.getElementById('userToggle');
+const dropdown = document.getElementById('userDropdown');
+
+userToggle.addEventListener('click', () => {
+  dropdown.classList.toggle('active');
+});
+
+function cambiarFiltro(tipo) {
+  // Ocultar todas las tablas
+  document.querySelectorAll('#buscar section').forEach(seccion => {
+    seccion.style.display = 'none';
   });
 
-  const userToggle = document.getElementById('userToggle');
-  const dropdown = document.getElementById('userDropdown');
+  // Mostrar la tabla correspondiente
+  if (tipo) {
+    const tabla = document.getElementById(`tabla-${tipo}`);
+    if (tabla) {
+      tabla.style.display = 'block';
+    }
+  }
+}
+function filtrarTabla() {
+  const texto = document.getElementById("inputBusqueda").value.toLowerCase();
 
-  userToggle.addEventListener('click', () => {
-    dropdown.classList.toggle('active');
+  // Buscar la tabla que esté visible
+  const secciones = ['auto', 'estadia', 'viaje'];
+  let tablaVisible = null;
+
+  for (let tipo of secciones) {
+    const tabla = document.getElementById(`tabla-${tipo}`);
+    if (tabla && tabla.style.display !== 'none') {
+      tablaVisible = tabla.querySelector("table tbody");
+      break;
+    }
+  }
+
+  if (!tablaVisible) return;
+
+  // Filtrar filas
+  const filas = tablaVisible.querySelectorAll("tr");
+  filas.forEach(fila => {
+    const textoFila = fila.innerText.toLowerCase();
+    fila.style.display = textoFila.includes(texto) ? '' : 'none';
   });
+}
+
+
+
 </script>
 
 </body>

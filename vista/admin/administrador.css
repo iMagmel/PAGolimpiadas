@@ -96,7 +96,6 @@
 /* Sección agregar y modificar comparten estilos */
 .registro-unico {
   flex: 1 1 45%;
-  border: 1px solid #ccc;
   padding: 20px;
   box-sizing: border-box;
 }
