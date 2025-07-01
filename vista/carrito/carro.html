@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Seleccionar Asientos</title>
-  <link rel="stylesheet" href="css/asientos.css">
+  <link rel="stylesheet" href="carro.css">
 </head>
 <body>
 
@@ -18,13 +18,13 @@
     </div>
 
     <div class="barra-pasos">
-      <div id="paso1" class="activo">1. Clase</div>
-      <div id="paso2">2. Ida</div>
-      <div id="paso3">3. Vuelta</div>
-      <div id="paso4">4. Hotel</div>
-      <div id="paso5">5. Servicios</div>
-      <div id="paso6">6. Confirmar</div>
+        <div id="paso1" class="activo">1. Clase</div>
+        <div id="paso2">2. Ida</div>
+        <div id="paso3">3. Vuelta</div>
+        <div id="paso4">4. Servicios</div>
+        <div id="paso5">5. Confirmar</div>
     </div>
+
 
     <!-- Paso 1 -->
     <div class="paso activo-seccion" id="paso-clase">
@@ -69,32 +69,40 @@
 </div>
 
 
+    
     <!-- Paso 4 -->
-    <div class="paso" id="paso-hotel">
-      <div class="titulo-seccion">Seleccioná tu Hotel</div>
-      <p class="descripcion">Elegí una opción de alojamiento</p>
-      <div class="clases">
-        <div class="clase" onclick="seleccionarHotel('Económico')">Económico</div>
-        <div class="clase" onclick="seleccionarHotel('Estándar')">Estándar</div>
-        <div class="clase" onclick="seleccionarHotel('Premium')">Premium</div>
-      </div>
-      <button class="boton-atras" onclick="volverAPaso('vuelta')">← Volver a asientos de vuelta</button>
-    </div>
+<div class="paso" id="paso-servicios">
+  <div class="titulo-seccion">¿Querés alquilar un auto?</div>
+  <p class="descripcion">Podés sumar un vehículo a tu paquete y retirarlo en destino</p>
 
-    <!-- Paso 5 -->
-    <div class="paso" id="paso-servicios">
-      <div class="titulo-seccion">Servicios Adicionales</div>
-      <p class="descripcion">Seleccioná servicios extra para tu viaje</p>
-      <div class="check">
-           <label><input type="checkbox" class="servicio-auto" id="servicio-auto"> Alquilar auto</label><br>
-      <label><input type="checkbox" class="servicio-excursion" id="servicio-excursion"> Excursiones</label><br><br>
-      
-      </div>
-      <button class="boton-atras" onclick="volverAPaso('hotel')">← Volver a selección de hotel</button>
-      <button class="boton-confirmar" onclick="mostrarResumen()">→ Ver resumen final</button>
-    </div>
+  <div class="check">
+    <label>
+      <input type="checkbox" id="servicio-auto" onchange="toggleSelectAuto()"> Sí
+    </label>
+  </div>
 
-    <!-- Paso 6: Confirmación -->
+<div id="seleccion-auto" class="select-auto" style="display: none;">
+  <label for="tipo-auto">Seleccioná el tipo de auto:</label>
+  <select id="tipo-auto" onchange="actualizarModelosAuto()">
+    <option value="">-- Elegí una categoría --</option>
+    <option value="compacto">Auto compacto</option>
+    <option value="suv">SUV</option>
+    <option value="familiar">Familiar</option>
+    <option value="lujo">Lujo</option>
+  </select>
+
+  <label for="modelo-auto">Modelo disponible:</label>
+  <select id="modelo-auto" disabled>
+    <option value="">-- Seleccioná un modelo --</option>
+  </select>
+</div>
+
+  <button class="boton-atras" onclick="volverAPaso('vuelta')">← Volver a asientos de vuelta</button>
+  <button class="boton-confirmar" onclick="validarYMostrarResumen()">→ Ver resumen final</button>
+</div>
+
+
+    <!-- Paso 5: Confirmación -->
 <div class="paso" id="paso-resumen">
   <div class="titulo-seccion"> 🛒 Resumen de tu Reserva</div>
   <div class="resumen" id="contenido-resumen">
@@ -117,18 +125,22 @@
       <label>Estadía:</label> <span id="resumen-estadia"></span>
     </div>
   </div>
-  <button class="boton-confirmar" onclick="finalizarReserva()">✅ Confirmar y finalizar</button>
+  <button class="boton-confirmar" onclick="finalizarReserva()">Confirmar y finalizar</button>
+   
+
 </div>
 
   </main>
 
-  <footer>
-    <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
-    <a href="#contacto">Contacto</a>
-    <a href="">Políticas de cancelación</a>
-    <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto">Decreto N°2182</a> 
-  </footer>
-
-  <script src="asientos.js"></script>
+  <footer id="contacto">
+  <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
+  <nav class="footer-links">
+    <a id = "contacto" href="https://mail.google.com/mail/?view=cm&fs=1&to=skywayturismos@gmail.com" target="_blank">
+  Deja tu mensaje! (skywayturismos@gmail.com)
+</a>
+    <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto" target="_blank" rel="noopener noreferrer">Decreto N°2182</a>
+  </nav>
+</footer>
+  <script src="carro.js"></script>
 </body>
 </html>

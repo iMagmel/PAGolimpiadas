@@ -1,20 +1,15 @@
 let claseSeleccionada = "";
 let asientosIdaSeleccionados = 0;
-let hotelSeleccionado = "";
 let servicioAuto = false;
-let servicioExcursion = false;
 
-// Nuevas variables para datos del resumen que vienen de la BD o selección previa
 let destino = "";
 let fechaSalida = "";
 let fechaVuelta = "";
 let numPasaje = "";
 let transporte = "";
-let estadia = "";
+let estadia = ""; // puede usarse como comentario general u observación opcional
 
-// Ejemplo: función para asignar estos datos (podés llamar esta función cuando tengas los datos reales)
 function cargarDatosResumen(datos) {
-  // Por ejemplo, datos es un objeto con las propiedades que necesitamos
   destino = datos.destino || "";
   fechaSalida = datos.fechaSalida || "";
   fechaVuelta = datos.fechaVuelta || "";
@@ -31,13 +26,6 @@ function seleccionarClase(clase) {
   generarAsientos(document.getElementById("asientos-ida-b"), 26, true);
 }
 
-function seleccionarHotel(hotel) {
-  hotelSeleccionado = hotel;
-  estadia = hotel; // Actualizo también estadía para el resumen
-  alert("Hotel seleccionado: " + hotel);
-  cambiarPaso("servicios");
-}
-
 function volverAPaso(paso) {
   if (paso === "clase") {
     cambiarPaso("clase");
@@ -48,8 +36,6 @@ function volverAPaso(paso) {
     document.getElementById("asientos-vuelta-b").innerHTML = "";
   } else if (paso === "vuelta") {
     cambiarPaso("vuelta");
-  } else if (paso === "hotel") {
-    cambiarPaso("hotel");
   }
 }
 
@@ -66,15 +52,12 @@ function cambiarPaso(paso) {
   } else if (paso === "vuelta") {
     document.getElementById("paso-vuelta").classList.add("activo-seccion");
     document.getElementById("paso3").classList.add("activo");
-  } else if (paso === "hotel") {
-    document.getElementById("paso-hotel").classList.add("activo-seccion");
-    document.getElementById("paso4").classList.add("activo");
   } else if (paso === "servicios") {
     document.getElementById("paso-servicios").classList.add("activo-seccion");
-    document.getElementById("paso5").classList.add("activo");
+    document.getElementById("paso4").classList.add("activo");
   } else if (paso === "resumen") {
     document.getElementById("paso-resumen").classList.add("activo-seccion");
-    document.getElementById("paso6").classList.add("activo");
+    document.getElementById("paso5").classList.add("activo");
   }
 }
 
@@ -120,7 +103,7 @@ function confirmarVuelta() {
   ).length;
 
   if (asientosVuelta > 0) {
-    cambiarPaso("hotel");
+    cambiarPaso("servicios");
   } else {
     alert("Debe seleccionar al menos un asiento de vuelta.");
   }
@@ -128,12 +111,13 @@ function confirmarVuelta() {
 
 function mostrarResumen() {
   servicioAuto = document.getElementById("servicio-auto").checked;
-  servicioExcursion = document.getElementById("servicio-excursion").checked;
+
+  const tipoAuto = document.getElementById("tipo-auto").value;
+  const modeloAuto = document.getElementById("modelo-auto").value;
 
   const asientosIda = document.querySelectorAll('#asientos-ida-a .seleccionado, #asientos-ida-b .seleccionado').length;
   const asientosVuelta = document.querySelectorAll('#asientos-vuelta-a .seleccionado, #asientos-vuelta-b .seleccionado').length;
 
-  // Llenar los spans del HTML con los datos
   document.getElementById("resumen-destino").textContent = destino || "No especificado";
   document.getElementById("resumen-fecha-salida").textContent = fechaSalida || "No especificado";
   document.getElementById("resumen-fecha-vuelta").textContent = fechaVuelta || "No especificado";
@@ -141,64 +125,68 @@ function mostrarResumen() {
   document.getElementById("resumen-transporte").textContent = transporte || "No especificado";
   document.getElementById("resumen-estadia").textContent = estadia || "No especificado";
 
-  // Agregar info extra (clase, asientos, servicios)
-  const resumenExtra = `
-    <br><strong>Clase seleccionada:</strong> ${claseSeleccionada || "No seleccionada"}<br>
-    <strong>Asientos de ida:</strong> ${asientosIda}<br>
-    <strong>Asientos de vuelta:</strong> ${asientosVuelta}<br>
-    <strong>Total de asientos:</strong> ${asientosIda + asientosVuelta}<br>
-    <strong>Servicios adicionales:</strong><br>
-    - Alquiler de auto: ${servicioAuto ? "Sí" : "No"}<br>
-    - Excursiones: ${servicioExcursion ? "Sí" : "No"}
+  let resumenHTML = `
+    <div class="item-resumen">
+      <label>Destino:</label> <span>${destino || "No especificado"}</span>
+    </div>
+    <div class="item-resumen">
+      <label>Fecha de salida:</label> <span>${fechaSalida || "No especificado"}</span>
+    </div>
+    <div class="item-resumen">
+      <label>Fecha de vuelta:</label> <span>${fechaVuelta || "No especificado"}</span>
+    </div>
+    <div class="item-resumen">
+      <label>Número del pasaje:</label> <span>${numPasaje || "No especificado"}</span>
+    </div>
+    <div class="item-resumen">
+      <label>Transporte:</label> <span>${transporte || "No especificado"}</span>
+    </div>
+    <div class="item-resumen">
+      <label>Estadía:</label> <span>${estadia || "No especificado"}</span>
+    </div>
+    <div class="item-resumen extra-resumen">
+      <strong>Clase seleccionada:</strong> ${claseSeleccionada || "No seleccionada"}<br>
+      <strong>Asientos de ida:</strong> ${asientosIda}<br>
+      <strong>Asientos de vuelta:</strong> ${asientosVuelta}<br>
+      <strong>Total de asientos:</strong> ${asientosIda + asientosVuelta}
+    </div>
   `;
-  document.getElementById("contenido-resumen").innerHTML = `
-  <div class="item-resumen">
-    <label>Destino:</label> <span id="resumen-destino">${destino || "No especificado"}</span>
-  </div>
-  <div class="item-resumen">
-    <label>Fecha de salida:</label> <span id="resumen-fecha-salida">${fechaSalida || "No especificado"}</span>
-  </div>
-  <div class="item-resumen">
-    <label>Fecha de vuelta:</label> <span id="resumen-fecha-vuelta">${fechaVuelta || "No especificado"}</span>
-  </div>
-  <div class="item-resumen">
-    <label>Número del pasaje:</label> <span id="resumen-num-pasaje">${numPasaje || "No especificado"}</span>
-  </div>
-  <div class="item-resumen">
-    <label>Transporte:</label> <span id="resumen-transporte">${transporte || "No especificado"}</span>
-  </div>
-  <div class="item-resumen">
-    <label>Estadía:</label> <span id="resumen-estadia">${estadia || "No especificado"}</span>
-  </div>
-  <div class="item-resumen extra-resumen">
-    <strong>Clase seleccionada:</strong> ${claseSeleccionada || "No seleccionada"}<br>
-    <strong>Asientos de ida:</strong> ${asientosIda}<br>
-    <strong>Asientos de vuelta:</strong> ${asientosVuelta}<br>
-    <strong>Total de asientos:</strong> ${asientosIda + asientosVuelta}<br>
-    <strong>Servicios adicionales:</strong><br>
-    - Alquiler de auto: ${servicioAuto ? "Sí" : "No"}<br>
-    - Excursiones: ${servicioExcursion ? "Sí" : "No"}
-  </div>
-  <div class="item-resumen">
-    <label>Eliminar:</label> <button id="btn-eliminar" onclick="eliminarReserva()">🗑️</button>
-  </div>
-`;
+
+  if (servicioAuto) {
+    resumenHTML += `
+      <div class="item-resumen extra-resumen">
+        <strong>Alquiler de auto:</strong><br>
+        - Tipo: ${tipoAuto || "No especificado"}<br>
+        - Modelo: ${modeloAuto || "No especificado"}
+      </div>
+    `;
+  } else {
+    resumenHTML += `
+      <div class="item-resumen extra-resumen">
+        <strong>Alquiler de auto:</strong> No
+      </div>
+    `;
+  }
+
+  resumenHTML += `
+    <div class="item-resumen">
+      <label>Eliminar:</label> <button id="btn-eliminar" onclick="eliminarReserva()">🗑️</button>
+    </div>
+  `;
+
+  document.getElementById("contenido-resumen").innerHTML = resumenHTML;
 
   cambiarPaso("resumen");
 }
 
 function eliminarReserva() {
-  // Ejemplo simple: limpiar todo el resumen y volver a paso 1 (clase)
   document.getElementById("contenido-resumen").innerHTML = "";
   alert("Reserva eliminada.");
   cambiarPaso("clase");
 
-  // Limpiar variables
   claseSeleccionada = "";
   asientosIdaSeleccionados = 0;
-  hotelSeleccionado = "";
   servicioAuto = false;
-  servicioExcursion = false;
   destino = "";
   fechaSalida = "";
   fechaVuelta = "";
@@ -206,7 +194,6 @@ function eliminarReserva() {
   transporte = "";
   estadia = "";
 
-  // Limpiar asientos visualmente
   limpiarAsientos();
 }
 
@@ -222,26 +209,61 @@ function limpiarAsientos() {
   document.getElementById("asientos-vuelta-b").innerHTML = "";
   asientosIdaSeleccionados = 0;
 }
-//para cuando haya que cargar los datos de la bd hay que gacer esto
+
+function toggleSelectAuto() {
+  const checkbox = document.getElementById("servicio-auto");
+  const select = document.getElementById("seleccion-auto");
+  select.style.display = checkbox.checked ? "block" : "none";
+}
+
+function validarYMostrarResumen() {
+  const quiereAuto = document.getElementById("servicio-auto").checked;
+  const tipoAuto = document.getElementById("tipo-auto").value;
+
+  if (quiereAuto && tipoAuto === "") {
+    alert("Por favor, seleccioná un tipo de auto.");
+    return;
+  }
+
+  mostrarResumen();
+}
+
+// Lista de modelos por tipo de auto
+const modelosPorTipo = {
+  compacto: ["Fiat Mobi", "Toyota Etios", "Renault Kwid"],
+  suv: ["Toyota SW4", "Volkswagen Taos", "Chevrolet Tracker"],
+  familiar: ["Peugeot Rifter", "Renault Kangoo", "Volkswagen Suran"],
+  lujo: ["BMW Serie 5", "Audi A6", "Mercedes-Benz Clase E"]
+};
+
+function actualizarModelosAuto() {
+  const tipoSelect = document.getElementById("tipo-auto");
+  const modeloSelect = document.getElementById("modelo-auto");
+  const tipoSeleccionado = tipoSelect.value;
+
+  // Reiniciar
+  modeloSelect.innerHTML = '<option value="">-- Seleccioná un modelo --</option>';
+  modeloSelect.disabled = true;
+
+  if (tipoSeleccionado && modelosPorTipo[tipoSeleccionado]) {
+    modelosPorTipo[tipoSeleccionado].forEach(modelo => {
+      const option = document.createElement("option");
+      option.value = modelo;
+      option.textContent = modelo;
+      modeloSelect.appendChild(option);
+    });
+    modeloSelect.disabled = false;
+  }
+}
+
+
+
+// Ejemplo de carga de datos:
 // cargarDatosResumen({
 //   destino: "Bariloche",
 //   fechaSalida: "2025-07-15",
 //   fechaVuelta: "2025-07-25",
 //   numPasaje: "A12345",
 //   transporte: "Avión",
-//   estadia: "Hotel Premium"
+//   estadia: "No aplica"
 // });
-const resumenExtra = `
-  <div class="item-resumen extra-resumen">
-    <strong>Clase seleccionada:</strong> ${claseSeleccionada || "No seleccionada"}<br>
-    <strong>Asientos de ida:</strong> ${asientosIda}<br>
-    <strong>Asientos de vuelta:</strong> ${asientosVuelta}<br>
-    <strong>Total de asientos:</strong> ${asientosIda + asientosVuelta}<br>
-    <strong>Servicios adicionales:</strong><br>
-    - Alquiler de auto: ${servicioAuto ? "Sí" : "No"}<br>
-    - Excursiones: ${servicioExcursion ? "Sí" : "No"}
-  </div>
-  <div class="item-resumen">
-    <label>Eliminar:</label> <button id="btn-eliminar" onclick="eliminarReserva()">🗑️</button>
-  </div>
-`;

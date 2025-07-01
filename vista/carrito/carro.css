@@ -171,6 +171,28 @@ html, body {
     .boton-confirmar:hover {
       background: #005999;
     }
+    .select-auto {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.select-auto label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #212842;
+}
+
+.select-auto select {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
 
 .resumen {
   background: #ffffff;
@@ -309,6 +331,7 @@ html, body {
   font-weight: 600;
 }
 
+
 /* Botón eliminar - ocupa full ancho en una sola columna */
 #btn-eliminar {
   background-color: #ff4d4f;
@@ -355,8 +378,48 @@ html, body {
   margin-bottom: 6px;
 }
 
-footer{
+footer {
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
+  padding: 20px 40px;
   text-align: center;
-  background-color: #d5d8dc;
-  color: black;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Contenedor de enlaces en footer */
+.footer-links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilo para los links del footer */
+.footer-links a {
+  color: var(--color-dorado);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--color-acento);
+  text-decoration: underline;
+}
+
+/* Responsive: en pantallas muy pequeñas, links en columna */
+@media (max-width: 480px) {
+  footer {
+    padding: 15px 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
