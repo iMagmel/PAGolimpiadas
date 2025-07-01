@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Jefe de Ventas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/v4-shims.min.css" />
+    <link rel="stylesheet" href="jefe-ventas.css">
+</head>
+<body>
+
+
+  <div class="sidebar">
+    <h2>SkyWay <br>
+         Jefe De Ventas</h2>
+    <a href="#inicio" class="active">Inicio</a>
+    <a href="#usuarios">Usuarios</a>
+    <a href="#compras">Compras</a>
+    <a href="#paquetes">Paquetes</a>
+    <a href="#buzon">Buzón</a>
+    <a href="#buscar">Buscar</a>
+    <a href="#agregar">Agregar</a>
+    <a href="#modificar">Modificar</a>
+    <a href="#eliminar">Eliminar</a>
+  </div>
+
+
+  <div class="main">
+
+
+    <div class="topbar">
+      <div class="user-icon" id="userToggle">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="dropdown" id="userDropdown">
+        <p>Juan Burger</p>
+        <button >Cerrar sesión</button>
+      </div>
+    </div>
+
+
+    <div class="content">
+      
+      <section id="inicio" class="active">
+        <h1>Inicio</h1>
+        <div class="card-box">
+          <div class="card"><h3>Total Ventas del Mes</h3><p>$1.250.000</p></div>
+          <div class="card"><h3>Paquetes Vendidos</h3><p>328</p></div>
+          <div class="card"><h3>Reservas Pendientes</h3><p>15</p></div>
+        </div>
+        <h3 style="margin-top:30px;">Top 5 Paquetes</h3>
+        <table>
+          <thead><tr><th>Paquete</th><th>Destino</th><th>Ventas</th></tr></thead>
+          <tbody>
+            <tr><td>Bariloche</td><td>Bariloche</td><td>120</td></tr>
+            <tr><td>Cataratas</td><td>Iguazú</td><td>95</td></tr>
+            <tr><td>Mendoza</td><td>Mendoza</td><td>70</td></tr>
+            <tr><td>Mar del Plata</td><td>Mar del Plata</td><td>60</td></tr>
+            <tr><td>Salta</td><td>Salta</td><td>53</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="usuarios">
+        <h1>Usuarios Registrados</h1>
+        <table>
+          <thead><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Juan Pérez</td><td>juan@mail.com</td><td>Activo</td></tr>
+            <tr><td>2</td><td>Laura Gómez</td><td>laura@mail.com</td><td>Inactivo</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="compras">
+        <h1>Registros de Compras</h1>
+        <table>
+          <thead><tr><th>Usuario</th><th>Paquete</th><th>Destino</th><th>Fecha</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>Juan Pérez</td><td>Aventura</td><td>Salta</td><td>2025-06-15</td><td>$120.000</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="paquetes">
+        <h1>Paquetes Disponibles</h1>
+        <table>
+          <thead><tr><th>ID</th><th>Nombre</th><th>Destino</th><th>Precio</th><th>Duración</th></tr></thead>
+          <tbody>
+            <tr><td>001</td><td>Bariloche</td><td>Bariloche</td><td>$150.000</td><td>7 días</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="buzon">
+        <h1>Buzón de Mensajes</h1>
+        <div class="buzon">
+          <p><strong>[30/06 - 12:34]</strong> Juan compró "Salta" por $120.000</p>
+          <p><strong>[30/06 - 11:00]</strong> Laura compró "Bariloche" por $150.000</p>
+        </div>
+      </section>
+
+      <section id="buscar"><h1>Buscar</h1><p>[Contenido de búsqueda...]</p></section>
+      <section id="agregar"><h1>Agregar</h1><p>[Formulario de agregar...]</p></section>
+      <section id="modificar"><h1>Modificar</h1><p>[Formulario de modificar...]</p></section>
+      <section id="eliminar"><h1>Eliminar</h1><p>[Formulario de eliminar...]</p></section>
+
+    </div>
+  </div>
+
+<script>
+  const links = document.querySelectorAll(".sidebar a");
+  const sections = document.querySelectorAll("section");
+
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const id = link.getAttribute("href").substring(1);
+      links.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+      sections.forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    });
+  });
+
+  const userToggle = document.getElementById('userToggle');
+  const dropdown = document.getElementById('userDropdown');
+
+  userToggle.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>

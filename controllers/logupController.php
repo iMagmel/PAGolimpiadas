@@ -84,8 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Tipo de documento no reconocido.";
         }
     }
-
-  
+    
     if (empty($error)) {
         $registrar = new registrarusu();
         $resultado = $registrar->RegistrarUsuario(

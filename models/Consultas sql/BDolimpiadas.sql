@@ -122,22 +122,34 @@
         FOREIGN KEY (Id_Vuelo) REFERENCES Vuelos(Id_Vuelo)
     );
 
+    CREATE TABLE Autos (
+        Id_Auto INT PRIMARY KEY identity(1,1) not null,
+        Marca NVARCHAR(30) not null,
+        Modelo NVARCHAR(30) not null,
+        Id_Pais INT,
+        FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais)
+    );
+    
     CREATE TABLE Viajes (
         Id_Viaje INT PRIMARY KEY identity(1,1) not null,
         Id_Vuelo INT,
         Id_Estadia INT,
+        Id_Pais INT,
         Destino NVARCHAR(30),
         Descripcion TEXT,
         Cupos_Disponibles INT,
         Fecha_Salida DATE,
         Fecha_Vuelta DATE,
         Estado_Viaje NVARCHAR(20),
+        Id_Auto INT,
+        FOREIGN KEY (Id_Auto) REFERENCES Autos(Id_Auto),
         FOREIGN KEY (Id_Estadia) REFERENCES Estadia(Id_Estadia),
-        FOREIGN KEY (Id_Vuelo) REFERENCES Vuelos(Id_Vuelo)
+        FOREIGN KEY (Id_Vuelo) REFERENCES Vuelos(Id_Vuelo),
+        FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais)
     );
 
 
-    CREATE TABLE Compras (
+    CREATE TABLE Compras (  
         Id_Compra INT PRIMARY KEY identity(1,1) not null,
         Id_Viaje INT,
         Id_Usuario INT,
