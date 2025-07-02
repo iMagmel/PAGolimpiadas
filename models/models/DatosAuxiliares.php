@@ -49,6 +49,10 @@ public function usuarioExiste($usuario) {
     return $stmt->fetchColumn() > 0;
 }
 
-
+public function obtenerPaises() {
+    $sql = "SELECT Id_Pais, Pais FROM dbo.Pais ORDER BY Pais";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>

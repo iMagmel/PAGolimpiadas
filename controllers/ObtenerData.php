@@ -19,6 +19,11 @@ class ObtenerData {
     public function getLocalidades() {
         return $this->datos->obtenerLocalidadesJerarquia();
     }
+    
+    public function getPaises() {
+        return $this->datos->obtenerPaises();
+        require_once __DIR__ . "/../../jefeventas(prueba)/jefe-ventas.php";
+    }
 }
 ?>
 

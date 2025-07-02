@@ -124,10 +124,8 @@
 
     CREATE TABLE Autos (
         Id_Auto INT PRIMARY KEY identity(1,1) not null,
-        Marca NVARCHAR(30) not null,
-        Modelo NVARCHAR(30) not null,
-        Id_Pais INT,
-        FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais)
+        Tipo_Auto NVARCHAR(30) not null,
+        Modelo NVARCHAR(30) not null
     );
     
     CREATE TABLE Viajes (
@@ -147,7 +145,6 @@
         FOREIGN KEY (Id_Vuelo) REFERENCES Vuelos(Id_Vuelo),
         FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais)
     );
-
 
     CREATE TABLE Compras (  
         Id_Compra INT PRIMARY KEY identity(1,1) not null,

@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -217,35 +219,116 @@
 </section>
 
 
-      <section id="agregar"><h1>Agregar</h1><p>
-        <!-- AGREGAR -->
-    <div class="registro-unico agregar">
+<section id="agregar">
+  <h1>Agregar nuevo paquete</h1>
+
+  <div class="registro-unico agregar">
+    <form class="form-agregar" method="POST" action="../../controllers/AltaViajeController.php">
+
+      <h2>Datos de Estadía</h2>
+      <div class="campo">
+        <label>Tipo de Estadia</label>
+
+        <!-- traer datos desde la BD -->
+        <select> 
+          <option value="Hotel">Hotel</option>
+          <option value="Hostería">Hostería</option>
+          <option value="PH">PH</option>
+        </select>
       
-      <form class="form-agregar">
-        <div class="campo">
-        <label for="comboEliminar">Seleccionar opción</label>
-        <select id="comboEliminar">
-          <option value="">Seleccionar...</option>
-          <option value="opcion1">Opción 1</option>
-          <option value="opcion2">Opción 2</option>
-          <option value="opcion3">Opción 3</option>
+      </div>
+      <div class="campo">
+        <label>País</label>
+          <select name="pais" id="pais" required>
+            <option value="" disabled selected>Seleccione su localidad</option>
+              <?php foreach ($paises as $pais): ?>
+                <option value="<?= htmlspecialchars($pais['Id_Pais']) ?>"
+                <?= (isset($_POST['pais']) && $_POST['pais'] == $pais['Id_Pais']) ? 'selected' : '' ?>>
+                <?= htmlspecialchars($pais['NombreCompleto']) ?>
+            </option>
+            <?php endforeach; ?>
         </select>
       </div>
-        <div class="campo"><label>Label 2</label><input type="text" placeholder="Item 2"></div>
-        <div class="campo"><label>Label 3</label><input type="text" placeholder="Item 3"></div>
-        <div class="campo"><label>Label 4</label><input type="text" placeholder="Item 4"></div>
-        <div class="campo"><label>Label 5</label><input type="text" placeholder="Item 5"></div>
-        <div class="campo"><label>Label 6</label><input type="text" placeholder="Item 6"></div>
-        <div class="campo"><label>Label 7</label><input type="text" placeholder="Item 7"></div>
-        <div class="campo"><label>Label 8</label><input type="text" placeholder="Item 8"></div>
-        <div class="campo"><label>Label 9</label><input type="text" placeholder="Item 9"></div>
-        <div class="campo"><label>Label 10</label><input type="text" placeholder="Item 10"></div>
-        <div class="boton-guardar">
-          <button type="submit">Guardar</button>
-        </div>
-      </form>
-    </div>
-      </section>
+      <div class="campo">
+        <label>Calle</label>
+        <input type="text" name="calle" required>
+      </div>
+      <div class="campo">
+        <label>Número</label>
+        <input type="number" name="nro" required>
+      </div>
+      <div class="campo">
+        <label>Piso</label>
+        <input type="text" name="piso" placeholder="Opcional">
+      </div>
+      <div class="campo">
+        <label>Depto</label>
+        <input type="text" name="depto" placeholder="Opcional">
+      </div>
+
+      <!-- Vuelo -->
+      <h2>Datos del Vuelo</h2>
+      <div class="campo">
+        <label>Número de Vuelo</label>
+        <input type="number" name="nro_vuelo" required>
+      </div>
+      <div class="campo">
+        <label>Capacidad</label>
+        <select name="capacidad" required>
+          <option value="" disabled selected>Seleccionar capacidad</option>
+          <?php for ($i = 30; $i <= 50; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+          <?php endfor; ?>
+        </select>
+      </div>
+
+      <!-- Auto -->
+      <h2>Datos del Auto</h2>
+      <div class="campo">
+        <label>Marca</label>
+        <input type="text" name="marca_auto" required>
+      </div>
+      <div class="campo">
+        <label>Modelo</label>
+        <input type="text" name="modelo_auto" required>
+      </div>
+      <div class="campo">
+        <label>País de Origen</label>
+        <!-- traerdesde la BD -->
+        <select name="pais"></select>
+      </div>
+
+      <!-- Viaje -->
+      <h2>Datos del Viaje</h2>
+      <div class="campo">
+        <label>País de destino</label>
+        <input type="text" name="pais_viaje" required>
+      </div>
+      <div class="campo">
+        <label>Destino</label>
+        <input type="text" name="destino" required>
+      </div>
+      <div class="campo">
+        <label>Descripción</label>
+        <input type="text" name="descripcion" required>
+      </div>
+      <div class="campo">
+        <label>Fecha de salida</label>
+        <input type="date" name="salida" required>
+      </div>
+      <div class="campo">
+        <label>Fecha de regreso</label>
+        <input type="date" name="vuelta" required>
+      </div>
+
+      <div class="boton-guardar">
+        <button type="submit">Guardar Paquete Completo</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
       <section id="modificar"><h1>Modificar</h1><div class="registro-unico agregar">
       
       <form class="form-agregar">
