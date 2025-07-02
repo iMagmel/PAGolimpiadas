@@ -97,6 +97,7 @@
         Nro INT,
         Piso INT,
         Depto NVARCHAR(20),
+        Tipo_Estadia NVARCHAR(30) not null,
         FOREIGN KEY (Id_Pais) REFERENCES Pais(Id_Pais)
     );
 

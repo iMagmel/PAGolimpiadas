@@ -125,14 +125,3 @@ INSERT INTO Viajes (Destino, Descripcion, Cupos_Disponibles, Fecha_Salida, Fecha
 ('Caracas', 'Visita cultural y turística', 50, '2025-12-01', '2025-12-07', 'Disponible');
 GO
 
-INSERT INTO PersonalEmpresa (Nombre, Apellido, Id_TipoDoc, Doc, Id_Pais, Id_Genero, Sexo, Fecha_Nacimiento) VALUES
-("Juan", "Burger", 1, "12345678", 1, 1, "M", "1990-01-01"),
-("María", "Gómez", 1, "87654321", 2, 2, "F", "1992-02-02"),
-("Carlos", "López", 1, "11223344", 3, 1, "M", "1988-03-03");
-GO
-
-INSERT INTO Usuarios (Email, usuario, Password, Fecha_Alta, Ultimo_Login, Email_Confirmado, Id_Rol) VALUES
-("juanburger@gmail.com", "juanburger", "password123", GETDATE(), GETDATE(), 1, 1),
-("maria@gmail.com", "mariagomez", "password456", GETDATE(), GETDATE(), 1, 2),
-("carlos@gmail.com", "carloslopez", "password789", GETDATE(), GETDATE(), 1, 1);
-GO

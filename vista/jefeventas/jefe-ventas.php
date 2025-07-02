@@ -6,12 +6,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard - Jefe de Ventas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="/PAGolimpiadas/vista/css/jefeventas.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/v4-shims.min.css" />
-    <link rel="stylesheet" href="jefe-ventas.css">
+
 </head>
 <body>
-
 
   <div class="sidebar">
     <h2>SkyWay <br>
@@ -229,26 +229,27 @@
       <div class="campo">
         <label>Tipo de Estadia</label>
 
-        <!-- traer datos desde la BD -->
         <select> 
           <option value="Hotel">Hotel</option>
           <option value="Hostería">Hostería</option>
           <option value="PH">PH</option>
         </select>
-      
       </div>
-      <div class="campo">
-        <label>País</label>
-          <select name="pais" id="pais" required>
-            <option value="" disabled selected>Seleccione su localidad</option>
-              <?php foreach ($paises as $pais): ?>
-                <option value="<?= htmlspecialchars($pais['Id_Pais']) ?>"
-                <?= (isset($_POST['pais']) && $_POST['pais'] == $pais['Id_Pais']) ? 'selected' : '' ?>>
-                <?= htmlspecialchars($pais['NombreCompleto']) ?>
+<div class="campo">
+    <label>País</label>
+    
+    <select name="pais" id="pais" required>
+        <option value="" name = "pais" disabled selected>Seleccione el país</option>
+        <?php foreach ($paises as $pais): ?>
+            <option value="<?= htmlspecialchars($pais['Id_Pais']) ?>"
+                    <?= (isset($_POST['pais']) && $_POST['pais'] == $pais['Id_Pais']) ? 'selected' : '' ?>>
+                <?= htmlspecialchars($pais['Pais']) ?>
             </option>
-            <?php endforeach; ?>
-        </select>
-      </div>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+
       <div class="campo">
         <label>Calle</label>
         <input type="text" name="calle" required>
@@ -266,7 +267,7 @@
         <input type="text" name="depto" placeholder="Opcional">
       </div>
 
-      <!-- Vuelo -->
+            <!-- Vuelo -->
       <h2>Datos del Vuelo</h2>
       <div class="campo">
         <label>Número de Vuelo</label>
@@ -320,6 +321,7 @@
         <label>Fecha de regreso</label>
         <input type="date" name="vuelta" required>
       </div>
+
 
       <div class="boton-guardar">
         <button type="submit">Guardar Paquete Completo</button>

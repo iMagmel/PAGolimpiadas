@@ -2,7 +2,7 @@ use dbolimpiadas;
 go
     CREATE PROCEDURE SP_InsertarAutos
     @Tipo_Auto NVARCHAR(30),
-    @Modelo NVARCHAR(30),
+    @Modelo NVARCHAR(30)
     AS
     BEGIN
         SET NOCOUNT ON;

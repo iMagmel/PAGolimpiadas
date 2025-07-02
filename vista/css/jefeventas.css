@@ -1,0 +1,465 @@
+@import "https://unpkg.com/open-props" layer(design.system);
+
+:root {
+  --color-primario: #212842;
+  --color-secundario: #F0E7D5;
+  --color-acento: #F0E7D5;
+  --color-dorado: #F0E7D5;
+  --color-suave: #03045e;
+
+  --surface-document: var(--color-primario);
+  --surface-1: var(--color-suave);
+  --highlight-color: var(--color-acento);
+
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+
+  --gray-0: #ffffff;
+  --gray-3: #F0E7D5;
+  --gray-8: #212842;
+  --gray-9: #212842;
+  --gray-10: #212842;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #2e365c;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: var(--color-primario);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  margin-bottom: 15px;
+  font-weight: bold;
+  transition: background 0.3s;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #2e365c;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  background: var(--color-primario);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.user-icon {
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  color: white;
+}
+
+.dropdown {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.dropdown.active {
+  display: flex;
+}
+
+.dropdown p {
+  padding: 12px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown button {
+  border: none;
+  background: crimson;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.content {
+  padding: 30px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+#compras h1{
+  color: white;
+}
+#paquetes h1{
+  color: white;
+}
+#buzon h1{
+  color: white;
+}
+#agregar h1{
+  color: white;
+}
+#modificar h1{
+  color: white;
+}
+#eliminar h1{
+  color: white;
+}
+#tabla-auto{
+  color: white;
+}
+
+#buscar {
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+#buscar h1{
+  color: white;
+}
+#inicio h1{
+  color: white;
+}
+#usuarios h1{
+  color: white;
+}
+.titulo-busqueda h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.titulo-busqueda p {
+  margin: 5px 0 20px;
+  font-size: 16px;
+  color: white;
+}
+
+.tipo-busqueda {
+  margin-bottom: 30px;
+  color: white;
+}
+
+.tipo-busqueda label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.tipo-busqueda select {
+  padding: 8px;
+  font-size: 16px;
+  background-color: #212842;
+  color: white;
+  border: 1px solid #3a426e;
+  border-radius: 4px;
+}
+
+.filtro {
+  display: none;
+  margin-bottom: 40px;
+}
+
+/* FILTROS ESTILO BLOQUE */
+.filtros-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #2e365c;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.item label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: white;
+}
+#tabla-auto,
+#tabla-estadia,
+#tabla-viaje {
+  display: none;
+}
+.campo-busqueda {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.campo-busqueda input {
+  padding: 8px;
+  width: 300px;
+  border: 1px solid #3a426e;
+  border-radius: 4px;
+  background-color: #212842;
+  color: white;
+}
+
+.campo-busqueda button {
+  padding: 8px 16px;
+  background-color: white;
+  color: var(--color-primario);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.item input {
+  padding: 8px;
+  width: 20%;
+  box-sizing: border-box;
+  background-color: #212842;
+  color: white;
+  border: 1px solid #3a426e;
+  border-radius: 4px;
+}
+/* Sección agregar y modificar comparten estilos */
+.registro-unico {
+  flex: 1 1 45%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Título de cada sección */
+.titulo-agregar h2,
+.titulo-modificar h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.titulo-agregar p,
+.titulo-modificar p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Formularios */
+.form-agregar,
+.form-modificar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.campo input {
+  padding: 10px;
+  font-size: 14px;
+}
+.campo input,
+.campo select {
+  padding: 10px;
+  font-size: 14px;
+  width: 60%; /* Cambiá este valor según lo angosto que lo quieras */
+  max-width: 300px; /* Opcional: evita que se haga muy grande en pantallas grandes */
+}
+
+.boton-guardar {
+  margin-top: 20px;
+  
+}
+
+.boton-guardar button {
+  padding: 10px 25px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.boton-guardar button:hover {
+  background-color: #0056b3;
+}
+#eliminar {
+    padding: 40px;
+    max-width: 600px;
+}
+
+/* Título */
+.titulo-eliminar h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.titulo-eliminar p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.form-eliminar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-eliminar .campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-eliminar label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-eliminar input,
+.form-eliminar select {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Botón */
+.boton-eliminar {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boton-eliminar button {
+    padding: 10px 25px;
+    font-size: 16px;
+    background-color: #dc3545; /* rojo */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-eliminar button:hover {
+    background-color: #b02a37;
+}
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+/* TABLAS */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid black;
+  color: black;
+}
+
+th {
+  background-color: #f5f5dc;
+  color: black;
+}
+
+.card-box {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  flex: 1;
+  min-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buzon {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-top: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buzon p {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+form h2 {
+  color: var(--gray-3);
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+}

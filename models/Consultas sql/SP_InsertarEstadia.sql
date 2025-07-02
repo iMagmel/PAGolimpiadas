@@ -1,12 +1,12 @@
 use dbolimpiadas;
 GO
     CREATE PROCEDURE SP_InsertarEstadia
-    @Tipo_Estadia NVARCHAR(50),
     @Id_Pais INT,
     @Calle NVARCHAR(30),
     @Numero INT,
     @Piso NVARCHAR(10),
-    @Depto NVARCHAR(10)
+    @Depto NVARCHAR(10),
+    @Tipo_Estadia NVARCHAR(30)
 
     AS
     BEGIN
@@ -18,6 +18,6 @@ GO
             RETURN;
         END
 
-        INSERT INTO Estadia (Tipo_Estadia, Id_Pais, Calle, Nro, Piso, Depto)
-        VALUES (@Tipo_Estadia, @Id_Pais, @Calle, @Numero, @Piso, @Depto);
+        INSERT INTO Estadia (Id_Pais, Calle, Nro, Piso, Depto, Tipo_Estadia)
+        VALUES (@Id_Pais, @Calle, @Numero, @Piso, @Depto, @Tipo_Estadia);
     END;
