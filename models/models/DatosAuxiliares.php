@@ -46,13 +46,22 @@ class DatosAuxiliares {
         return $stmt->fetchColumn() > 0;
     }
 
-    public function obtenerPaises() {
-            $sql = "SELECT Id_Pais, Pais FROM dbo.Pais ORDER BY Pais";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-    }
+  public function obtenerLoc() {
+    $sql = "SELECT 
+                L.Id_Localidad,
+                ISNULL(PS.Pais, '') + ', ' + ISNULL(PR.Provincia, '') + ', ' + ISNULL(PA.Partido, '') + ', ' + ISNULL(L.Localidad, '') AS NombreCompleto
+            FROM dbo.Localidad L
+            JOIN dbo.Partido PA ON L.Id_Partido = PA.Id_Partido
+            JOIN dbo.Provincia PR ON PA.Id_Provincia = PR.Id_Provincia
+            JOIN dbo.Pais PS ON PR.Id_Pais = PS.Id_Pais
+            ORDER BY NombreCompleto";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
         public function obtenerTipoEstadia() {
             $sql = "SELECT Tipo_Estadia FROM dbo.Estadia";
             $stmt = $this->conn->prepare($sql);

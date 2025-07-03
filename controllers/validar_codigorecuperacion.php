@@ -4,6 +4,7 @@ session_start();
 
 $email = $_SESSION['recuperar_email'] ?? '';
 $codigo = $_POST['codigo'] ?? '';
+
 $modelo = new M_Recuperacion();
 
 $correcto = $modelo->verificarCodigo($email, $codigo);

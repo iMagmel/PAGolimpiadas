@@ -237,16 +237,14 @@
       </div>
 <div class="campo">
     <label>País</label>
-    
-    <select name="pais" id="pais" required>
-        <option value="" name = "pais" disabled selected>Seleccione el país</option>
-        <?php foreach ($paises as $pais): ?>
-            <option value="<?= htmlspecialchars($pais['Id_Pais']) ?>"
-                    <?= (isset($_POST['pais']) && $_POST['pais'] == $pais['Id_Pais']) ? 'selected' : '' ?>>
-                <?= htmlspecialchars($pais['Pais']) ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+
+<select name="localidad" id="localidad" required>
+    <option value="" disabled selected>Seleccione el país</option>
+    <?php foreach ($localidades as $loc): ?>
+      <option value="<?= $loc['Id_Localidad'] ?>"><?= $loc['NombreCompleto'] ?></option>
+    <?php endforeach; ?>
+</select>
+
 </div>
 
 
