@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div>
                 <button><a href="forget_pass.php">¿Te olvidaste tu contraseña?</a></button>
                 </div>
-                <a href="index.php" class="button">Inicio</a>
+                <a href="../pagprincipal/index.php" class="button">Inicio</a>
 
                 <?php if ($error): ?>
                     <div class="error-message" style="color:red; margin-top:10px;">

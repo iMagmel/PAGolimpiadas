@@ -23,6 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <body>
   <header>
     <div class="header-container">
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
       <div class="logo">
         <h2>SkyWay Travel</h2>
       </div>
@@ -163,7 +164,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto" target="_blank" rel="noopener noreferrer">Decreto N°2182</a>
   </nav>
 </footer>
-
+<script src="menuhamburguesa.js"></script>
 
 </body>
 

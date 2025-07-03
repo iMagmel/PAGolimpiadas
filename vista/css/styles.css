@@ -1,65 +1,46 @@
 @import "https://unpkg.com/open-props" layer(design.system);
-
 :root {
-  /* Paleta personalizada */
   --color-primario: #212842;
   --color-secundario: #F0E7D5;
-  --color-acento:  #F0E7D5;
-  --color-dorado: #F0E7D5; 
+  --color-acento: #F0E7D5;
+  --color-dorado: #F0E7D5;
   --color-suave: #F0E7D5;
-
-  /* Overrides */
   --surface-document: var(--color-primario);
   --surface-1: var(--color-suave);
   --highlight-color: var(--color-acento);
-
   --shadow-color: 220 3% 15%;
   --shadow-strength: 1%;
-
   --gray-0: #ffffff;
   --gray-3: #F0E7D5;
   --gray-8: #212842;
   --gray-9: #212842;
   --gray-10: #212842;
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
 }
-
 html {
   background: var(--surface-document);
   color: var(--gray-10);
   scroll-behavior: smooth;
 }
-
 body {
   font-family: system-ui, sans-serif;
 }
-
-/*============================*/
-/*=========== HEADER =========*/
-/*============================*/
-
-/* Contenedor principal del header */
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
   background-color: var(--color-primario);
+  position: relative;
 }
-
-
-/* Logo */
 .logo h2 {
   margin: 0;
   font-size: 44px;
   color: var(--color-secundario);
 }
-
-/* Menú principal */
 .nav-links {
   list-style: none;
   display: flex;
@@ -67,41 +48,31 @@ body {
   margin: 0;
   padding: 0;
 }
-
 .nav-links li a {
   text-decoration: none;
   color: var(--gray-0);
   font-weight: bold;
-  position: relative;
   font-size: 24px;
-}
-.nav-links li a:hover {
-  text-decoration: underline;
 }
 .dropdown {
   position: relative;
 }
-
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 100%;
-  background-color: white; /* Cambiado a blanco */
+  background-color: white;
   list-style: none;
   padding: 10px 0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   z-index: 100;
-  border-radius: 8px; /* Redondeado suave */
+  border-radius: 8px;
 }
-
 .dropdown-menu li {
   padding: 10px 0;
 }
-
 .dropdown-menu li a {
-  color: var(--color-principal); 
-         
+  color: var(--color-principal);
   font-size: 14px;
   font-weight: 500;
   padding: 8px 20px;
@@ -109,48 +80,33 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   border-radius: 5px;
 }
-
 .dropdown-menu li a:hover {
-  background-color: rgba(0, 0, 0, 0.05); /* Efecto sutil al pasar el cursor */
+  background-color: rgba(0, 0, 0, 0.05);
   color: var(--color-principal);
-  text-decoration: none; 
- 
-  transform: scale(1.1); 
-
+  text-decoration: none;
+  transform: scale(1.1);
 }
-
-/* Mostrar el menú al pasar el mouse */
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   display: block;
 }
-
-
-/* Íconos a la derecha */
 .icons {
   display: flex;
   gap: 20px;
   align-items: center;
   position: relative;
 }
-
 .icons i, .icons a {
-  font-size: 28px; 
-  color: var(--gray-0); 
+  font-size: 28px;
+  color: var(--gray-0);
   transition: transform 0.3s ease;
 }
-
 .icons i:hover, .icons a:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
-
-/* Estructura del dropdown del ícono de usuario */
 .login-dropdown {
   position: relative;
   display: inline-block;
 }
-
-/* Estilo del menú que se despliega */
 .login-menu {
   display: none;
   position: absolute;
@@ -163,8 +119,6 @@ body {
   min-width: 160px;
   overflow: hidden;
 }
-
-/* Enlaces dentro del menú */
 .login-menu a {
   display: block;
   padding: 10px 16px;
@@ -174,42 +128,28 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
-
-/* Hover en los enlaces del menú */
 .login-menu a:hover {
   background-color: #f0f0f0;
 }
-
-/* Mostrar menú al pasar el mouse */
 .login-dropdown:hover .login-menu {
   display: block;
 }
-
-
-/*MAIN*/
 main {
   padding-top: 10px;
 }
-
-/* Todas las secciones del main */
 main section {
   padding: 60px 40px;
   margin-bottom: 60px;
   border-radius: 10px;
-  /* Quitamos fondo y sombra para fondo transparente */
   background: none;
   box-shadow: none;
 }
-
-/* Títulos dentro de cada sección */
 main section > header h1 {
   font-size: 28px;
   margin-bottom: 20px;
   color: white;
   text-align: center;
 }
-
-/* Párrafos y listas */
 main section p,
 main section ul,
 main section li {
@@ -217,14 +157,12 @@ main section li {
   line-height: 1.6;
   color: white;
 }
-
 #log {
   margin-top: 120px;
-   background-color: white;
+  background-color: white;
   color: black;
   border-radius: 0;
 }
-
 #log p {
   font-size: 16px;
   margin: 20px auto;
@@ -233,19 +171,15 @@ main section li {
   line-height: 1.6;
   color: white;
 }
-
 #log header h1,
 #log p {
   color: black;
 }
-
 .boton-centro {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-
-/* Botón general */
 button {
   background-color: var(--color-dorado);
   color: var(--color-primario);
@@ -258,8 +192,6 @@ button {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* Enlace dentro del botón */
 button a {
   text-decoration: none;
   color: inherit;
@@ -267,52 +199,37 @@ button a {
   align-items: center;
   gap: 8px;
 }
-
-/* Ícono dentro del botón */
 button i {
   font-size: 20px;
 }
-
-/* Efecto hover */
 button:hover {
   background-color: var(--color-suave);
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
- 
-/* NOSOTROS */
-
-/* Centrado del contenido en #nosotros */
 #nosotros header {
   text-align: center;
 }
-
 #nosotros h1,
 #nosotros p,
 #nosotros h3 {
   color: white;
   text-align: center;
 }
-
-/* Ícono grande del mundo */
 .world-icon {
   font-size: 150px;
   color: var(--color-acento);
   display: block;
   margin: 30px auto;
 }
-
-/* Contenedor padre con columnas */
 .div-padre {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 2rem;
   padding: 1.5rem;
-  flex-wrap: wrap; /* para que se adapten en pantallas pequeñas */
+  flex-wrap: wrap;
 }
-
-/* Columnas internas */
 .div-padre > .columna {
   flex: 1;
   min-width: 300px;
@@ -320,16 +237,13 @@ button:hover {
   padding: 1rem;
   border-radius: 8px;
 }
-/* Contenedor de las cartas */
 .cards-container {
   display: flex;
   gap: 30px;
   justify-content: center;
   margin-top: 40px;
-  flex-wrap: wrap; /* para responsividad */
+  flex-wrap: wrap;
 }
-
-/* Carta individual */
 .card {
   background: var(--color-primario);
   border-radius: 12px;
@@ -344,30 +258,22 @@ button:hover {
   text-align: center;
   cursor: pointer;
 }
-
-/* Icono grande */
 .card .icon {
   font-size: 48px;
   margin-bottom: 15px;
   color: var(--color-dorado);
 }
-
-/* Título */
 .card h3 {
   margin-bottom: 15px;
   font-size: 22px;
   font-weight: bold;
 }
-
-/* Descripción */
 .card p {
   font-size: 15px;
   line-height: 1.5;
   margin-bottom: 25px;
   color: var(--color-secundario);
 }
-
-/* Botón con borde */
 .btn-outline {
   background: transparent;
   color: var(--color-dorado);
@@ -378,14 +284,10 @@ button:hover {
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Efecto hover en botón */
 .btn-outline:hover {
   background-color: var(--color-dorado);
   color: var(--color-primario);
 }
-
-/* Efecto hover en la carta */
 .card:hover {
   box-shadow: 0 0 20px 3px rgba(255, 255, 255, 0.7);
   transform: scale(1.05);
@@ -401,38 +303,140 @@ footer {
   gap: 15px;
   align-items: center;
 }
-
-/* Contenedor de enlaces en footer */
 .footer-links {
   display: flex;
   gap: 25px;
   flex-wrap: wrap;
   justify-content: center;
 }
-
-/* Estilo para los links del footer */
 .footer-links a {
   color: var(--color-dorado);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
-
 .footer-links a:hover,
 .footer-links a:focus {
   color: var(--color-acento);
   text-decoration: underline;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-/* Responsive: en pantallas muy pequeñas, links en columna */
-@media (max-width: 480px) {
-  footer {
-    padding: 15px 20px;
+/* ===== NUEVOS ESTILOS PARA MENÚ HAMBURGUESA ===== */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-container {
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+
+  .logo h2 {
+    font-size: 28px;
+  }
+
+  .nav-links li a {
+    font-size: 18px;
   }
 
   .footer-links {
     flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+  }
+    .nav-bar {
+    display: none; /* Ocultamos el menú por defecto en pantallas pequeñas */
+    background-color: var(--color-primario);
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .nav-bar {
+    display: none;
+  }
+
+  .nav-bar.show {
+    display: block;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primario);
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
+
+  .dropdown-menu {
+    position: static;
+    width: 90%;
+    margin: 10px auto 0;
+    box-shadow: none;
+  }
+
+  .banner {
+    height: auto;
+    padding: 3rem 1rem;
+    background-color: var(--color-primario);
+  }
+
+  .banner h1 {
+    font-size: 1.8rem;
+  }
+
+  .banner p {
+    font-size: 0.9rem;
+  }
+
+  .banner img {
+    width: 90%;
+    margin: 1rem auto;
+  }
 }
+
+
 
