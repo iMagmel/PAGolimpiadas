@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="forms" id="forms">
             <form method="POST" action="" id="sign-in">
                 <h2>login</h2>
-                <p>¿No tenes cuenta todavia? <a href="/PAGolimpiadas/controllers/logupController.php" id="link-sing-in">Registrarte</a></p>
+                <p>¿No tenes cuenta todavia? <a href="../registro/logup.php" id="link-sing-in">Registrarte</a></p>
                 <div class="input-container">
                     <label for="email">Direccion Email</label>
                     <input id="email" name="email" type="email" placeholder="you@example.com" />
@@ -68,8 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="shape shape2"></div>
         <div class="shape shape3"></div>
         <section>
-            <h1>bienvenido a tu <span>proxima ruta</span> </h1>
-            <p>login tu acces your account</p>
+            <h1>Bienvenido a tu <span>proxima ruta</span> <br> <br> <br> </h1>
             <img src="/images/banner.svg" alt="" />
         </section>
     </div>

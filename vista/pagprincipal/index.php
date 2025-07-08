@@ -52,7 +52,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="login-menu">
           <?php if (!isset($_SESSION['Id_Usuario'])): ?>
     <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
-    <a href="/PAGolimpiadas/controllers/logupController.php">Registrarte</a>
+    <a href="../registro/logup.php">Registrarte</a>
           <?php else: ?>
     <p style="margin: 0.5em 1em; font-weight: bold;">
       Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'Usuario'); ?>
@@ -137,7 +137,7 @@ if (session_status() == PHP_SESSION_NONE) {
             Elige entre una amplia variedad de autos modernos y seguros para recorrer tu destino a tu ritmo. Tarifas
             competitivas y servicio de primera garantizados.
           </p>
-          <button class="btn-outline"><a href="../autos/autos.html">Ver más</a></button>
+          <button class="btn-outline"><a href="../autos/auto.php">Ver más</a></button>
         </div>
 
 
