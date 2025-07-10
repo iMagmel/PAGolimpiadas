@@ -47,20 +47,22 @@ if (session_status() == PHP_SESSION_NONE) {
       <div id = "inicio" class="icons">
         <a href="#"><i class='bx bx-cart'></i></a>
 
-      <div class="login-dropdown">
+          <div class="login-dropdown">
       <a href="#" class="login-btn"><i class='bx bx-user-circle'></i></a>
       <div class="login-menu">
+        
           <?php if (!isset($_SESSION['Id_Usuario'])): ?>
-    <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
-    <a href="../registro/logup.php">Registrarte</a>
+            <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
+            <a href="/PAGolimpiadas/controllers/logupController.php">Registrarte</a>
           <?php else: ?>
-    <p style="margin: 0.5em 1em; font-weight: bold;">
-      Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'Usuario'); ?>
-    </p>
-    <a href="/PAGolimpiadas/controllers/logout.php" class="button">Cerrar sesión</a>
-  <?php endif; ?>
-</div>
+            <p style="margin: 0.5em 1em; font-weight: bold;">
+              Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'usuario'); ?>
+            </p>
+            <a href="/PAGolimpiadas/controllers/logout.php" class="button">Cerrar sesión</a>
+          <?php endif; ?>
       </div>
+    </div>
+
     
     </div>
   </header>
@@ -126,18 +128,7 @@ if (session_status() == PHP_SESSION_NONE) {
             Explora nuestras ofertas exclusivas de combos de viajes que combinan transporte, alojamiento y actividades
             para que vivas la experiencia completa sin preocupaciones.
           </p>
-          <button class="btn-outline"><a href="../paquetes/paquetes.html">Ver más</a></button>
-        </div>
-
-
-        <div class="card">
-          <i class='bx bx-car icon'></i>
-          <h3>Alquiler de autos</h3>
-          <p>
-            Elige entre una amplia variedad de autos modernos y seguros para recorrer tu destino a tu ritmo. Tarifas
-            competitivas y servicio de primera garantizados.
-          </p>
-          <button class="btn-outline"><a href="../autos/auto.php">Ver más</a></button>
+          <button class="btn-outline"><a href="../paquetes/paquetes.php">Ver más</a></button>
         </div>
 
 

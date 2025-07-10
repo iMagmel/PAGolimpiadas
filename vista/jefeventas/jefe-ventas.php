@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,8 +39,8 @@
         <i class="fas fa-user-circle"></i>
       </div>
       <div class="dropdown" id="userDropdown">
-        <p>Juan Burger</p>
-        <button >Cerrar sesión</button>
+        <p><?php echo htmlspecialchars($_SESSION['usuario'] ?? 'Usuario'); ?></p>
+        <button><a href = "/PAGolimpiadas/controllers/logout.php">Cerrar sesión</a></button>
       </div>
     </div>
 

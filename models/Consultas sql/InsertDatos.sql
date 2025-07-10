@@ -10,187 +10,143 @@ INSERT INTO Genero (Genero) VALUES
 GO
 
 
-INSERT INTO Pais (Pais) VALUES
-('Argentina'),
-('Brasil'),
-('Chile'),
-('Uruguay'),
-('Paraguay'),
-('Bolivia'),
-('Perú'),
-('Ecuador'),
-('Colombia'),
-('Venezuela');
+SET IDENTITY_INSERT Pais ON;
+
+INSERT INTO Pais (Id_Pais, Pais) VALUES
+(1, 'Argentina'),
+(2, 'Brasil'),
+(3, 'Chile'),
+(4, 'Uruguay'),
+(5, 'Paraguay'),
+(6, 'Bolivia'),
+(7, 'Perú'),
+(8, 'Ecuador'),
+(9, 'Colombia'),
+(10, 'Venezuela');
 GO
 
+SET IDENTITY_INSERT Pais OFF;
+SET IDENTITY_INSERT Provincia ON;
 
--- Brasil (Id_Pais = 2)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('São Paulo', 2),
-('Rio de Janeiro', 2);
-
--- Chile (Id_Pais = 3)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Santiago Metropolitan', 3),
-('Valparaíso', 3);
-
--- Uruguay (Id_Pais = 4)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Montevideo', 4),
-('Canelones', 4);
-
--- Paraguay (Id_Pais = 5)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Central', 5),
-('Alto Paraná', 5);
-
--- Bolivia (Id_Pais = 6)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('La Paz', 6),
-('Santa Cruz', 6);
-
--- Perú (Id_Pais = 7)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Lima', 7),
-('Cusco', 7);
-
--- Ecuador (Id_Pais = 8)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Pichincha', 8),
-('Guayas', 8);
-
--- Colombia (Id_Pais = 9)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Cundinamarca', 9),
-('Antioquia', 9);
-
--- Venezuela (Id_Pais = 10)
-INSERT INTO Provincia (Provincia, Id_Pais) VALUES
-('Distrito Capital', 10),
-('Zulia', 10);
+INSERT INTO Provincia (Id_Provincia, Provincia, Id_Pais) VALUES
+(6, 'Buenos Aires', 1),
+(7, 'CABA', 1),
+(8, 'Salta', 1),
+(9, 'Córdoba', 1),
+(10, 'Mendoza', 1),
+(11, 'São Paulo', 2),
+(12, 'Rio de Janeiro', 2),
+(13, 'Santiago Metropolitan', 3),
+(14, 'Valparaíso', 3),
+(15, 'Montevideo', 4),
+(16, 'Canelones', 4),
+(17, 'Central', 5),
+(18, 'Alto Paraná', 5),
+(19, 'La Paz', 6),
+(20, 'Santa Cruz', 6),
+(21, 'Lima', 7),
+(22, 'Cusco', 7),
+(23, 'Pichincha', 8),
+(24, 'Guayas', 8),
+(25, 'Cundinamarca', 9),
+(26, 'Antioquia', 9),
+(27, 'Distrito Capital', 10),
+(28, 'Zulia', 10);
 GO
 
--- Brasil - São Paulo (Id_Provincia = 11), Rio de Janeiro (12)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Campinas', 11),
-('Santos', 11),
-('Niterói', 12),
-('Nova Iguaçu', 12);
+SET IDENTITY_INSERT Provincia OFF;
+SET IDENTITY_INSERT Partido ON;
 
--- Chile - Santiago Metropolitan (13), Valparaíso (14)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Santiago Centro', 13),
-('Puente Alto', 13),
-('Valparaíso Centro', 14),
-('Viña del Mar', 14);
+INSERT INTO Partido (Id_Partido, Partido, Id_Provincia) VALUES
 
--- Uruguay - Montevideo (15), Canelones (16)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Centro', 15),
-('Pocitos', 15),
-('Las Piedras', 16),
-('Ciudad de la Costa', 16);
-
--- Paraguay - Central (17), Alto Paraná (18)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('San Lorenzo', 17),
-('Lambaré', 17),
-('Ciudad del Este', 18),
-('Hernandarias', 18);
-
--- Bolivia - La Paz (19), Santa Cruz (20)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('El Alto', 19),
-('Zona Sur', 19),
-('Santa Cruz de la Sierra', 20),
-('Warnes', 20);
-
--- Perú - Lima (21), Cusco (22)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Miraflores', 21),
-('San Isidro', 21),
-('Cusco Centro', 22),
-('San Sebastián', 22);
-
--- Ecuador - Pichincha (23), Guayas (24)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Quito Centro', 23),
-('Tumbaco', 23),
-('Guayaquil Centro', 24),
-('Durán', 24);
-
--- Colombia - Cundinamarca (25), Antioquia (26)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Soacha', 25),
-('Chía', 25),
-('Medellín', 26),
-('Bello', 26);
-
-
--- Venezuela - Distrito Capital (27), Zulia (28)
-INSERT INTO Partido (Partido, Id_Provincia) VALUES
-('Caracas Centro', 27),
-('El Paraíso', 27),
-('Maracaibo Centro', 28),
-('San Francisco', 28);
+(6, 'San Telmo', 6),
+(7, 'Palermo', 7),
+(8, 'Salta Centro', 8),
+(9, 'Córdoba Centro', 9),
+(10, 'Mendoza Centro', 10),
+(11, 'Campinas', 11),
+(12, 'Santos', 11),
+(13, 'Niterói', 12),
+(14, 'Nova Iguaçu', 12),
+(15, 'Santiago Centro', 13),
+(16, 'Puente Alto', 13),
+(17, 'Valparaíso Centro', 14),
+(18, 'Viña del Mar', 14),
+(19, 'Centro', 15),
+(20, 'Pocitos', 15),
+(21, 'Las Piedras', 16),
+(22, 'Ciudad de la Costa', 16),
+(23, 'San Lorenzo', 17),
+(24, 'Lambaré', 17),
+(25, 'Ciudad del Este', 18),
+(26, 'Hernandarias', 18),
+(27, 'El Alto', 19),
+(28, 'Zona Sur', 19),
+(29, 'Santa Cruz de la Sierra', 20),
+(30, 'Warnes', 20),
+(31, 'Miraflores', 21),
+(32, 'San Isidro', 21),
+(33, 'Cusco Centro', 22),
+(34, 'San Sebastián', 22),
+(35, 'Quito Centro', 23),
+(36, 'Tumbaco', 23),
+(37, 'Guayaquil Centro', 24),
+(38, 'Durán', 24),
+(39, 'Centro Soacha', 25),
+(40, 'Zona Industrial Chía', 25),
+(41, 'El Poblado', 26),
+(42, 'Niquía', 26),
+(43, 'Sabana Grande', 27),
+(44, 'Montalbán', 27),
+(45, 'Veritas', 28),
+(46, 'La Polar', 28);
 GO
 
+SET IDENTITY_INSERT Partido OFF;
 INSERT INTO Localidad (Localidad, Id_Partido) VALUES
--- Brasil
+
+('San Telmo', 6),
+('Palermo', 7),
+('Salta Centro', 8),
+('Córdoba Centro', 9),
+('Mendoza Centro', 10),
 ('Jardim Paulista', 11),
 ('Gonzaga', 12),
 ('Icaraí', 13),
 ('Comendador Soares', 14),
-
--- Chile
 ('Barrio Lastarria', 15),
 ('Bajos de Mena', 16),
 ('Playa Ancha', 17),
 ('Recreo', 18),
-
--- Uruguay
 ('Ciudad Vieja', 19),
 ('Punta Carretas', 20),
 ('Villa Alegría', 21),
 ('Lagomar', 22),
-
--- Paraguay
 ('Marianela', 23),
 ('Vista Alegre', 24),
 ('Zona Comercial', 25),
 ('Centro de Hernandarias', 26),
-
--- Bolivia
 ('12 de Octubre', 27),
 ('Achumani', 28),
 ('Equipetrol', 29),
 ('Satélite Norte', 30),
-
--- Perú
 ('Larcomar', 31),
 ('El Olivar', 32),
 ('Plaza de Armas', 33),
 ('Zona de San Sebastián', 34),
-
--- Ecuador
 ('Centro Histórico', 35),
 ('Valle de Tumbaco', 36),
 ('Malecón 2000', 37),
 ('Vía Durán', 38),
-
--- Colombia
 ('Centro Soacha', 39),
 ('Zona Industrial Chía', 40),
 ('El Poblado', 41),
 ('Niquía', 42),
-
--- Venezuela
 ('Sabana Grande', 43),
 ('Montalbán', 44),
 ('Veritas', 45),
 ('La Polar', 46);
-
-
+GO
 
 INSERT INTO Roles (Rol) VALUES
 ('Jefe de Ventas'),

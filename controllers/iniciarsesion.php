@@ -47,6 +47,8 @@ if ($result["Email_Confirmado"] == 0) {
 
     session_start();
     $_SESSION["Id_Usuario"] = $result["Id_Usuario"];
+    $_SESSION["nombre"] = $result["Nombre"]; 
+    $_SESSION["usuario"] = $result["Usuario"];
     $_SESSION["Id_Rol"] = $result["Id_Rol"];
 
     if ($_SESSION["Id_Rol"] == 1) {

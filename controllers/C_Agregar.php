@@ -5,7 +5,7 @@ require_once  __DIR__ . '/../models/models/DatosAuxiliares.php';
 
 
 $datosAux = new DatosAuxiliares();
-$localidades = $datosAux->obtenerLoc();
+$localidades = $datosAux->obtenerUbicaciones();
 $tipo_estadia = $datosAux->obtenerTipoEstadia();
 
 

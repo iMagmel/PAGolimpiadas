@@ -68,7 +68,7 @@ foreach ($estadias as $estadia) {
             Piso <?php echo $est['Piso']; ?>, Depto <?php echo $est['Depto']; ?>
           </p>
           <div class="estrellas"></div>
-          <button>Agregar al carrito</button>
+          <button onclick = "redirigir()">Agregar al carrito</button>
         </article>
       <?php endforeach; ?>
     </section>
@@ -88,4 +88,9 @@ foreach ($estadias as $estadia) {
   </nav>
 </footer>
 </body>
+<script>  
+function redirigir() {
+  window.location.href = "/PAGolimpiadas/vista/carrito/carro.php";
+}
+</script>
 </html>

@@ -1,3 +1,4 @@
+use dbolimpiadas;
 DECLARE @idPempresa INT;
 
 INSERT INTO PersonalEmpresa 
@@ -10,7 +11,7 @@ SET @idPempresa = SCOPE_IDENTITY();
 
 
 INSERT INTO Usuarios 
-(Id_Pempresa, Email, usuario, Password, Fecha_Alta, Ultimo_Login, Id_Rol)
+(Id_Pempresa, Email, usuario, Password, Fecha_Alta, Ultimo_Login, Id_Rol, Email_Confirmado)
 VALUES 
-(@idPempresa, 'admin@skyway.com', 'admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', GETDATE(), GETDATE(), 1);
+(@idPempresa, 'admin@skyway.com', 'admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', GETDATE(), GETDATE(), 1, 1);
 --contraseña: admin123, esta encriptada con sha256

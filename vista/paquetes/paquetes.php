@@ -25,15 +25,21 @@
       <div class="icons">
     <a href="#"><i class='bx bx-cart'></i></a>
 
-    <div class="login-dropdown">
+ <div class="login-dropdown">
       <a href="#" class="login-btn"><i class='bx bx-user-circle'></i></a>
       <div class="login-menu">
-        <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
-        <a href="/PAGolimpiadas/vista/registro/logup.php">Registrarte</a>
-        <a href="#">Cerrar sesión</a>
+        
+          <?php if (!isset($_SESSION['Id_Usuario'])): ?>
+            <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
+            <a href="/PAGolimpiadas/controllers/logupController.php">Registrarte</a>
+          <?php else: ?>
+            <p style="margin: 0.5em 1em; font-weight: bold;">
+              Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'usuario'); ?>
+            </p>
+            <a href="/PAGolimpiadas/controllers/logout.php" class="button">Cerrar sesión</a>
+          <?php endif; ?>
       </div>
     </div>
-  </div>
 
   </div>
 </header>
@@ -199,7 +205,7 @@
 <script>
 
   function redirigir() {
-  window.location.href = "asientos.php";
+  window.location.href = "/PAGolimpiadas/vista/estadia/estadia.php";
 }
 
 </script>

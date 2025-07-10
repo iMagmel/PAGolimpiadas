@@ -15,9 +15,6 @@
       <div class="forms" id="forms">
         <!-- REGISTRO -->
         <form action="" id="sign-up" class="form-register" method="POST">
-        <form action="" method="POST">
-        <input type="hidden" name="prueba" value="ok">
-
           <h2>Registrarse</h2>
           <p>¿Ya tenés cuenta? <a href="/../PAGolimpiadas/vista/iniciosesion/login.php" id="link-sign-up">Inicia sesión</a></p>
 
@@ -56,21 +53,21 @@
     </option>
   <?php endforeach; ?>
 </select>
+        </div>
 
-          </div>
+    <div class="input-container">
+      <label for="localidad">Ubicacion</label>
+      <select name="localidad" id="localidad" required>
+        <option value="" disabled selected>Seleccione su ubicación</option>
+        <?php foreach ($ubicaciones as $ubicacion): ?>
+          <option value="<?= htmlspecialchars($ubicacion['Id_Localidad']) ?>"
+            <?= (isset($_POST['localidad']) && $_POST['localidad'] == $ubicacion['Id_Localidad']) ? 'selected' : '' ?>>
+            <?= htmlspecialchars($ubicacion['Ubicacion']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+    </div>
 
-          <div class="input-container">
-            <label for="localidad">Localidad</label>
-        <select name="localidad" id="localidad" required>
-  <option value="" disabled selected>Seleccione su localidad</option>
-  <?php foreach ($localidades as $loc): ?>
-    <option value="<?= htmlspecialchars($loc['Id_Localidad']) ?>"
-      <?= (isset($_POST['localidad']) && $_POST['localidad'] == $loc['Id_Localidad']) ? 'selected' : '' ?>>
-      <?= htmlspecialchars($loc['NombreCompleto']) ?>
-    </option>
-  <?php endforeach; ?>
-</select>
-          </div>
 
           <div class="input-container">
             <label for="tipodoc">Tipo de documento</label>
