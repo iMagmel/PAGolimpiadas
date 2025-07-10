@@ -194,58 +194,79 @@ body {
   margin-left: 20%;
 }
 
-/* Contenedor de las tarjetas */
+
 .productos-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(220px, 1fr)); /* Cada columna mínimo 220px y máximo igual */
+  gap: 24px; /* espacio más amplio entre columnas y filas */
   padding: 0 20px;
-  flex-wrap: nowrap; /* fuerza una sola fila */
-  overflow-x: auto;   /* en caso de pantallas pequeñas */
+  justify-content: center;
+  max-width: 1300px; /* limitar ancho máximo para que no se estire */
+  margin: 0 auto;
 }
 
-/* Tarjeta individual */
 .producto {
+  margin-left: 30px;
   background-color: #f9f9f9;
   border-radius: 12px;
-  padding: 15px;
-  width: 220px;
-  flex: 0 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px 15px; /* un poco más de padding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.2s;
+  max-width: 280px; /* ancho máximo para cada tarjeta */
+  margin: 0 auto; /* centrar individualmente */
 }
-
 .producto:hover {
   transform: translateY(-5px);
 }
-
-/* Contenido */
 .producto-info h3 {
-  font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  margin: 0 0 10px 0;
-  font-size: 16px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .producto-info p {
-  font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
+
+/* Botón con mejor ancho para evitar salto de línea */
 .btn-agregar {
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 10px 16px; /* más horizontal para no cortar texto */
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  white-space: nowrap; /* evitar salto de línea en el botón */
 }
 
 .btn-agregar:hover {
   background-color: #0056b3;
 }
+
+/* Media queries para adaptar columnas en pantallas más chicas */
+
+@media (max-width: 1200px) {
+  .productos-container {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 700px) {
+  .productos-container {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 350px;
+    padding: 0 10px;
+  }
+
+  .producto {
+    max-width: 100%;
+  }
+}
+
 footer {
   background-color: var(--color-primario);
   color: var(--color-secundario);
@@ -304,3 +325,4 @@ footer {
     margin-bottom: 20px;
   }
 }
+

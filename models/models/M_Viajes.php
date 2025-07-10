@@ -8,11 +8,23 @@ class Viajes {
         $this->conn = Conexion::ConexionBD();
     }
 
-    public function getViaje() {
+public function getViaje() {
+    try {
         $sql = "EXEC SP_ObtenerViajes";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!$datos) {
+            throw new Exception("No se devolvieron viajes desde la BD.");
+        }
+
+        return $datos;
+    } catch (Exception $e) {
+        die("Error al obtener viajes: " . $e->getMessage());
     }
+}
+
+
 }
 ?>

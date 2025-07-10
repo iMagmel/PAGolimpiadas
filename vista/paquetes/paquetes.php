@@ -1,213 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Destinos</title>
+  <?php
+  require_once __DIR__ . '/../../controllers/C_Viajes.php';
+  if (PHP_SESSION_NONE === session_status()) {
+      session_start();
+  }
+  ?>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <title>Destinos</title>
 
-    <link rel="stylesheet" href="paquetes.css">
-</head>
-<body>
- <header>
-  <div class="header-container">
-    <div class="logo">
-      <h2>SkyWay Travel</h2>
-    </div>
-
-    <nav class="nav-bar">
-      <ul class="nav-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Contactos</a></li>
-      </ul>
-    </nav>
-
-      <div class="icons">
-    <a href="#"><i class='bx bx-cart'></i></a>
-
- <div class="login-dropdown">
-      <a href="#" class="login-btn"><i class='bx bx-user-circle'></i></a>
-      <div class="login-menu">
-        
-          <?php if (!isset($_SESSION['Id_Usuario'])): ?>
-            <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
-            <a href="/PAGolimpiadas/controllers/logupController.php">Registrarte</a>
-          <?php else: ?>
-            <p style="margin: 0.5em 1em; font-weight: bold;">
-              Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'usuario'); ?>
-            </p>
-            <a href="/PAGolimpiadas/controllers/logout.php" class="button">Cerrar sesión</a>
-          <?php endif; ?>
+      <link rel="stylesheet" href="paquetes.css">
+  </head>
+  <body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h2>SkyWay Travel</h2>
       </div>
-    </div>
 
-  </div>
-</header>
-<br><br><br><br><br>
-    <h2 class="titulo-seccion">EUROPA</h2>
-<div class="productos-container">
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Contactos</a></li>
+        </ul>
+      </nav>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Barcelona, España.</h3>
-      <p>La Sagrada Familia: Obra maestra de Gaudí, imperdible por su arquitectura única.</p>
-      
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
+        <div class="icons">
+      <a href="#"><i class='bx bx-cart'></i></a>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Paris, Francia</h3>
-      <p>Recorrido por los puntos históricos más importantes de París.</p>
-      
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
+  <div class="login-dropdown">
+        <a href="#" class="login-btn"><i class='bx bx-user-circle'></i></a>
+        <div class="login-menu">
+          
+            <?php if (!isset($_SESSION['Id_Usuario'])): ?>
+              <a href="/PAGolimpiadas/vista/iniciosesion/login.php">Iniciar sesión</a>
+              <a href="/PAGolimpiadas/controllers/logupController.php">Registrarte</a>
+            <?php else: ?>
+              <p style="margin: 0.5em 1em; font-weight: bold;">
+                Mi cuenta: <?php echo htmlspecialchars($_SESSION['nombre'] ?? $_SESSION['usuario'] ?? 'usuario'); ?>
+              </p>
+              <a href="/PAGolimpiadas/controllers/logout.php" class="button">Cerrar sesión</a>
+            <?php endif; ?>
+        </div>
+      </div>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Amsterdam</h3>
-      <p>Recorrido por los puntos históricos, barco incluido.</p>
-      
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
     </div>
-  </div>
+  </header>
+  <br><br><br><br><br>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Alemania</h3>
-      <p>Recorrido por museos, y castillos de ensueño.</p>
-      
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
+  <div class="productos-container">
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Noruega</h3>
-      <p>Disfrutá de los fiordos y paisajes naturales únicos.</p>
-      
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
+  <h2 class="titulo-seccion">Destinos disponibles</h2>
+  <div class="productos-container">
+
+    <?php foreach ($viajes as $via): ?>
+      <div class="producto">
+        <div class="producto-info">
+          <h3><?php echo htmlspecialchars($via['Destino']); ?></h3>
+          <p><?php echo htmlspecialchars($via['Descripcion']); ?></p>
+          <p><strong>Salida:</strong> <?php echo $via['Fecha_Salida']; ?> | 
+            <strong>Vuelta:</strong> <?php echo $via['Fecha_Vuelta']; ?></p>
+          <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
+        </div>
+      </div>
+    <?php endforeach; ?>
   </div>
 
-</div><br><br>
-<br>
-<br>
 
-
- <h2 class="titulo-seccion">ASIA</h2>
-<div class="productos-container">
-
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Kioto, Japón</h3>
-      <p>Famoso templo budista cubierto de pan de oro y rodeado de hermosos jardines y estanques.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
   </div>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Bangkok, Tailandia</h3>
-      <p>Recorrido por el templo y el mercado flotante Damnoen Saduak.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
+  <br><br><br><br>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Dubai, Emiratos Árabes Unidos</h3>
-      <p>Viaje con destino a una de las ciudades más lujosas del mundo.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Agra, India</h3>
-      <p>El icónico mausoleo de mármol blanco, una de las siete maravillas del mundo.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
+  <footer>
+      <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
+      <nav class="footer-links">
+        <a href="#contacto">Contacto</a>
+        <a href="#">Políticas de cancelación</a>
+        <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto" target="_blank"
+          rel="noopener noreferrer">Decreto N°2182</a>
+      </nav>
+    </footer>
+  <script>
 
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Hong Kong, China</h3>
-      <p>Visita al Victoria Peak, recorrido en tranvía y sus maravillosas calles.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
+    function redirigir() {
+    window.location.href = "/PAGolimpiadas/vista/estadia/estadia.php";
+  }
 
-</div>
-
-<br><br><br><br>
-
-<h2 class="titulo-seccion">AMÉRICA</h2>
-<div class="productos-container">
-
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Nueva York, Estados Unidos</h3>
-      <p>Desde el Empire State hasta la Estatua de la Libertad. Vistas únicas.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
-
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Río de Janeiro, Brasil</h3>
-      <p>Una de las nuevas siete maravillas del mundo en la cima del Corcovado. Teleféricos y cálidas playas.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
-
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Templo Mayor, México</h3>
-      <p>Ruinas mexicas en el corazón de la capital, junto a la catedral.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
-
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Toronto, Canadá</h3>
-      <p>Torre icónica con mirador panorámico y suelo de vidrio. Barcos, acuarios y mucho más.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
-
-  <div class="producto">
-    <div class="producto-info">
-      <h3>Bariloche, Argentina</h3>
-      <p>Ubicada en la provincia de Río Negro, rodeada por lagos, montañas nevadas y bosques andinos.</p>
-      <button class="btn-agregar" onclick="redirigir()">Agregar al carrito</button>
-    </div>
-  </div>
-
-</div>
-
-</div><br><br>
-<br>
-<br>
-
-<footer>
-    <p>© 2023 SkyWay Travel. Todos los derechos reservados.</p>
-    <nav class="footer-links">
-      <a href="#contacto">Contacto</a>
-      <a href="#">Políticas de cancelación</a>
-      <a href="https://www.argentina.gob.ar/normativa/nacional/decreto-2182-1972-18905/texto" target="_blank"
-        rel="noopener noreferrer">Decreto N°2182</a>
-    </nav>
-  </footer>
-<script>
-
-  function redirigir() {
-  window.location.href = "/PAGolimpiadas/vista/estadia/estadia.php";
-}
-
-</script>
-</body>
-</html>
+  </script>
+  </body>
+  </html>

@@ -1,8 +1,13 @@
-use dbolimpiadas;
+USE dbolimpiadas;
 GO
-CREATE PROCEDURE SP_ObtenerViajes
+CREATE OR ALTER PROCEDURE SP_ObtenerViajes
 AS
 BEGIN
-SELECT Id_Viaje, Id_Pais, Destino, Descripcion
-FROM Viajes;
+    SELECT 
+        Id_Viaje,
+        Destino,
+        Descripcion,
+        Fecha_Salida,
+        Fecha_Vuelta
+    FROM Viajes;
 END

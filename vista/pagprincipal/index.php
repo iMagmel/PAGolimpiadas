@@ -128,7 +128,11 @@ if (session_status() == PHP_SESSION_NONE) {
             Explora nuestras ofertas exclusivas de combos de viajes que combinan transporte, alojamiento y actividades
             para que vivas la experiencia completa sin preocupaciones.
           </p>
-          <button class="btn-outline"><a href="../paquetes/paquetes.php">Ver más</a></button>
+           <?php if (isset($_SESSION['usuario'])): ?>
+            <button class="btn-outline"><a href="../paquetes/paquetes.php">Ver más</a></button>
+        <?php else: ?>
+            <button class="btn-outline" onclick="alert('Debes iniciar sesión o registrarte para ver más.');">Ver más</button>
+        <?php endif; ?>
         </div>
 
 
@@ -139,7 +143,11 @@ if (session_status() == PHP_SESSION_NONE) {
             Reserva estadías en hoteles confortables y acogedores para descansar tras un día lleno de aventuras. Calidad
             y comodidad en cada alojamiento seleccionado.
           </p>
-          <button class="btn-outline"><a href="../estadia/estadia.php">Ver más</a></button>
+          <?php if (isset($_SESSION['usuario'])): ?>
+            <button class="btn-outline"><a href="../estadia/estadia.php">Ver más</a></button>
+        <?php else: ?>
+            <button class="btn-outline" onclick="alert('Debes iniciar sesión o registrarte para ver más.');">Ver más</button>
+        <?php endif; ?>
         </div>
       </div>
     </section>

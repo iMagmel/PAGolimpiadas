@@ -90,7 +90,7 @@ foreach ($estadias as $estadia) {
 </body>
 <script>  
 function redirigir() {
-  window.location.href = "/PAGolimpiadas/vista/carrito/carro.php";
+    window.location.href = "/PAGolimpiadas/vista/carrito/carro.php";
 }
 </script>
 </html>
